@@ -19,7 +19,7 @@ angular
         });
 
         // Configure home page
-        $urlRouterProvider.when('', '/home');
+        $urlRouterProvider.when('', '/');
 
         // Login page
         $stateProvider.state('login', {
@@ -36,11 +36,28 @@ angular
                     });
                 }
             }
-        });
+        })
 
-        // Login page
-        $stateProvider.state('home', {
-            url: '/home',
+        // Client - main
+        .state('main', {
+            templateUrl: 'clients/main.html',
+            controller: 'MainController',
+            resolve: {
+                loadMyDirectives: function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'app',
+                        files: [
+                            'clients/main.controller.js',
+                            'clients/assets/css/site.css',
+                        ]
+                    });
+                }
+            }
+        })
+
+        // Home page
+        .state('main.home', {
+            url: '/',
             templateUrl: 'clients/homepage.html',
             controller: 'HomePageController',
             resolve: {

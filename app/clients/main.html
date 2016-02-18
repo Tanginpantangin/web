@@ -1,0 +1,21 @@
+<div ng-controller="MainController as ctrl" ng-cloak layout="column">
+  <md-toolbar>
+      <div class="md-toolbar-tools">
+          <md-button class="md-icon-button" aria-label="Settings">
+              <md-icon aria-label="Close dialog" class="material-icons">menu</md-icon>
+          </md-button>
+          <h2>
+              <span>Toolbar with Icon Buttons</span>
+          </h2>
+          <span flex></span>
+          <md-button class="md-icon-button" aria-label="Favorite">
+              <md-icon aria-label="Close dialog" class="material-icons">favorite</md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="More">
+              <md-icon aria-label="Close dialog" class="material-icons">more_vert</md-icon>
+          </md-button>
+      </div>
+  </md-toolbar>
+  <img layout-fill ng-src="clients/assets/img/temple.jpg"></img>
+  <div ui-view></div>
+</div>

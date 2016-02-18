@@ -1,28 +1,15 @@
-npm install -g bower gulp
-
-# Salonhelps Web App #
-
-1. cd path/of/project
-2. sudo npm install -g nodemon
-3. npm install
+# Install website
+1. npm install -g bower gulp
+2. npm install
+3. gulp styles
 
 # Development
-1. gulp config --development
-2. sudo ENV=development nodemon server.js
+1. port=8080 ENV=development node server.js
 
 # Release
-1. gulp release --production
-2. sudo forever start server.js
+1. port=8080 ENV=production node server.js
 
-Check google chrome **http://localhost**
+Check google chrome **http://localhost:8080**
 
 # Build project using gulp #
-
-1. gulp scripts: build javascripts files
-2. gulp html: minify html
-3. gulp styles: build less css and minify
-4. gulp config --production || --development: build config
-5. gulp images: optimize images
-6. gulp copyfiles: copy bower_components and fonts
-7. gulp clean: remove code files
-8. gulp clean-all: remove everything in dist
+1. gulp styles: build less css and minify
