@@ -1,0 +1,28 @@
+{
+  "name": "tnptn",
+  "description": "TNPTN Website",
+  "private": true,
+  "readme": "README.md",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tanginpantangin/web"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "morgan": "^1.6.1"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "postinstall": "bower --allow-root install",
+    "init": "npm install",
+    "install": "bower install"
+  },
+  "config": {
+    "unsafe-perm": true
+  }
+}
