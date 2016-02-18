@@ -16,3 +16,6 @@ Check google chrome **http://localhost:8080**
 
 # Install Atom IDE add on
 apm install atom-beautify seti-ui monokai-seti open-recent project-manager todo-show minimap highlight-selected minimap-highlight-selected autoclose-html pigments linter linter-htmlhint linter-csslint linter-jshint auto-detect-indentation atom-beautify emmet
+
+
+# Install Atom IDE add on
