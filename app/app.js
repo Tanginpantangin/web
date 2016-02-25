@@ -48,6 +48,8 @@ angular
                         name: 'app',
                         files: [
                             'clients/main.controller.js',
+                            'clients/directives/header.js',
+                            'clients/directives/footer.js',
                             'clients/assets/css/site.css',
                         ]
                     });

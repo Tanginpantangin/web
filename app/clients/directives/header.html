@@ -1,0 +1,23 @@
+<md-toolbar id="header">
+    <div class="md-toolbar-tools container">
+        <div class="row" layout="row" layout-align="start center">
+            <a href="/" class="logo">
+                <img title="Tangin pan tangin" src="clients/assets/img/logo.jpg">
+            </a>
+            <span flex></span>
+            <div layout="row" layout-align="end center" ng-repeat="page in menus" hide-xs>
+                <md-button class="{{getActiveClass(page)}}" ng-click="redirectPage(page.href)"> {{page.name}} </md-button>
+            </div>
+            <md-menu hide show-xs>
+                <md-button aria-label="Menus" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                    <md-icon class="material-icons" aria-label="menu">menu</md-icon>
+                </md-button>
+                <md-menu-content width="4" class="header">
+                    <md-menu-item ng-repeat="page in menus">
+                        <md-button class="{{page.class}}" ng-click="redirectPage(page.href)"> {{page.name}} </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </div>
+</md-toolbar>
