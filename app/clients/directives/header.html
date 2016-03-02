@@ -1,16 +1,17 @@
 <md-toolbar id="header">
     <div class="md-toolbar-tools container">
-        <div class="row" layout="row" layout-align="start center">
-            <a href="/" class="logo">
+        <div class="row" layout="row" layout-align="start center" flex="100">
+            <a href="/" class="logo" layout="row" layout-align="start center">
                 <img title="Tangin pan tangin" src="clients/assets/img/logo.jpg">
+                <h1 hide show-gt-sm>TANGIN PAN TANGIN</h1>
             </a>
             <span flex></span>
-            <div layout="row" layout-align="end center" ng-repeat="page in menus" hide-xs>
+            <div hide show-gt-xs layout="row" layout-align="end center" ng-repeat="page in menus">
                 <md-button class="{{getActiveClass(page)}}" ng-click="redirectPage(page.href)"> {{page.name}} </md-button>
             </div>
-            <md-menu hide show-xs>
-                <md-button aria-label="Menus" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-                    <md-icon class="material-icons" aria-label="menu">menu</md-icon>
+            <md-menu hide-gt-xs class="mobile-menu">
+                <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                    <md-icon class="material-icons">menu</md-icon>
                 </md-button>
                 <md-menu-content width="4" class="header">
                     <md-menu-item ng-repeat="page in menus">

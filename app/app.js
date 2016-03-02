@@ -25,7 +25,6 @@ angular
         $stateProvider.state('login', {
             url: '/login',
             templateUrl: 'login/login.html',
-            controller: 'LoginController',
             resolve: {
                 loadMyDirectives: function($ocLazyLoad) {
                     return $ocLazyLoad.load({
@@ -41,7 +40,6 @@ angular
         // Client - main
         .state('main', {
             templateUrl: 'clients/main.html',
-            controller: 'MainController',
             resolve: {
                 loadMyDirectives: function($ocLazyLoad) {
                     return $ocLazyLoad.load({
@@ -61,13 +59,60 @@ angular
         .state('main.home', {
             url: '/',
             templateUrl: 'clients/homepage.html',
-            controller: 'HomePageController',
             resolve: {
                 loadMyDirectives: function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'app',
                         files: [
                             'clients/homepage.controller.js',
+                        ]
+                    });
+                }
+            }
+        })
+
+        // Converter page
+        .state('main.converter', {
+            url: '/converter',
+            templateUrl: 'clients/converter.html',
+            resolve: {
+                loadMyDirectives: function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'app',
+                        files: [
+                            'clients/converter.controller.js',
+                        ]
+                    });
+                }
+            }
+        })
+
+        // Document page
+        .state('main.document', {
+            url: '/document',
+            templateUrl: 'clients/document.html',
+            resolve: {
+                loadMyDirectives: function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'app',
+                        files: [
+                            'clients/document.controller.js',
+                        ]
+                    });
+                }
+            }
+        })
+
+        // Converter page
+        .state('main.aboutus', {
+            url: '/aboutus',
+            templateUrl: 'clients/aboutus.html',
+            resolve: {
+                loadMyDirectives: function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'app',
+                        files: [
+                            'clients/aboutus.controller.js',
                         ]
                     });
                 }

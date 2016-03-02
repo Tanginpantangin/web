@@ -14,11 +14,11 @@ angular.module('app')
                         href: '/',
                         name: 'Home'
                     }, {
-                        href: '/xalih',
-                        name: 'Xalih'
+                        href: '/converter',
+                        name: 'Converter'
                     }, {
                         href: '/document',
-                        name: 'Document'
+                        name: 'Documents'
                     }, {
                         href: '/aboutus',
                         name: 'About Us'
