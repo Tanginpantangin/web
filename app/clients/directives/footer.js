@@ -9,7 +9,7 @@ angular.module('app')
                 restrict: 'E',
                 replace: true,
                 link: function($scope) {
-                    $scope.message = 'this is footer';
+                    $scope.message = 'This is footer';
                 }
             };
         }
