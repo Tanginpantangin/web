@@ -1,5 +1,5 @@
 @color-text-default: #272726;
-@color-primary: #f68f1e;
+@color-primary: rgb(255,87,34);
 
 * {
     margin: 0;
@@ -13,9 +13,10 @@ body {
     font-size: 14px;
     height: 100vh;
     min-height: 100vh;
+    line-height: 22px;
 }
-.row-content {
-    padding: 0 24px;
+p {
+    text-align: justify;
 }
 md-toolbar {
     .md-toolbar-tools {
@@ -34,9 +35,27 @@ md-toolbar {
             border: 1px solid @color-primary;
         }
     }
-    md-icon{
+    md-icon {
         color: inherit !important;
     }
+}
+.row-content {
+    padding: 0 24px;
+}
+.margin-top-xl {
+    margin-top: 48px;
+}
+.margin-top-lg {
+    margin-top: 36px;
+}
+.margin-top-md {
+    margin-top: 24px;
+}
+.margin-top-sm {
+    margin-top: 16px;
+}
+.no-margin-left {
+    margin-left: 0;
 }
 
 #header {
@@ -48,21 +67,105 @@ md-toolbar {
         font-size: 24px;
         color: @color-primary;
     }
-    md-menu.mobile-menu{
-        button.md-icon-button{
+    md-menu.mobile-menu {
+        button.md-icon-button {
             color: @color-primary !important;
-            &:hover{
+            &:hover {
                 color: #ffffff !important;
-                background:  @color-primary !important;
+                background: @color-primary !important;
             }
         }
     }
 }
-#footer{
+#wrapper {
+    padding-bottom: 36px;
+}
+#footer {
     background: #696c74;
     color: #ffffff;
     padding: 40px 0;
-    md-icon{
+    md-icon {
         color: #ffffff;
     }
 }
+#home-page {
+    .xalih {
+        margin-top: -500px;
+        position: absolute;
+        h2.product-name {
+            font-size: 50px;
+            line-height: 50px;
+            color: @color-primary;
+            font-weight: normal;
+        }
+        .product-description {
+            font-size: 18px;
+            line-height: 28px;
+        }
+        button {
+            padding: 4px 16px;
+        }
+    }
+    .about-us {
+        h3 {
+            font-size: 36px;
+            color: @color-primary;
+        }
+        p {
+            font-size: 16px;
+            line-height: 24px;
+        }
+        button {
+            padding: 4px 16px;
+        }
+        img {
+            border-radius: 50%;
+            width: 100%;
+            height: auto;
+            padding-left: 24px;
+        }
+    }
+}
+
+@layout-breakpoint-xs: 600px;
+@layout-breakpoint-sm: 960px;
+@layout-breakpoint-md: 1280px;
+@layout-breakpoint-lg: 1920px;
+
+// Xtra-SMALL  SCREEN
+@media (max-width: (@layout-breakpoint-xs - 1)) {
+    #home-page {
+        .xalih {
+            h2.product-name {
+                font-size: 36px;
+                line-height: 36px;
+            }
+            .product-description {
+                font-size: inherit;
+                line-height: inherit;
+            }
+        }
+    }
+}
+
+// BIGGER THAN Xtra-SMALL SCREEN
+@media (min-width: @layout-breakpoint-xs) {
+}
+
+@media (min-width: @layout-breakpoint-xs) and (max-width: (@layout-breakpoint-sm - 1)) {
+}
+
+// BIGGER THAN SMALL SCREEN
+@media (min-width: @layout-breakpoint-sm) {}
+
+// MEDIUM SCREEN
+@media (min-width: @layout-breakpoint-sm) and (max-width: (@layout-breakpoint-md - 1)) {}
+
+// BIGGER THAN MEDIUM SCREEN
+@media (min-width: @layout-breakpoint-md) {}
+
+// LARGE SCREEN
+@media (min-width: @layout-breakpoint-md) and (max-width: (@layout-breakpoint-lg - 1)) {}
+
+// BIGGER THAN LARGE SCREEN
+@media (min-width: @layout-breakpoint-lg) {}

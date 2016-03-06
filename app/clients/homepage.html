@@ -1,3 +1,29 @@
-<div ng-controller="HomePageController as ctrl" ng-cloak layout="column">
-    <h1>This is {{ctrl.message}}</h1>
+<div id="home-page" ng-controller="HomePageController as ctrl" ng-cloak layout="column">
+    <img ng-src="clients/assets/img/bg-xalih.jpg" flex="100" />
+    <div layout="row" layout-align="center center" class="xalih">
+        <div layout="column" layout-align="center center" flex="50">
+            <h2 class="product-name">Xalih Akhar Cam</h2>
+            <p class="product-description margin-top-md">
+                Bộ công cụ giúp chuyển đổi giữa Akhar Thrah sang các kiểu chuyển tự latin và ngược lại; giữa các loại font chữ Cham có cấu trúc khác nhau; giữa Akhar Thrah (không theo chuẩn Unicode) và các loại chuyển tự latin sang Akhar Thrah theo chuẩn Unicode và ngược lại.
+            </p>
+            <md-button class="md-raised md-primary margin-top-sm" ng-click="ctrl.gotoPage('main.converter')">
+                Find out more
+            </md-button>
+        </div>
+    </div>
+    <div layout="row" layout-align="start center" class="margin-top-xl about-us row-content">
+        <div flex>
+            <h3>About Us</h3>
+            <p class="margin-top-md">Tangin Pan Tangin (TPT) là một dự án về các ứng dụng thực tế của ngôn ngữ Cham vào thực tế đời sống. Mong muốn của chúng tôi là có thể bảo tồn những giá trị truyền thống của văn hóa Cham nói chung và ngôn ngữ Cham nói riêng. Đồng thời cũng muốn làm mới những nét đẹp ấy theo kịp thời đại, theo xu hướng phát triển chung của thế giới.</p>
+            <p class="margin-top-sm">
+                Chúng tôi rất mong nhận được sự cộng tác, đóng góp từ cộng đồng. Đặc biệt là những góp ý để sản phẩm của chúng tôi được tiện lợi và hữu dụng nhất.
+            </p>
+            <md-button class="md-raised md-primary margin-top-sm no-margin-left" ng-click="ctrl.gotoPage('main.aboutus')">
+                Read more
+            </md-button>
+        </div>
+        <div hide show-gt-sm flex="40">
+            <img ng-src="clients/assets/img/temple.jpg" />
+        </div>
+    </div>
 </div>

@@ -10,6 +10,10 @@ angular
         'ngSanitize',
         'firebase'
     ])
+    .config(function($mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+            .primaryPalette('deep-orange');
+    })
     .config(['$stateProvider', '$ocLazyLoadProvider', '$urlRouterProvider', function($stateProvider, $ocLazyLoadProvider, $urlRouterProvider) {
 
         // Configure lazy load

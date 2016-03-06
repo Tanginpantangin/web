@@ -2,7 +2,9 @@
 'use strict';
 
 angular.module('app')
-    .controller('HomePageController', [function() {
-        var self = this;
-        self.message = 'Home page';
+    .controller('HomePageController', ['$state', function($state) {
+        var ctrl = this;
+        ctrl.gotoPage = function(state) {
+            $state.go(state);
+        };
     }]);
