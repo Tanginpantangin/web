@@ -1,6 +1,23 @@
 <div id="footer">
-    <div class="row-content" layout="row" layout-align="start center">
-        <span flex>{{message}}</span>
+    <div class="row-content" layout="row" layout-xs="column" layout-align="start center">
+      <div flex="60">
+          <p>Coppyright  © 2016 Tangin pan tangin</p>
+      </div>
+      <div flex="30" flex-xs="100">
+        <md-button class="md-fab md-mini" aria-label="Eat cake">
+          <md-icon class="material-icons">android</md-icon>
+        </md-button>
+        <md-button class="md-fab md-mini md-hue-2" aria-label="Eat cake">
+            <md-icon class="material-icons">android</md-icon>
+        </md-button>
+        <md-button class="md-fab md-mini md-primary" aria-label="Eat cake">
+           <md-icon class="material-icons">android</md-icon>
+        </md-button>
+        <md-button class="md-fab md-mini md-default" aria-label="Eat cake">
+           <md-icon class="material-icons">android</md-icon>
+        </md-button>
+      </div>
+      <div flex="nogrow">
         <md-menu>
             <md-button ng-click="$mdOpenMenu($event)">
                 <md-icon class="material-icons">language</md-icon>
@@ -29,5 +46,15 @@
                 </md-menu-item>
             </md-menu-content>
         </md-menu>
+      </div>
+
+    </div>
+    <div class="row-footer" layout="row" layout-align="start center">
+      <div flex>
+
+      </div>
+      <div >
+
+      </div>
     </div>
 </div>
