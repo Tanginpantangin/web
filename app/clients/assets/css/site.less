@@ -1,6 +1,19 @@
 @color-text-default: #272726;
 @color-primary: rgb(255,87,34);
 
+@font-face {
+    font-family: 'akhar_thrah_1';
+    src: url('akhar_thrah_1-webfont.eot');
+    src: url('akhar_thrah_1-webfont.eot?#iefix') format('embedded-opentype'), url('akhar_thrah_1-webfont.woff2') format('woff2'), url('akhar_thrah_1-webfont.woff') format('woff'), url('akhar_thrah_1-webfont.ttf') format('truetype'), url('akhar_thrah_1-webfont.svg#akhar_thrah_1regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.akt {
+    [translate] {
+        font-family: 'akhar_thrah_1';
+    }
+}
 * {
     margin: 0;
     padding: 0;
@@ -127,7 +140,6 @@ md-toolbar {
         }
     }
 }
-
 @layout-breakpoint-xs: 600px;
 @layout-breakpoint-sm: 960px;
 @layout-breakpoint-md: 1280px;
@@ -150,11 +162,9 @@ md-toolbar {
 }
 
 // BIGGER THAN Xtra-SMALL SCREEN
-@media (min-width: @layout-breakpoint-xs) {
-}
+@media (min-width: @layout-breakpoint-xs) {}
 
-@media (min-width: @layout-breakpoint-xs) and (max-width: (@layout-breakpoint-sm - 1)) {
-}
+@media (min-width: @layout-breakpoint-xs) and (max-width: (@layout-breakpoint-sm - 1)) {}
 
 // BIGGER THAN SMALL SCREEN
 @media (min-width: @layout-breakpoint-sm) {}

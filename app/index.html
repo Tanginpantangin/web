@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" ng-app="app" ng-jq>
+<html class="no-js {{lang}}" ng-app="app" ng-jq lang="{{lang}}" >
 
 <head>
     <meta charset="utf-8">
@@ -26,6 +26,8 @@
     <script src="bower_components/angular-route/angular-route.min.js"></script>
 
     <script src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.min.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
 
     <!-- Firebase -->
     <script src="bower_components/firebase/firebase.js"></script>

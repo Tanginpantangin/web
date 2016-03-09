@@ -8,12 +8,25 @@ angular
         'ngMaterial',
         'ngMessages',
         'ngSanitize',
-        'firebase'
+        'firebase',
+        'pascalprecht.translate'
     ])
-    .config(function($mdThemingProvider) {
-        $mdThemingProvider.theme('default')
-            .primaryPalette('deep-orange');
-    })
+    .config(['$mdThemingProvider', '$translateProvider', function($mdThemingProvider, $translateProvider) {
+
+        // Configure theme
+        $mdThemingProvider.theme('default').primaryPalette('deep-orange');
+
+        // Configure supported multiple languages
+        $translateProvider
+            .useStaticFilesLoader({
+                prefix: '/translations/',
+                suffix: '.json'
+            })
+            .preferredLanguage('akt');
+    }])
+    .run(['$rootScope', function($rootScope) {
+        $rootScope.lang = 'akt';
+    }])
     .config(['$stateProvider', '$ocLazyLoadProvider', '$urlRouterProvider', function($stateProvider, $ocLazyLoadProvider, $urlRouterProvider) {
 
         // Configure lazy load
