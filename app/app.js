@@ -9,12 +9,19 @@ angular
         'ngMessages',
         'ngSanitize',
         'firebase',
-        'pascalprecht.translate'
+        'pascalprecht.translate',
+        'ngCookies'
     ])
     .config(['$mdThemingProvider', '$translateProvider', function($mdThemingProvider, $translateProvider) {
 
         // Configure theme
         $mdThemingProvider.theme('default').primaryPalette('deep-orange');
+
+        var storedLanguage = localStorage.getItem('NG_TRANSLATE_LANG_KEY');
+        if (!storedLanguage) {
+            storedLanguage = 'akt';
+            localStorage.setItem('NG_TRANSLATE_LANG_KEY', storedLanguage);
+        }
 
         // Configure supported multiple languages
         $translateProvider
@@ -22,10 +29,12 @@ angular
                 prefix: '/translations/',
                 suffix: '.json'
             })
-            .preferredLanguage('akt');
+            .preferredLanguage(storedLanguage)
+            .useLocalStorage()
+            .useSanitizeValueStrategy(null);
     }])
     .run(['$rootScope', function($rootScope) {
-        $rootScope.lang = 'akt';
+        $rootScope.lang = localStorage.getItem('NG_TRANSLATE_LANG_KEY');
     }])
     .config(['$stateProvider', '$ocLazyLoadProvider', '$urlRouterProvider', function($stateProvider, $ocLazyLoadProvider, $urlRouterProvider) {
 
