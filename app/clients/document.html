@@ -1,3 +1,20 @@
-<div ng-controller="DocumentController as ctrl" ng-cloak layout="column">
-    <h1>This is {{ctrl.message}}</h1>
+<div ng-controller="DocumentController as ctrl" ng-cloak layout="row" layout-wrap id="document">
+    <div flex="100" flex-gt-sm="50" ng-repeat="document in ctrl.documents">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline" translate>{{document.nameKey}}</span>
+                    <span class="md-subhead" translate>{{document.descriptionKey}}</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class="md-media-lg card-media">
+                        <img ng-src="{{document.image}}" />
+                    </div>
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-primary md-raised md-round" href="{{document.file}}" download="{{document.fileName}}"><span translate>download</span></md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
 </div>
