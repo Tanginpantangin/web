@@ -191,4 +191,3 @@ ModelManifest.xml
 [Ll]ogs/
 .vscode
 dist/
-app/**/*.css
