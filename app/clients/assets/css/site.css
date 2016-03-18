@@ -154,6 +154,11 @@ md-toolbar md-icon {
   text-align: justify;
   padding-top: 12px;
 }
+#about-us .panel {
+  background: url("../img/aboutus_panel.jpg") center no-repeat #425265;
+  background-size: cover;
+  min-height: 500px;
+}
 #about-us .md-fab.md-button.social-button {
   width: 24px;
   height: 24px;

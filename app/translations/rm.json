@@ -18,6 +18,11 @@
     "jabraok_name": "Jabraok",
     "jabraok_intro": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
     "jatri_name": "Jatri",
-    "jatri_intro": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+    "jatri_intro": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+    "timeline_begin": "The history of our team begins, we start implement converter tool.",
+    "timeline_launch_xalih": "Launched converter tool.",
+    "timeline_start_web":"After holding for along time, we restart website and have amazing plan for the feature",
+    "timeline_launch_web": "The website go live again, it is time for move forward to the next project",
+    "timeline_start_xakawi": "Start implementing Cham calendar on web"
 
 }
