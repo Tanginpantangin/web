@@ -1,3 +1,82 @@
-<div ng-controller="ConverterController as ctrl" ng-cloak layout="column">
-    <h1>This is {{ctrl.message}}</h1>
+<div ng-controller="ConverterController as ctrl" ng-cloak layout="column" id="converter">
+  <div flex class="title-converter">
+    <div class="row-content">
+      <h3>Xalih akhar Champa</h3>
+    </div>
+  </div>
+  <div layout="row" layout-align="start start" class="row-content">
+        <div layout="column" flex >
+          <div flex="100" class="bt-converter">
+                 <md-button class="md-raised md-primary">Akhar Thrah</md-button>
+                 <md-button class="md-raised md-primary">Rumi EFEO</md-button>
+                 <md-button class="md-raised md-primary">Akhar BBS</md-button>
+
+                <md-menu>
+                  <md-button ng-click="$mdOpenMenu($event)" class="md-raised md-primary bt-viewmore">
+                        <md-icon md-svg-icon="clients/assets/img/arrows.svg"></md-icon>
+                  </md-button>
+                  <md-menu-content>
+                    <md-menu-item ng-repeat="akhar in ctrl.akhars">
+                      <md-button ng-click="doSomething()">{{akhar.name}}</md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                 </md-menu>
+                  <md-button class="md-raised md-primary bt-exchange">
+                      <md-icon md-svg-icon="clients/assets/img/exchange2.svg"></md-icon>
+                  </md-button>
+          </div>
+          <div flex="100" class="box-convert">
+            <textarea rows="8" class="text-convert" placeholder="Taong akhar pak ni" value="">
+            </textarea>
+          </div>
+        </div>
+        <div layout="column" flex>
+          <div flex="100" class="bt-converter">
+                 <md-button class="md-raised md-primary">Akhar Thrah</md-button>
+                 <md-button class="md-raised md-primary">Rumi EFEO</md-button>
+                 <md-button class="md-raised md-primary">Akhar BBS</md-button>
+
+                <md-menu>
+                  <md-button ng-click="$mdOpenMenu($event)" class="md-raised md-primary bt-viewmore">
+                        <md-icon md-svg-icon="clients/assets/img/arrows.svg"></md-icon>
+                  </md-button>
+                  <md-menu-content>
+                    <md-menu-item ng-repeat="akhar in ctrl.akhars">
+                      <md-button ng-click="doSomething()">{{akhar.name}}</md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                 </md-menu>
+          </div>
+          <div flex>
+            <md-content layout-padding class="content-convert" >
+                Lorem ipsum dolor sit amet, ne quod novum mei.
+            </md-content>
+          </div>
+        </div>
+  </div>
+  <div class="row-content margintop20px">
+      <h3>Download to use offline</h3>
+      <div >
+        <md-button class="md-icon-button md-primary bt-download" aria-label="Settings">
+           <md-icon md-svg-icon="clients/assets/img/arrow.svg"></md-icon>
+         </md-button>
+      </div>
+  </div>
+  <div class="row-content over-view">
+      <h3>Over view</h3>
+      <md-content class="md-block">
+          <h4>Một số quy ước và lưu ý: </h4>
+          <ul>
+            <li>Eastern Cham: Cham Đông - ở Panduranga (Việt Nam)</li>
+            <li>Western Cham: Cham Tây - ở Campuchia, Mã Lai,... và miền Nam Việt Nam</li>
+            <li>KTT: Kawom Tuek Tuah Katap Akhar Cam (BBSSCC: Ban Biên Soạn Sách Chữ Cham)</li>
+            <li>EFEO: École française d'Extrême-Orient (Viện Viễn Đông Bác cổ - Pháp)</li>
+            <li>ĐHTH Tp.HCM: Đại học Tổng hợp Thành phố Hồ Chí Minh</li>
+            <li>Chữ Cham trên hệ thống Unicode hiện nay vẫn chưa hoàn thiện, cần sự góp ý từ chính cộng đồng Cham để nó được ổn định và tiện dụng hơn</li>
+            <li>Đối với chuyển tự EFEO (Rumi): chúng tôi có quy ước thay đổi 2 điểm để phần mềm hoạt động có độ chính xác cao hơn</li>
+
+          </ul>
+
+      </md-content>
+  </div>
 </div>
