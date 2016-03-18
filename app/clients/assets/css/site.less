@@ -67,6 +67,9 @@ md-toolbar {
 .margin-top-sm {
     margin-top: 16px;
 }
+.padding-left-xs {
+    padding-left: 12px;
+}
 .no-margin-left {
     margin-left: 0;
 }
@@ -74,11 +77,16 @@ md-toolbar {
     border-radius: 100px;
     border: 1px solid @color-primary;
     padding: 0 12px;
-    background:  @color-primary !important;
+    background: @color-primary !important;
     color: #fff !important;
-    &:hover{
+    &:hover {
         background: inherit !important;
         color: @color-primary !important;
+    }
+}
+.md-button.md-fab {
+    &.md-bt-blue {
+        background-color: #3b5998 !important;
     }
 }
 
@@ -111,10 +119,6 @@ md-toolbar {
     md-icon {
         color: #ffffff;
     }
-    .md-button.md-fab.md-bt-blue {
-        background-color: #3b5998 !important;
-    }
-
 }
 #home-page {
     .xalih {
@@ -168,6 +172,29 @@ md-toolbar {
         .md-subhead {
             text-align: justify;
             padding-top: 12px;
+        }
+    }
+}
+#about-us {
+    .md-fab.md-button {
+        &.social-button {
+            width: 24px;
+            height: 24px;
+            min-height: 24px;
+            line-height: 24px;
+            box-shadow: none;
+            padding-top: 3px;
+            margin: 4px;
+            svg {
+                height: 60%;
+                width: 60%;
+            }
+            &:first-child {
+                margin-left: 0;
+            }
+            &.linkedin {
+                background-color: #1985bc;
+            }
         }
     }
 }

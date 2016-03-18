@@ -59,6 +59,9 @@ md-toolbar md-icon {
 .margin-top-sm {
   margin-top: 16px;
 }
+.padding-left-xs {
+  padding-left: 12px;
+}
 .no-margin-left {
   margin-left: 0;
 }
@@ -72,6 +75,9 @@ md-toolbar md-icon {
 .md-raised.md-round:hover {
   background: inherit !important;
   color: #ff5722 !important;
+}
+.md-button.md-fab.md-bt-blue {
+  background-color: #3b5998 !important;
 }
 #header {
   background: inherit;
@@ -100,9 +106,6 @@ md-toolbar md-icon {
 }
 #footer md-icon {
   color: #ffffff;
-}
-#footer .md-button.md-fab.md-bt-blue {
-  background-color: #3b5998 !important;
 }
 #home-page .xalih {
   margin-top: -500px;
@@ -150,6 +153,25 @@ md-toolbar md-icon {
 #document md-card .md-subhead {
   text-align: justify;
   padding-top: 12px;
+}
+#about-us .md-fab.md-button.social-button {
+  width: 24px;
+  height: 24px;
+  min-height: 24px;
+  line-height: 24px;
+  box-shadow: none;
+  padding-top: 3px;
+  margin: 4px;
+}
+#about-us .md-fab.md-button.social-button svg {
+  height: 60%;
+  width: 60%;
+}
+#about-us .md-fab.md-button.social-button:first-child {
+  margin-left: 0;
+}
+#about-us .md-fab.md-button.social-button.linkedin {
+  background-color: #1985bc;
 }
 @media (max-width: 599px) {
   #home-page .xalih h2.product-name {

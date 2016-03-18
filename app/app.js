@@ -139,6 +139,7 @@ angular
                         name: 'app',
                         files: [
                             'clients/aboutus.controller.js',
+                            'clients/assets/css/timeline.css',
                         ]
                     });
                 }
