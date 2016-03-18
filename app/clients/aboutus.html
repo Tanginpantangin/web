@@ -1,3 +1,102 @@
-<div ng-controller="AboutUsController as ctrl" ng-cloak layout="column">
-    <h1>This is {{ctrl.message}}</h1>
+<div id="about-us" ng-controller="AboutUsController as ctrl" ng-cloak layout="column">
+    <div flex="100" class="panel" layout="column" layout-align="center center">
+        <h1 translate>panel_title</h1>
+        <p translate>panel_description</p>
+    </div>
+    <div class="project row-content">
+        <span class="md-headline">My Projects</span>
+        <div layout="row" layout-wrap class="row" layout-padding>
+            <div flex="33" ng-repeat="project in ctrl.projects" >
+                <div layout="row" class="item">
+                    <div flex="40">
+                        <img ng-src="{{project.img}}" layout-fill/>
+                    </div>
+                    <div flex layout="column">
+                        <span class="md-subhead text-bold" translate>{{project.name}}</span>
+                        <small class="text-muted">{{project.status}}</small>
+                        <span translate>{{project.description}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <md-card class="margin-top-xl">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Tangin Pan Tangin (TPT)</span>
+                <span class="md-subhead">Tangin Pan Tangin (TPT) đi vào hoạt động từ tháng 7/2013. Từ những bước khởi đầu còn non trẻ về kinh nghiệm, cũng như eo hẹp về thời gian. Đến nay (03/2016) chúng tôi cố gắng trở lại và từng bước hiện thực hóa những kế hoạch, mục tiêu đã đặt ra. Bảo tồn văn hóa dân tộc, phát huy và lưu giữ tiếng mẹ đẻ,... cùng với xu hướng phát triển chung của thời đại luôn là những mục tiêu để chúng tôi phấn đấu. (Sẽ update tiếp phần này)</span>
+            </md-card-title-text>
+        </md-card-title>
+    </md-card>
+    <ul class="timeline">
+        <li ng-class="{'timeline-inverted': $index % 2 == 1}" ng-repeat="item in ctrl.timeline">
+            <div class="timeline-badge danger">
+                <md-icon class="material-icons">{{item.icon}}</md-icon>
+            </div>
+            <div class="timeline-panel" layout="row" layout-align="start center">
+                <img ng-src="{{item.img}}" />
+                <div flex layout="column">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">{{item.date | date: 'longDate'}}</h4>
+                        <!-- <p>
+                                <small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small>
+                            </p> -->
+                    </div>
+                    <div class="timeline-body">
+                        <p translate>{{item.content}}</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline" translate>my_team</span>
+                <div layout="row" layout-wrap>
+                    <div flex="33" ng-repeat="member in ctrl.members" layout="row">
+                        <div flex="40">
+                            <img ng-src="{{member.avatar}}" />
+                        </div>
+                        <div class="padding-left-xs" flex>
+                            <span class="md-headline" translate>{{member.name}}</span>
+                            <div layout="row" layout-align="start center">
+                                <md-button class="md-fab md-mini md-bt-blue social-button" ng-href="{{member.facebook}}" target="_blank" aria-label="facebook">
+                                    <md-icon md-svg-src="clients/assets/img/social.svg"></md-icon>
+                                </md-button>
+                                <md-button class="md-fab md-mini social-button linkedin" ng-href="{{member.linkedin}}" target="_blank" aria-label="linkedin">
+                                    <md-icon md-svg-src="clients/assets/img/linkedin.svg"></md-icon>
+                                </md-button>
+                            </div>
+                            <span class="md-subhead" translate>{{member.introduction}}</span>
+                        </div>
+                    </div>
+                </div>
+            </md-card-title-text>
+        </md-card-title>
+    </md-card>
+
+    <!-- <div layout="row" layout-wrap>
+        <div flex="33" ng-repeat="member in ctrl.members">
+            <md-card>
+                <md-card-title>
+                    <div flex="40">
+                        <img ng-src="{{member.avatar}}" />
+                    </div>
+                    <md-card-title-text class="padding-left-xs">
+                        <span class="md-headline" translate>{{member.name}}</span>
+                        <div layout="row" layout-align="start center">
+                            <md-button class="md-fab md-mini md-bt-blue social-button" ng-href="{{member.facebook}}" target="_blank">
+                                <md-icon md-svg-src="clients/assets/img/social.svg"></md-icon>
+                            </md-button>
+                            <md-button class="md-fab md-mini social-button linkedin" ng-href="{{member.linkedin}}" target="_blank">
+                                <md-icon md-svg-src="clients/assets/img/linkedin.svg"></md-icon>
+                            </md-button>
+                        </div>
+                        <span class="md-subhead" translate>{{member.introduction}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+        </div>
+    </div> -->
 </div>
