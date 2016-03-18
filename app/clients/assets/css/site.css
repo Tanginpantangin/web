@@ -149,6 +149,59 @@ md-toolbar md-icon {
   height: auto;
   padding-left: 24px;
 }
+#converter .title-converter {
+  padding: 20px 0;
+  margin-bottom: 10px;
+  background-color: #e8e8e8;
+}
+#converter .bt-converter button {
+  margin: 10px 0;
+  text-transform: initial;
+}
+#converter .content-converter {
+  height: 146px;
+  background-color: #EAEAEA;
+}
+#converter .margintop20px {
+  margin-top: 20px;
+}
+#converter h3 {
+  color: #0B86DE;
+}
+#converter .bt-download {
+  height: 80px;
+  width: 80px;
+  margin: 10px 40px;
+}
+#converter .bt-download md-icon {
+  width: 50px;
+  height: 50px;
+}
+#converter .over-view md-content {
+  margin-top: 10px;
+}
+#converter .over-view ul {
+  margin-left: 50px;
+}
+#converter .box-convert textarea {
+  width: 95%;
+  padding: 8px;
+}
+#converter .content-convert {
+  height: 154px;
+  background-color: #F1F1F1;
+}
+#converter .bt-viewmore {
+  min-width: 25px;
+}
+#converter .bt-viewmore md-icon {
+  width: 15px;
+}
+#converter .bt-exchange {
+  min-width: 60px;
+  float: right;
+  margin-right: 5%!important;
+}
 #document md-card md-card-actions {
   padding-right: 12px;
   padding-bottom: 12px;
