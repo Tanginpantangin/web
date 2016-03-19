@@ -71,6 +71,10 @@ md-toolbar md-icon {
 .text-italic {
   font-style: italic;
 }
+img.full-width {
+  width: 100%;
+  height: auto;
+}
 .md-raised.md-round {
   border-radius: 100px;
   border: 1px solid #ff5722;
@@ -87,7 +91,7 @@ md-toolbar md-icon {
 }
 .label {
   display: inline;
-  padding: .2em .6em .3em;
+  padding: 0.2em 0.6em 0.3em;
   font-size: 75%;
   font-weight: 700;
   line-height: 1;
@@ -95,7 +99,7 @@ md-toolbar md-icon {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: .25em;
+  border-radius: 0.25em;
 }
 .label-default {
   background-color: #777;
@@ -299,8 +303,11 @@ md-toolbar md-icon {
   background: #fff;
   padding: 12px;
 }
-#about-us .project .row .item .info {
-  padding-left: 12px;
+#about-us .section-block {
+  padding: 20px;
+  background: #fff none repeat scroll 0 0;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
 }
 #about-us .md-fab.md-button.social-button {
   width: 24px;
@@ -320,6 +327,21 @@ md-toolbar md-icon {
 }
 #about-us .md-fab.md-button.social-button.linkedin {
   background-color: #1985bc;
+}
+#about-us .timeline-badge md-icon {
+  color: #fff;
+  font-weight: bold;
+  margin-top: -2px;
+}
+#about-us .my-team .md-headline {
+  color: #ff5722;
+}
+#about-us .my-team .row {
+  margin: 24px -16px 0;
+}
+#about-us .my-team .row .item {
+  background: #fff;
+  padding: 12px;
 }
 @media (max-width: 599px) {
   #home-page .xalih h2.product-name {

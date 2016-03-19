@@ -81,27 +81,32 @@ angular.module('app')
             date: new Date('2013/05/01'),
             content: 'timeline_begin',
             img: 'clients/assets/img/timeline_sample_1.jpg',
-            icon: 'power_settings_new'
+            icon: 'power_settings_new',
+            badge: 'danger'
         }, {
             date: new Date('2013/07/01'),
             content: 'timeline_launch_xalih',
             img: 'clients/assets/img/timeline_sample_2.jpg',
-            icon: 'swap_horiz'
+            icon: 'swap_horiz',
+            badge: 'success'
         }, {
             date: new Date('2016/02/13'),
             content: 'timeline_start_web',
             img: 'clients/assets/img/timeline_sample_3.jpg',
-            icon: 'web'
+            icon: 'web',
+            badge: 'primary'
         }, {
             date: new Date('2016/04/13'),
             content: 'timeline_launch_web',
             img: 'clients/assets/img/timeline_sample_2.jpg',
-            icon: 'cloud_done'
+            icon: 'cloud_done',
+            badge: 'info'
         }, {
             date: new Date('2016/04/14'),
             content: 'timeline_start_xakawi',
             img: 'clients/assets/img/timeline_sample_1.jpg',
-            icon: 'perm_contact_calendar'
+            icon: 'perm_contact_calendar',
+            badge: 'warning'
         }];
 
         ctrl.init = function() {
