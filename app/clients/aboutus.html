@@ -3,25 +3,8 @@
         <h1 translate>panel_title</h1>
         <p translate>panel_description</p>
     </div>
-    <div class="project row-content">
-        <span class="md-headline" translate>my_profiles</span>
-        <div layout="row" layout-wrap class="row" layout-padding>
-            <div flex="33" ng-repeat="project in ctrl.projects">
-                <div layout="row" class="item">
-                    <div flex="40">
-                        <img ng-src="{{project.img}}" class="full-width" />
-                    </div>
-                    <div flex layout="column" class="padding-left-xs">
-                        <div class="md-subhead text-bold">
-                            <span translate>{{project.name}}</span>
-                            <br/>
-                            <small ng-class="{'label-success': project.status=='0-done', 'label-warning': project.status=='1-inprogress','label-danger': project.status=='2-notstart'}" class="label" translate>{{project.status}}</small>
-                        </div>
-                        <p class="margin-top-sm" translate>{{project.description}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div layout="column" flex="100"  layout-align="center center" class="project row-content">
+         <div id="projects-chart"></div>
     </div>
     <div class="row-content">
         <div layout="row" layout-align="center center">
@@ -41,24 +24,6 @@
                 </div>
             </div>
         </div>
-        <ul class="timeline">
-            <li ng-class="{'timeline-inverted': $index % 2 == 1}" ng-repeat="item in ctrl.timeline">
-                <div class="timeline-badge {{item.badge}}">
-                    <md-icon class="material-icons">{{item.icon}}</md-icon>
-                </div>
-                <div class="timeline-panel" layout="row" layout-align="start center">
-                    <img ng-src="{{item.img}}" />
-                    <div flex layout="column" class="padding-left-xs">
-                        <div class="timeline-heading">
-                            <h4 class="md-subhead text-bold">{{item.date | date: 'longDate'}}</h4>
-                        </div>
-                        <div class="timeline-body margin-top-sm">
-                            <p translate>{{item.content}}</p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
         <div layout="column" class="section-block my-team">
             <span class="md-headline" translate>my_team</span>
             <div layout="row" layout-wrap class="row">

@@ -1,4 +1,4 @@
-/* global angular */
+/* global angular, google */
 'use strict';
 angular
     .module('app', [
@@ -35,6 +35,9 @@ angular
     }])
     .run(['$rootScope', function($rootScope) {
         $rootScope.lang = localStorage.getItem('NG_TRANSLATE_LANG_KEY');
+        google.charts.load('current', {
+            packages: ['orgchart']
+        });
     }])
     .config(['$stateProvider', '$ocLazyLoadProvider', '$urlRouterProvider', function($stateProvider, $ocLazyLoadProvider, $urlRouterProvider) {
 
@@ -138,8 +141,7 @@ angular
                     return $ocLazyLoad.load({
                         name: 'app',
                         files: [
-                            'clients/aboutus.controller.js',
-                            'clients/assets/css/timeline.css',
+                            'clients/aboutus.controller.js'
                         ]
                     });
                 }

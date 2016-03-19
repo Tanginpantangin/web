@@ -1,9 +1,10 @@
-/* global angular */
+/* global angular, google */
 'use strict';
 
 angular.module('app')
     .controller('AboutUsController', ['$filter', function($filter) {
         var ctrl = this;
+
         ctrl.members = [{
             name: 'jayam_name',
             introduction: 'jayam_intro',
@@ -26,92 +27,88 @@ angular.module('app')
 
         ctrl.projects = [{
             name: 'xalih_name_aboutus',
-            description: 'xalih_des_aboutus',
-            img: 'clients/assets/img/timeline_sample_1.jpg',
-            status: '0-done'
+            status: 'done'
         }, {
             name: 'Kadha_adaoh_Cam_Name_aboutus',
-            description: 'Kadha_adaoh_Cam_des_aboutus',
-            img: 'clients/assets/img/timeline_sample_1.jpg',
-            status: '1-inprogress'
+            status: 'inprogress'
         }, {
             name: 'video_bac_name',
-            description: 'video_bac_des',
-            img: 'clients/assets/img/timeline_sample_1.jpg',
-            status: '1-inprogress'
-        },
-        {
+            status: 'inprogress'
+        }, {
             name: 'inalang_name',
-            description: 'inalang_des',
-            img: 'clients/assets/img/timeline_sample_1.jpg',
-            status: '1-inprogress'
-        },
-        {
+            status: 'inprogress'
+        }, {
             name: 'xakawi_name',
-            description: 'xakawi_des',
-            img: 'clients/assets/img/timeline_sample_1.jpg',
-            status: '1-inprogress'
-        },
-        {
+            status: 'inprogress'
+        }, {
             name: 'karaoke_name',
-            description: 'karaoka_des',
-            img: 'clients/assets/img/timeline_sample_1.jpg',
-            status: '2-notstart'
-        },
-        {
+            status: 'notstart'
+        }, {
             name: 'film_name',
-            description: 'film_des',
-            img: 'clients/assets/img/timeline_sample_1.jpg',
-            status: '2-notstart'
-        },
-        {
+            status: 'notstart'
+        }, {
             name: 'essay_name',
-            description: 'essay_des',
-            img: 'clients/assets/img/timeline_sample_1.jpg',
-            status: '2-notstart'
-        },
-        {
+            status: 'notstart'
+        }, {
             name: 'vocabulary_name',
-            description: 'vocabulary_des',
-            img: 'clients/assets/img/timeline_sample_1.jpg',
-            status: '2-notstart'
+            status: 'notstart'
         }];
 
-        ctrl.timeline = [{
-            date: new Date('2013/05/01'),
-            content: 'timeline_begin',
-            img: 'clients/assets/img/timeline_sample_1.jpg',
-            icon: 'power_settings_new',
-            badge: 'danger'
-        }, {
-            date: new Date('2013/07/01'),
-            content: 'timeline_launch_xalih',
-            img: 'clients/assets/img/timeline_sample_2.jpg',
-            icon: 'swap_horiz',
-            badge: 'success'
-        }, {
-            date: new Date('2016/02/13'),
-            content: 'timeline_start_web',
-            img: 'clients/assets/img/timeline_sample_3.jpg',
-            icon: 'web',
-            badge: 'primary'
-        }, {
-            date: new Date('2016/04/13'),
-            content: 'timeline_launch_web',
-            img: 'clients/assets/img/timeline_sample_2.jpg',
-            icon: 'cloud_done',
-            badge: 'info'
-        }, {
-            date: new Date('2016/04/14'),
-            content: 'timeline_start_xakawi',
-            img: 'clients/assets/img/timeline_sample_1.jpg',
-            icon: 'perm_contact_calendar',
-            badge: 'warning'
-        }];
+        var drawChart = function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('string', 'Manager');
+            data.addColumn('string', 'ToolTip');
+
+            var dataTable = [];
+
+            // Root node
+            var name = '<span translate>' + $filter('translate')('our_project') + '</span>';
+            dataTable.push([{
+                v: 'root',
+                f: name
+            }, '', name]);
+
+            // Launched node
+            name = '<span translate>' + $filter('translate')('done') + '</span>';
+            dataTable.push([{
+                v: 'done',
+                f: name
+            }, 'root', name]);
+
+            // In progress node
+            name = '<span translate>' + $filter('translate')('inprogress') + '</span>';
+            dataTable.push([{
+                v: 'inprogress',
+                f: name
+            }, 'root', name]);
+
+            // Not started node
+            name = '<span translate>' + $filter('translate')('notstart') + '</span>';
+            dataTable.push([{
+                v: 'notstart',
+                f: name
+            }, 'root', name]);
+
+            ctrl.projects.forEach(function(item) {
+                name = '<span translate>' + $filter('translate')(item.name) + '</span>';
+                dataTable.push([name, item.status, name]);
+            });
+
+            data.addRows(dataTable);
+
+            // Create the chart.
+            var chart = new google.visualization.OrgChart(document.getElementById('projects-chart'));
+            // Draw the chart, setting the allowHtml option to true for the tooltips.
+            chart.draw(data, {
+                allowHtml: true
+            });
+        };
 
         ctrl.init = function() {
             ctrl.timeline = $filter('orderBy')(ctrl.timeline, '-date');
             ctrl.projects = $filter('orderBy')(ctrl.projects, 'status');
+            google.charts.setOnLoadCallback(drawChart);
         };
         ctrl.init();
     }]);
