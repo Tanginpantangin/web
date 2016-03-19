@@ -25,18 +25,54 @@ angular.module('app')
         }];
 
         ctrl.projects = [{
-            name: 'Công cụ chuyển đổi chữ Cham',
-            description: 'We reveal the complete picture and provide insights which marketers, analysts, and industry leaders can rely on in their day-to-day work.',
+            name: 'xalih_name_aboutus',
+            description: 'xalih_des_aboutus',
             img: 'clients/assets/img/timeline_sample_1.jpg',
             status: '0-done'
         }, {
-            name: 'Công cụ chuyển đổi chữ Cham',
-            description: 'We reveal the complete picture and provide insights which marketers, analysts, and industry leaders can rely on in their day-to-day work.',
+            name: 'Kadha_adaoh_Cam_Name_aboutus',
+            description: 'Kadha_adaoh_Cam_des_aboutus',
             img: 'clients/assets/img/timeline_sample_1.jpg',
             status: '1-inprogress'
         }, {
-            name: 'Công cụ chuyển đổi chữ Cham',
-            description: 'We reveal the complete picture and provide insights which marketers, analysts, and industry leaders can rely on in their day-to-day work.',
+            name: 'video_bac_name',
+            description: 'video_bac_des',
+            img: 'clients/assets/img/timeline_sample_1.jpg',
+            status: '1-inprogress'
+        },
+        {
+            name: 'inalang_name',
+            description: 'inalang_des',
+            img: 'clients/assets/img/timeline_sample_1.jpg',
+            status: '1-inprogress'
+        },
+        {
+            name: 'xakawi_name',
+            description: 'xakawi_des',
+            img: 'clients/assets/img/timeline_sample_1.jpg',
+            status: '1-inprogress'
+        },
+        {
+            name: 'karaoke_name',
+            description: 'karaoka_des',
+            img: 'clients/assets/img/timeline_sample_1.jpg',
+            status: '2-notstart'
+        },
+        {
+            name: 'film_name',
+            description: 'film_des',
+            img: 'clients/assets/img/timeline_sample_1.jpg',
+            status: '2-notstart'
+        },
+        {
+            name: 'essay_name',
+            description: 'essay_des',
+            img: 'clients/assets/img/timeline_sample_1.jpg',
+            status: '2-notstart'
+        },
+        {
+            name: 'vocabulary_name',
+            description: 'vocabulary_des',
             img: 'clients/assets/img/timeline_sample_1.jpg',
             status: '2-notstart'
         }];
@@ -70,6 +106,7 @@ angular.module('app')
 
         ctrl.init = function() {
             ctrl.timeline = $filter('orderBy')(ctrl.timeline, '-date');
+            ctrl.projects = $filter('orderBy')(ctrl.projects, 'status');
         };
         ctrl.init();
     }]);

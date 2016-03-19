@@ -4,17 +4,19 @@
         <p translate>panel_description</p>
     </div>
     <div class="project row-content">
-        <span class="md-headline">My Projects</span>
+        <span class="md-headline" translate>my_profiles</span>
         <div layout="row" layout-wrap class="row" layout-padding>
-            <div flex="33" ng-repeat="project in ctrl.projects" >
+            <div flex="33" ng-repeat="project in ctrl.projects">
                 <div layout="row" class="item">
                     <div flex="40">
                         <img ng-src="{{project.img}}" layout-fill/>
                     </div>
-                    <div flex layout="column">
-                        <span class="md-subhead text-bold" translate>{{project.name}}</span>
-                        <small class="text-muted">{{project.status}}</small>
-                        <span translate>{{project.description}}</span>
+                    <div flex layout="column" class="info">
+                        <div class="md-subhead text-bold">
+                            <span translate>{{project.name}}</span>
+                            <br/><small ng-class="{'label-success': project.status=='0-done', 'label-warning': project.status=='1-inprogress','label-danger': project.status=='2-notstart'}" class="label" translate>{{project.status}}</small>
+                        </div>
+                        <p class="margin-top-sm" translate>{{project.description}}</p>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ var autoprefixer = require('gulp-autoprefixer');
 
 // Styles
 gulp.task('styles', function() {
-  return gulp.src(['app/**/*.less', 'app/**/*.css', '!app/bower_components/**/*.less', '!app/bower_components/**/*.css'], {
+  return gulp.src(['app/**/*.less', '!app/bower_components/**/*.less', '!app/bower_components/**/*.css'], {
           base: './'
       })
       .pipe(less())
