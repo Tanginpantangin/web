@@ -73,6 +73,12 @@ md-toolbar {
 .no-margin-left {
     margin-left: 0;
 }
+.text-bold {
+    font-weight: bold;
+}
+.text-italic {
+    font-style: italic;
+}
 .md-raised.md-round {
     border-radius: 100px;
     border: 1px solid @color-primary;
@@ -180,6 +186,29 @@ md-toolbar {
         background: url("../img/aboutus_panel.jpg") center no-repeat #425265;
         background-size: cover;
         min-height: 500px;
+        color: #fff;
+        h1 {
+            margin-bottom: 50px;
+            padding-top: 24px;
+            font-size: 36px;
+            line-height: 36px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 22px;
+            padding: 0 36px;
+        }
+    }
+    .project {
+        padding-top: 48px;
+        padding-bottom: 48px;
+        .row {
+            margin: 24px -16px 0;
+            .item {
+                background: #fff;
+                padding: 8px;
+            }
+        }
     }
     .md-fab.md-button {
         &.social-button {

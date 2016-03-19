@@ -28,17 +28,17 @@ angular.module('app')
             name: 'Công cụ chuyển đổi chữ Cham',
             description: 'We reveal the complete picture and provide insights which marketers, analysts, and industry leaders can rely on in their day-to-day work.',
             img: 'clients/assets/img/timeline_sample_1.jpg',
-            status: 'done'
+            status: '0-done'
         }, {
             name: 'Công cụ chuyển đổi chữ Cham',
             description: 'We reveal the complete picture and provide insights which marketers, analysts, and industry leaders can rely on in their day-to-day work.',
             img: 'clients/assets/img/timeline_sample_1.jpg',
-            status: 'inprogress'
+            status: '1-inprogress'
         }, {
             name: 'Công cụ chuyển đổi chữ Cham',
             description: 'We reveal the complete picture and provide insights which marketers, analysts, and industry leaders can rely on in their day-to-day work.',
             img: 'clients/assets/img/timeline_sample_1.jpg',
-            status: 'notstart'
+            status: '2-notstart'
         }];
 
         ctrl.timeline = [{

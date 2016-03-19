@@ -1,25 +1,26 @@
 <div id="about-us" ng-controller="AboutUsController as ctrl" ng-cloak layout="column">
     <div flex="100" class="panel" layout="column" layout-align="center center">
-        <h1>Let us solve IT problems for the Cham people</h1>
-        <p>
-            [Có lẽ] vấn đề quan trọng nhất của ngôn ngữ Cham hiện nay là làm sao để … … năng cao từ vựng tiếng Cham cho người Cham, đặc biệt là giới trẻ!
-        </p>
+        <h1 translate>panel_title</h1>
+        <p translate>panel_description</p>
     </div>
-    <div style="background:#fff">
-        <span class="md-headline" translate>my_team</span>
-        <div layout="row" layout-wrap>
-            <div flex="33" ng-repeat="project in ctrl.projects" layout="row">
-                <div flex="40">
-                    <img ng-src="{{project.img}}" />
-                </div>
-                <div class="padding-left-xs" flex layout="column">
-                    <span class="md-headline" translate>{{project.name}}</span>
-                    <span class="md-subhead" translate>{{project.description}}</span>
+    <div class="project row-content">
+        <span class="md-headline">My Projects</span>
+        <div layout="row" layout-wrap class="row" layout-padding>
+            <div flex="33" ng-repeat="project in ctrl.projects" >
+                <div layout="row" class="item">
+                    <div flex="40">
+                        <img ng-src="{{project.img}}" layout-fill/>
+                    </div>
+                    <div flex layout="column">
+                        <span class="md-subhead text-bold" translate>{{project.name}}</span>
+                        <small class="text-muted">{{project.status}}</small>
+                        <span translate>{{project.description}}</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <md-card>
+    <md-card class="margin-top-xl">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">Tangin Pan Tangin (TPT)</span>
