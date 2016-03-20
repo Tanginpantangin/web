@@ -12,17 +12,17 @@ angular.module('app')
             facebook: 'https://www.facebook.com/jayampadra',
             linkedin: '#'
         }, {
-            name: 'jabraok_name',
-            introduction: 'jabraok_intro',
-            avatar: 'clients/assets/img/jabraok.jpg',
-            facebook: 'https://www.facebook.com/vinhlt3',
-            linkedin: 'https://www.linkedin.com/in/vinh-luu-truong-935143b0'
-        }, {
             name: 'jatri_name',
             introduction: 'jatri_intro',
             avatar: 'clients/assets/img/jatri.jpg',
             facebook: 'https://www.facebook.com/hoangtri.dong',
             linkedin: '#'
+        }, {
+            name: 'jabraok_name',
+            introduction: 'jabraok_intro',
+            avatar: 'clients/assets/img/jabraok.jpg',
+            facebook: 'https://www.facebook.com/vinhlt3',
+            linkedin: 'https://www.linkedin.com/in/vinh-luu-truong-935143b0'
         }];
 
         ctrl.projects = [{
