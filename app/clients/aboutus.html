@@ -3,31 +3,18 @@
         <h1 translate>panel_title</h1>
         <p translate>panel_description</p>
     </div>
-    <div layout="column" flex="100"  layout-align="center center" class="project row-content">
-         <div id="projects-chart"></div>
-    </div>
     <div class="row-content">
-        <div layout="row" layout-align="center center">
-            <div flex="70">
-                <div layout="row" class="section-block" layout-align="start center">
-                    <div flex="40">
-                        <img ng-src="clients/assets/img/timeline_sample_1.jpg" class="full-width" />
-                    </div>
-                    <div flex layout="column" class="padding-left-xs">
-                        <div class="timeline-heading">
-                            <h4 class="md-subhead text-bold" translate>tpt_name</h4>
-                        </div>
-                        <div class="timeline-body margin-top-sm">
-                            <p translate>tpt_des</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div layout="column" flex="100" layout-align="center center" class="section-block">
+             <div id="projects-chart"></div>
         </div>
-        <div layout="column" class="section-block my-team">
-            <span class="md-headline" translate>my_team</span>
+        <div layout="column" class="section-block">
+            <h2 class="md-header" translate>tpt_name</h2>
+            <p translate>tpt_des</p>
+        </div>
+        <div layout="column" class="my-team section-block">
+            <h2 class="md-header" translate>my_team</h2>
             <div layout="row" layout-wrap class="row">
-                <div flex="33" ng-repeat="member in ctrl.members" layout="row" class="item">
+                <div flex="100" flex-gt-xs="50" flex-gt-sm="33"  ng-repeat="member in ctrl.members" layout="row" class="item">
                     <div flex="40">
                         <img ng-src="{{member.avatar}}" class="full-width" />
                     </div>

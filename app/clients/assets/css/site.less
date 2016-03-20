@@ -1,5 +1,15 @@
 @color-text-default: #272726;
-@color-primary: rgb(255,87,34);
+@color-50: #FBE9E7;
+@color-100: #FFCCBC;
+@color-200: #FFAB91;
+@color-300: #FF8A65;
+@color-400: #FF7043;
+@color-500: #FF5722;
+@color-600: #F4511E;
+@color-700: #E64A19;
+@color-800: #D84315;
+@color-900: #BF360C;
+@color-primary: @color-500;
 
 @font-face {
     font-family: 'akhar_thrah_1';
@@ -101,59 +111,25 @@ md-toolbar {
         background-color: #3b5998 !important;
     }
 }
-.label {
-    display: inline;
-    padding: 0.2em 0.6em 0.3em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0.25em;
-}
-.label-default {
-    background-color: #777;
-}
-.label-default[href]:hover,
-.label-default[href]:focus {
-    background-color: #5e5e5e;
-}
-.label-primary {
-    background-color: #337ab7;
-}
-.label-primary[href]:hover,
-.label-primary[href]:focus {
-    background-color: #286090;
-}
-.label-success {
-    background-color: #5cb85c;
-}
-.label-success[href]:hover,
-.label-success[href]:focus {
-    background-color: #449d44;
-}
-.label-info {
-    background-color: #5bc0de;
-}
-.label-info[href]:hover,
-.label-info[href]:focus {
-    background-color: #31b0d5;
-}
-.label-warning {
-    background-color: #f0ad4e;
-}
-.label-warning[href]:hover,
-.label-warning[href]:focus {
-    background-color: #ec971f;
-}
-.label-danger {
-    background-color: #d9534f;
-}
-.label-danger[href]:hover,
-.label-danger[href]:focus {
-    background-color: #c9302c;
+table.google-visualization-orgchart-table {
+    .google-visualization-orgchart-node {
+        font-family: inherit;
+        border-radius: 2px;
+        background: #fff none repeat scroll 0 0;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+        font-size: 12px !important;
+        border: none;
+    }
+    .google-visualization-orgchart-linebottom {
+        border-bottom: 1px solid @color-500;
+    }
+    .google-visualization-orgchart-lineleft {
+        border-left: 1px solid @color-500;
+    }
+    .google-visualization-orgchart-lineright {
+        border-right: 1px solid @color-500;
+    }
 }
 #header {
     background: inherit;
@@ -305,11 +281,10 @@ md-toolbar {
         min-height: 500px;
         color: #fff;
         h1 {
-            margin-bottom: 50px;
-            padding-top: 24px;
             font-size: 36px;
             line-height: 36px;
             color: @color-primary;
+            padding: 24px 36px;
         }
         p {
             font-size: 18px;
@@ -317,25 +292,12 @@ md-toolbar {
             padding: 0 36px;
         }
     }
-    .project {
+    .section-block{
         padding-top: 48px;
-        padding-bottom: 48px;
-        .md-headline {
-            color: @color-primary;
-        }
-        .row {
-            margin: 24px -16px 0;
-            .item {
-                background: #fff;
-                padding: 12px;
-            }
-        }
     }
-    .section-block {
-        padding: 20px;
-        background: #fff none repeat scroll 0 0;
-        border-radius: 2px;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+    h2.md-header {
+        color: @color-primary;
+        margin-bottom: 24px;
     }
     .md-fab.md-button {
         &.social-button {
@@ -358,21 +320,10 @@ md-toolbar {
             }
         }
     }
-    .timeline-badge {
-        md-icon {
-            color: #fff;
-            font-weight: bold;
-            margin-top: -2px;
-        }
-    }
-    .my-team{
-        .md-headline {
-            color: @color-primary;
-        }
+    .my-team {
         .row {
-            margin: 24px -16px 0;
+            margin: 0 -16px 0;
             .item {
-                background: #fff;
                 padding: 12px;
             }
         }
