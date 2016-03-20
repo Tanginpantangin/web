@@ -253,9 +253,10 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 #about-us .section-block {
   padding-top: 48px;
 }
-#about-us h2.md-header {
+#about-us .md-header {
   color: #FF5722;
   margin-bottom: 24px;
+  font-weight: normal;
 }
 #about-us .md-fab.md-button.social-button {
   width: 24px;
