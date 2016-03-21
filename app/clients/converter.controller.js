@@ -11,4 +11,5 @@ angular.module('app')
             { id: 3, name: 'Rumi BBC' }
           ];
           self.selectedAkhar = { id: 1, name: 'Akhar BBC' };
+          
     }]);

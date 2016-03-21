@@ -5,14 +5,14 @@
     </div>
   </div>
   <div layout="row" layout-align="start start" class="row-content">
-        <div layout="column" flex >
+        <div layout="column" flex>
           <div flex="100" class="bt-converter">
-                 <md-button class="md-raised md-primary">Akhar Thrah</md-button>
-                 <md-button class="md-raised md-primary">Rumi EFEO</md-button>
-                 <md-button class="md-raised md-primary">Akhar BBS</md-button>
+                 <md-button class="md-raised md-button-convert">Akhar Thrah</md-button>
+                 <md-button class="md-raised md-button-convert">Rumi EFEO</md-button>
+                 <md-button class="md-raised md-button-convert">Akhar BBS</md-button>
 
                 <md-menu>
-                  <md-button ng-click="$mdOpenMenu($event)" class="md-raised md-primary bt-viewmore">
+                  <md-button ng-click="$mdOpenMenu($event)" class="md-raised md-button-convert bt-viewmore">
                         <md-icon md-svg-icon="clients/assets/img/arrows.svg"></md-icon>
                   </md-button>
                   <md-menu-content>
@@ -21,23 +21,23 @@
                     </md-menu-item>
                   </md-menu-content>
                  </md-menu>
-                  <md-button class="md-raised md-primary bt-exchange">
+                  <md-button class="md-raised bt-exchange">
                       <md-icon md-svg-icon="clients/assets/img/exchange2.svg"></md-icon>
                   </md-button>
           </div>
           <div flex="100" class="box-convert">
-            <textarea rows="8" class="text-convert" placeholder="Taong akhar pak ni" value="">
+            <textarea rows="8" class="text-convert" spellcheck="false" id="test1" placeholder="Taong akhar pak ni" value="">
             </textarea>
           </div>
         </div>
         <div layout="column" flex>
           <div flex="100" class="bt-converter">
-                 <md-button class="md-raised md-primary">Akhar Thrah</md-button>
-                 <md-button class="md-raised md-primary">Rumi EFEO</md-button>
-                 <md-button class="md-raised md-primary">Akhar BBS</md-button>
+                 <md-button class="md-raised md-button-convert">Akhar Thrah</md-button>
+                 <md-button class="md-raised md-button-convert">Rumi EFEO</md-button>
+                 <md-button class="md-raised md-button-convert">Akhar BBS</md-button>
 
                 <md-menu>
-                  <md-button ng-click="$mdOpenMenu($event)" class="md-raised md-primary bt-viewmore">
+                  <md-button ng-click="$mdOpenMenu($event)" class="md-raised md-button-convert bt-viewmore">
                         <md-icon md-svg-icon="clients/assets/img/arrows.svg"></md-icon>
                   </md-button>
                   <md-menu-content>
@@ -48,7 +48,7 @@
                  </md-menu>
           </div>
           <div flex>
-            <md-content layout-padding class="content-convert" >
+            <md-content id="page_content" ng-keypress="ctrl.updateEditor()" layout-padding class="content-convert" >
                 Lorem ipsum dolor sit amet, ne quod novum mei.
             </md-content>
           </div>
