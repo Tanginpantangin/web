@@ -55,7 +55,7 @@ router.use(function(req, res, next) {
     next();
 });
 
-server.use(express.static(__dirname + '/app'));
+server.use(express.static(__dirname + '/comming-soon'));
 server.use('/api', router);
 
 // START THE SERVER
