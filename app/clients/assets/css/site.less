@@ -203,7 +203,7 @@ table.google-visualization-orgchart-table {
 #converter {
     .md-button-convert{
       color: rgb(255,255,255);
-    background-color: #F98D43;
+      background-color: #F98D43;
     }
     .title-converter {
         padding: 20px 0;
@@ -262,7 +262,38 @@ table.google-visualization-orgchart-table {
         color: rgb(255,255,255);
       background-color: #53B8E0;
     }
+    table, th, td {
+     border-collapse: collapse;
+    }
+    .table-convert1{
+      text-align:center;
+      margin: 10px 0;
+      table{
+        width: 50%;
+        font-weight: bold;
+        display: inline-table;
+      }
+      table, th{
+        border-bottom: 2px solid #77BDD8;
+        border-top: 2px solid #77BDD8;
+      }
+      table tr:first-child{
+        background-color: #F3F3F3;
+      }
+      table th{
+        color: #77BDD8;
+      }
+      table td span{
+          font-family: 'akhar_thrah_1';
+          font-size: 25px;
+      }
+      th, td {
+       padding: 5px;
+      }
+    }
 
+    p.indent-text{text-indent: 50px;}
+    .text-descript{margin-top: 30px;margin-bottom: 30px;text-align: center}
 }
 
 #document {
@@ -355,12 +386,28 @@ table.google-visualization-orgchart-table {
             }
         }
     }
+    #converter{
+          .table-convert1{
+            table{
+              width: 90%;
+            }
+          }
+    }
+
 }
 
 // BIGGER THAN Xtra-SMALL SCREEN
 @media (min-width: @layout-breakpoint-xs) {}
 
-@media (min-width: @layout-breakpoint-xs) and (max-width: (@layout-breakpoint-sm - 1)) {}
+@media (min-width: @layout-breakpoint-xs) and (max-width: (@layout-breakpoint-sm - 1)) {
+  #converter{
+        .table-convert1{
+          table{
+            width: 90%;
+          }
+        }
+  }
+}
 
 // BIGGER THAN SMALL SCREEN
 @media (min-width: @layout-breakpoint-sm) {}
