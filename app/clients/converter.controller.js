@@ -35,4 +35,9 @@ angular.module('app')
           ];
           self.selectedAkhar = { id: 1, name: 'Akhar BBC' };
 
+          self.change = function(){
+              console.log(self.sourceText);
+             self.sourceText.replace()
+          };
+
     }]);
