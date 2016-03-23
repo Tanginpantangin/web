@@ -37,7 +37,7 @@ angular.module('app')
 
           self.change = function(){
               console.log(self.sourceText);
-             self.sourceText.replace()
+              var xalih = new window.cam.service.Paxalih();
+              console.log('xalih', xalih);
           };
-
     }]);

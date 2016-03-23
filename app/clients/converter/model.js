@@ -1,7 +1,4 @@
-if (!window.cam) {
-    window.cam = {};
-}
-window.cam.model = {
+window.Model = {
     AKhar: {
         Kak: 0,
         Khak: 1,
@@ -112,10 +109,10 @@ window.cam.model = {
         Square: 96
     },
     Constant: {
-        KEY_TO_FONT_FILE: 'KeyToFont.xml',
-        KEY_TO_TRANS_FILE: 'KeyToTrans.xml',
-        TRANS_TO_KEY_FILE: 'TransToKey.xml',
-        VALID_TRANS_CHAR_FILE: 'ValidTransChar.xml',
+        KEY_TO_FONT_FILE: 'KeyToFont',
+        KEY_TO_TRANS_FILE: 'KeyToTrans',
+        TRANS_TO_KEY_FILE: 'TransToKey',
+        VALID_TRANS_CHAR_FILE: 'ValidTransChar',
 
         LOG_FILE: 'log.txt',
         LANG_SELECTED_FILE: 'Lang.txt',
@@ -201,12 +198,12 @@ window.cam.model = {
         MES_UPDATE_FAILED: 3
     },
     XMLKeyCodeCol: {
-        KeyCode: 0,
-        WaQuyet: 1,
-        GilaiPraong: 2,
-        CamEFEO: 3,
-        KawomTuekTuah: 4,
-        UnicodeCamKur: 5,
+        KeyCode: 'KeyCode',
+        WaQuyet: 'WaQuyet',
+        GilaiPraong: 'GilaiPraong',
+        CamEFEO: 'CamEFEO',
+        KawomTuekTuah: 'KawomTuekTuah',
+        UnicodeCamKur: 'UniCamKur',
         UnicodeCamVN: 6
     },
     XMLRumiCol: {
