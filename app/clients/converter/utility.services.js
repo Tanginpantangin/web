@@ -124,313 +124,241 @@ window.cam.service.Utility = {
         ret[Model.AKhar.Hak] = Model.AKhar.PaohDaNih;
 
         return ret;
-    }
+    },
+    InitKanaing: function() {
+        var ret = {};
 
-    // /// <summary>
-    // /// Init Kanaing hashtable
-    // /// </summary>
-    // /// <returns>hashtable</returns>
-    // public static Hashtable InitKanaing()
-    // {
-    //     Hashtable ret = new Hashtable();
-    //
-    //     ret.Add(",", null);
-    //     ret.Add(".", null);
-    //     ret.Add("!", null);
-    //     ret.Add("?", null);
-    //     ret.Add(";", null);
-    //     ret.Add("(", null);
-    //     ret.Add(")", null);
-    //     ret.Add("-", null);
-    //
-    //     return ret;
-    // }
-    //
-    // /// <summary>
-    // /// Init Karei Crih Char hashtable
-    // /// </summary>
-    // /// <returns>hashtable</returns>
-    // public static Hashtable InitKareiCrih(Model.Enum dataType)
-    // {
-    //     Hashtable ret = new Hashtable();
-    //     string xaaiTrans;
-    //     string saaiTrans;
-    //     string aiTrans;
-    //     string ppoTrans;
-    //     string liauaTrans;
-    //     string auaTrans;
-    //     string aiaTrans;
-    //     string iaTrans;
-    //     string aoTrans;
-    //
-    //     xaaiTrans = "XAAI";
-    //     saaiTrans = "SAAI";
-    //     aiTrans = "AI";
-    //     aiaTrans = "AIA";
-    //     iaTrans = "IA";
-    //     switch (dataType)
-    //     {
-    //
-    //         case Model.Enum.TransCamEFEO:
-    //             ppoTrans = "PPO";
-    //             liauaTrans = "LIAUA";
-    //             auaTrans = "AUA";
-    //             aoTrans = "AO";
-    //             break;
-    //
-    //         case Model.Enum.TransInrasara:
-    //             ppoTrans = "PPO";
-    //             liauaTrans = "LIAWA";
-    //             auaTrans = "AWA";
-    //             aoTrans = "AU";
-    //             break;
-    //
-    //         default:
-    //             ppoTrans = "PPÔ";
-    //             liauaTrans = "LIAWA";
-    //             auaTrans = "AWA";
-    //             aoTrans = "AU";
-    //             break;
-    //     }
-    //
-    //     //xaai
-    //     List<Model.AKhar> xaai = new List<Model.AKhar>();
-    //     xaai.Add(Model.AKhar.Xak);
-    //     xaai.Add(Model.AKhar.DarDua);
-    //     xaai.Add(Model.AKhar.Ai);
-    //     ret.Add(xaaiTrans, xaai);
-    //
-    //     //ai
-    //     List<Model.AKhar> ai = new List<Model.AKhar>();
-    //     ai.Add(Model.AKhar.DarDua);
-    //     ai.Add(Model.AKhar.Ai);
-    //     ret.Add(aiTrans, ai);
-    //
-    //     //saai
-    //     List<Model.AKhar> saai = new List<Model.AKhar>();
-    //     saai.Add(Model.AKhar.SakPraong);
-    //     saai.Add(Model.AKhar.DarDua);
-    //     saai.Add(Model.AKhar.Ai);
-    //     ret.Add(saaiTrans, saai);
-    //
-    //     //po
-    //     List<Model.AKhar> ppo = new List<Model.AKhar>();
-    //     ppo.Add(Model.AKhar.DarSa);
-    //     ppo.Add(Model.AKhar.PakPraong);
-    //     ppo.Add(Model.AKhar.TakaiThek);
-    //     ret.Add(ppoTrans, ppo);
-    //
-    //     //liaua
-    //     List<Model.AKhar> liaua = new List<Model.AKhar>();
-    //     liaua.Add(Model.AKhar.Lak);
-    //     liaua.Add(Model.AKhar.TakaiKik);
-    //     liaua.Add(Model.AKhar.Ak);
-    //     liaua.Add(Model.AKhar.TakaiKuak);
-    //     liaua.Add(Model.AKhar.Balau);
-    //     ret.Add(liauaTrans, liaua);
-    //
-    //     //aua
-    //     List<Model.AKhar> aua = new List<Model.AKhar>();
-    //     aua.Add(Model.AKhar.Ak);
-    //     aua.Add(Model.AKhar.TakaiKuak);
-    //     aua.Add(Model.AKhar.Balau);
-    //     ret.Add(auaTrans, aua);
-    //
-    //     //aia
-    //     List<Model.AKhar> aia = new List<Model.AKhar>();
-    //     aia.Add(Model.AKhar.Ak);
-    //     aia.Add(Model.AKhar.TakaiKiak);
-    //     aia.Add(Model.AKhar.Balau);
-    //     ret.Add(aiaTrans, aia);
-    //     //ia
-    //     ret.Add(iaTrans, aia);
-    //
-    //     //ao
-    //     List<Model.AKhar> ao = new List<Model.AKhar>();
-    //     ao.Add(Model.AKhar.DarSa);
-    //     ao.Add(Model.AKhar.Ak);
-    //     ao.Add(Model.AKhar.TraohAw);
-    //     ret.Add(aoTrans, ao);
-    //
-    //     return ret;
-    // }
-    //
-    // /// <summary>
-    // /// Init Karei Diip To Takai HashTable
-    // /// </summary>
-    // /// <returns>hashtable</returns>
-    // public static Hashtable InitDiipToTaKai(Model.Enum sourceType)
-    // {
-    //     Hashtable ret = new Hashtable();
-    //
-    //     ret.Add(Model.AKhar.Ik, Model.AKhar.TakaiKiak);
-    //     ret.Add(Model.AKhar.Lak, Model.AKhar.TakaiKlak);
-    //     ret.Add(Model.AKhar.Rak, Model.AKhar.TakaiKrak);
-    //
-    //     if (sourceType == Model.Enum.TransCamEFEO)
-    //     {
-    //
-    //         ret.Add(Model.AKhar.Uk, Model.AKhar.TakaiKuak);
-    //     }
-    //     else
-    //     {
-    //
-    //         ret.Add(Model.AKhar.Wak, Model.AKhar.TakaiKuak);
-    //     }
-    //
-    //     return ret;
-    // }
-    //
-    // /// <summary>
-    // /// Init Consonant Karei Crih Hashtable
-    // /// </summary>
-    // /// <returns>hashtable</returns>
-    // public static Hashtable InitConsonantKareiCrih()
-    // {
-    //     Hashtable ret = new Hashtable();
-    //
-    //     ret.Add(Model.AKhar.Mâk, Model.AKhar.Mak);
-    //     ret.Add(Model.AKhar.Nâk, Model.AKhar.Nak);
-    //     ret.Add(Model.AKhar.Nyâk, Model.AKhar.Nyak);
-    //     ret.Add(Model.AKhar.Ngâk, Model.AKhar.Ngak);
-    //
-    //     return ret;
-    // }
-    //
-    // /// <summary>
-    // /// Init Sap Poah Angaok Hashtable
-    // /// </summary>
-    // /// <returns>hashtable</returns>
-    // public static Hashtable InitSapPaohAngaok()
-    // {
-    //     Hashtable ret = new Hashtable();
-    //
-    //     ret.Add(Model.AKhar.Balau, null);
-    //     ret.Add(Model.AKhar.BalauTapong, null);
-    //     ret.Add(Model.AKhar.TakaiKik, null);
-    //     ret.Add(Model.AKhar.TakaiKikTutTakaiMâkDalem, null);
-    //     ret.Add(Model.AKhar.TraohAw, null);
-    //     ret.Add(Model.AKhar.É, null);
-    //
-    //     return ret;
-    // }
-    //
-    // /// <summary>
-    // /// Init Sap Poah Hashtable
-    // /// </summary>
-    // /// <returns>hashtable</returns>
-    // public static Hashtable InitSapPaoh()
-    // {
-    //     Hashtable ret = new Hashtable();
-    //
-    //     ret.Add(Model.AKhar.Ak, null);
-    //     ret.Add(Model.AKhar.Ik, null);
-    //     ret.Add(Model.AKhar.Uk, null);
-    //     ret.Add(Model.AKhar.Ok, null);
-    //     ret.Add(Model.AKhar.DarDua, null);
-    //     ret.Add(Model.AKhar.É, null);
-    //     ret.Add(Model.AKhar.TakaiThek, null);
-    //
-    //     return ret;
-    // }
-    //
-    // /// <summary>
-    // /// Init Takai Likuk Hashtable
-    // /// </summary>
-    // /// <returns>hashtable</returns>
-    // public static Hashtable InitTakaiLikuk()
-    // {
-    //     Hashtable ret = new Hashtable();
-    //
-    //     ret.Add(Model.AKhar.TakaiKiak, null);
-    //     ret.Add(Model.AKhar.TakaiKlak, null);
-    //     ret.Add(Model.AKhar.TakaiKuak, null);
-    //     ret.Add(Model.AKhar.TakaiKlakTakaiKuak, null);
-    //     ret.Add(Model.AKhar.TakaiKlakTakaiKuk, null);
-    //     ret.Add(Model.AKhar.TakaiKuk, null);
-    //     ret.Add(Model.AKhar.TakaiThek, null);
-    //     ret.Add(Model.AKhar.TakaiKâk, null);
-    //
-    //     return ret;
-    // }
-    //
-    // /// <summary>
-    // /// Init Vowel Lang Likuk Hashtable
-    // /// </summary>
-    // /// <returns>hashtable</returns>
-    // public static Hashtable InitVowelLangLikuk()
-    // {
-    //     Hashtable ret = new Hashtable();
-    //
-    //     ret.Add(Model.AKhar.Ak, null);
-    //     ret.Add(Model.AKhar.Ik, null);
-    //     ret.Add(Model.AKhar.Uk, null);
-    //     ret.Add(Model.AKhar.TakaiKâk, null);
-    //     ret.Add(Model.AKhar.TakaiKik, null);
-    //     ret.Add(Model.AKhar.TakaiKuk, null);
-    //
-    //     return ret;
-    // }
-    //
-    // /// <summary>
-    // /// Init Takai Daok Likuk Hashtable
-    // /// </summary>
-    // /// <returns>hashtable</returns>
-    // public static Hashtable InitTakaiDaokLikuk()
-    // {
-    //     Hashtable ret = new Hashtable();
-    //
-    //     ret.Add(Model.AKhar.TakaiKik, null);
-    //     ret.Add(Model.AKhar.TakaiKikTutTakaiMâkDalem, null);
-    //     ret.Add(Model.AKhar.TakaiKikTutTakaiMâkLingiw, null);
-    //     ret.Add(Model.AKhar.TakaiKikTutTakaiYak, null);
-    //     ret.Add(Model.AKhar.TakaiThek, null);
-    //     ret.Add(Model.AKhar.TakaiThekTutTakaiMâk, null);
-    //     ret.Add(Model.AKhar.TakaiThekPaohNgâk, null);
-    //     ret.Add(Model.AKhar.TakaiKuk, null);
-    //     ret.Add(Model.AKhar.TakaiKâk, null);
-    //     ret.Add(Model.AKhar.TakaiKiak, null);
-    //     ret.Add(Model.AKhar.TakaiKuak, null);
-    //     ret.Add(Model.AKhar.TakaiKlak, null);
-    //     ret.Add(Model.AKhar.TakaiKlakTakaiKuak, null);
-    //     ret.Add(Model.AKhar.TakaiKlakTakaiKuk, null);
-    //     ret.Add(Model.AKhar.TraohAw, null);
-    //
-    //     return ret;
-    // }
-    //
-    // /// <summary>
-    // /// Init Vowel Kawom Tuek Tuah
-    // /// </summary>
-    // /// <returns>hashtable</returns>
-    // public static Hashtable InitVowelKTT()
-    // {
-    //     Hashtable vowel = new Hashtable();
-    //     vowel.Add("a", "aa");
-    //     vowel.Add("ô", "ôô");
-    //     vowel.Add("u", "uu");
-    //     vowel.Add("ư", "ưư");
-    //     vowel.Add("ơ", "ơơ");
-    //     vowel.Add("e", "ee");
-    //
-    //     return vowel;
-    // }
-    //
-    // /// <summary>
-    // /// Init Sap Atah
-    // /// </summary>
-    // /// <returns>hashtable</returns>
-    // public static Hashtable InitSapAtah()
-    // {
-    //     Hashtable sapAtah = new Hashtable();
-    //
-    //     sapAtah.Add(Model.AKhar.Ak, Model.AKhar.Balau);
-    //     sapAtah.Add(Model.AKhar.Ok, Model.AKhar.TraohAw);
-    //     sapAtah.Add(Model.AKhar.Uk, Model.AKhar.Balau);
-    //     sapAtah.Add(Model.AKhar.TakaiKâk, Model.AKhar.Balau);
-    //     sapAtah.Add(Model.AKhar.TakaiThek, Model.AKhar.BalauTapong);
-    //     sapAtah.Add(Model.AKhar.DarDua, Model.AKhar.Balau);
-    //
-    //     return sapAtah;
-    // }
+        ret[','] = true;
+        ret['.'] = true;
+        ret['!'] = true;
+        ret['?'] = true;
+        ret[';'] = true;
+        ret['('] = true;
+        ret[')'] = true;
+        ret['-'] = true;
+
+        return ret;
+    },
+    InitKareiCrih: function(dataType) {
+        var ret = {};
+        var xaaiTrans;
+        var saaiTrans;
+        var aiTrans;
+        var ppoTrans;
+        var liauaTrans;
+        var auaTrans;
+        var aiaTrans;
+        var iaTrans;
+        var aoTrans;
+
+        xaaiTrans = 'XAAI';
+        saaiTrans = 'SAAI';
+        aiTrans = 'AI';
+        aiaTrans = 'AIA';
+        iaTrans = 'IA';
+        switch (dataType) {
+            case Model.Enum.TransCamEFEO:
+                ppoTrans = 'PPO';
+                liauaTrans = 'LIAUA';
+                auaTrans = 'AUA';
+                aoTrans = 'AO';
+                break;
+
+            case Model.Enum.TransInrasara:
+                ppoTrans = 'PPO';
+                liauaTrans = 'LIAWA';
+                auaTrans = 'AWA';
+                aoTrans = 'AU';
+                break;
+
+            default:
+                ppoTrans = 'PPÔ';
+                liauaTrans = 'LIAWA';
+                auaTrans = 'AWA';
+                aoTrans = 'AU';
+                break;
+        }
+
+        //xaai
+        var xaai = [];
+        xaai.push(Model.AKhar.Xak);
+        xaai.push(Model.AKhar.DarDua);
+        xaai.push(Model.AKhar.Ai);
+        ret[xaaiTrans] = xaai;
+
+        //ai
+        var ai = [];
+        ai.push(Model.AKhar.DarDua);
+        ai.push(Model.AKhar.Ai);
+        ret[aiTrans] = ai;
+
+        //saai
+        var saai = [];
+        saai.push(Model.AKhar.SakPraong);
+        saai.push(Model.AKhar.DarDua);
+        saai.push(Model.AKhar.Ai);
+        ret[saaiTrans] = saai;
+
+        //po
+        var ppo = [];
+        ppo.push(Model.AKhar.DarSa);
+        ppo.push(Model.AKhar.PakPraong);
+        ppo.push(Model.AKhar.TakaiThek);
+        ret[ppoTrans] = ppo;
+
+        //liaua
+        var liaua = [];
+        liaua.push(Model.AKhar.Lak);
+        liaua.push(Model.AKhar.TakaiKik);
+        liaua.push(Model.AKhar.Ak);
+        liaua.push(Model.AKhar.TakaiKuak);
+        liaua.push(Model.AKhar.Balau);
+        ret[liauaTrans] = liaua;
+
+        //aua
+        var aua = [];
+        aua.push(Model.AKhar.Ak);
+        aua.push(Model.AKhar.TakaiKuak);
+        aua.push(Model.AKhar.Balau);
+        ret[auaTrans] = aua;
+
+        //aia
+        var aia = [];
+        aia.push(Model.AKhar.Ak);
+        aia.push(Model.AKhar.TakaiKiak);
+        aia.push(Model.AKhar.Balau);
+        ret[aiaTrans] = aia;
+        //ia
+        ret[iaTrans] = aia;
+
+        //ao
+        var ao = [];
+        ao.push(Model.AKhar.DarSa);
+        ao.push(Model.AKhar.Ak);
+        ao.push(Model.AKhar.TraohAw);
+        ret[aoTrans] = ao;
+
+        return ret;
+    },
+    InitDiipToTaKai: function(sourceType) {
+        var ret = {};
+
+        ret[Model.AKhar.Ik] = Model.AKhar.TakaiKiak;
+        ret[Model.AKhar.Lak] = Model.AKhar.TakaiKlak;
+        ret[Model.AKhar.Rak] = Model.AKhar.TakaiKrak;
+
+        if (sourceType === Model.Enum.TransCamEFEO) {
+            ret[Model.AKhar.Uk] = Model.AKhar.TakaiKuak;
+        } else {
+            ret[Model.AKhar.Wak] = Model.AKhar.TakaiKuak;
+        }
+
+        return ret;
+    },
+    InitConsonantKareiCrih: function() {
+        var ret = {};
+
+        ret[Model.AKhar.Mâk] = Model.AKhar.Mak;
+        ret[Model.AKhar.Nâk] = Model.AKhar.Nak;
+        ret[Model.AKhar.Nyâk] = Model.AKhar.Nyak;
+        ret[Model.AKhar.Ngâk] = Model.AKhar.Ngak;
+
+        return ret;
+    },
+    InitSapPaohAngaok: function() {
+        var ret = {};
+
+        ret[Model.AKhar.Balau] = true;
+        ret[Model.AKhar.BalauTapong] = true;
+        ret[Model.AKhar.TakaiKik] = true;
+        ret[Model.AKhar.TakaiKikTutTakaiMâkDalem] = true;
+        ret[Model.AKhar.TraohAw] = true;
+        ret[Model.AKhar.É] = true;
+
+        return ret;
+    },
+    InitSapPaoh: function() {
+        var ret = {};
+
+        ret[Model.AKhar.Ak] = true;
+        ret[Model.AKhar.Ik] = true;
+        ret[Model.AKhar.Uk] = true;
+        ret[Model.AKhar.Ok] = true;
+        ret[Model.AKhar.DarDua] = true;
+        ret[Model.AKhar.É] = true;
+        ret[Model.AKhar.TakaiThek] = true;
+
+        return ret;
+    },
+    InitTakaiLikuk: function() {
+        var ret = {};
+
+        ret[Model.AKhar.TakaiKiak] = true;
+        ret[Model.AKhar.TakaiKlak] = true;
+        ret[Model.AKhar.TakaiKuak] = true;
+        ret[Model.AKhar.TakaiKlakTakaiKuak] = true;
+        ret[Model.AKhar.TakaiKlakTakaiKuk] = true;
+        ret[Model.AKhar.TakaiKuk] = true;
+        ret[Model.AKhar.TakaiThek] = true;
+        ret[Model.AKhar.TakaiKâk] = true;
+
+        return ret;
+    },
+    InitVowelLangLikuk: function() {
+        var ret = {};
+
+        ret[Model.AKhar.Ak] = true;
+        ret[Model.AKhar.Ik] = true;
+        ret[Model.AKhar.Uk] = true;
+        ret[Model.AKhar.TakaiKâk] = true;
+        ret[Model.AKhar.TakaiKik] = true;
+        ret[Model.AKhar.TakaiKuk] = true;
+
+        return ret;
+    },
+    InitTakaiDaokLikuk: function() {
+        var ret = {};
+
+        ret[Model.AKhar.TakaiKik] = true;
+        ret[Model.AKhar.TakaiKikTutTakaiMâkDalem] = true;
+        ret[Model.AKhar.TakaiKikTutTakaiMâkLingiw] = true;
+        ret[Model.AKhar.TakaiKikTutTakaiYak] = true;
+        ret[Model.AKhar.TakaiThek] = true;
+        ret[Model.AKhar.TakaiThekTutTakaiMâk] = true;
+        ret[Model.AKhar.TakaiThekPaohNgâk] = true;
+        ret[Model.AKhar.TakaiKuk] = true;
+        ret[Model.AKhar.TakaiKâk] = true;
+        ret[Model.AKhar.TakaiKiak] = true;
+        ret[Model.AKhar.TakaiKuak] = true;
+        ret[Model.AKhar.TakaiKlak] = true;
+        ret[Model.AKhar.TakaiKlakTakaiKuak] = true;
+        ret[Model.AKhar.TakaiKlakTakaiKuk] = true;
+        ret[Model.AKhar.TraohAw] = true;
+
+        return ret;
+    },
+    InitVowelKTT: function() {
+        var vowel = {};
+
+        vowel.a = 'aa';
+        vowel.ô = 'ôô';
+        vowel.u = 'uu';
+        vowel.ư = 'ưư';
+        vowel.ơ = 'ơơ';
+        vowel.e = 'ee';
+
+        return vowel;
+    },
+    InitSapAtah: function() {
+        var sapAtah = {};
+
+        sapAtah[Model.AKhar.Ak] = Model.AKhar.Balau;
+        sapAtah[Model.AKhar.Ok] = Model.AKhar.TraohAw;
+        sapAtah[Model.AKhar.Uk] = Model.AKhar.Balau;
+        sapAtah[Model.AKhar.TakaiKâk] = Model.AKhar.Balau;
+        sapAtah[Model.AKhar.TakaiThek] = Model.AKhar.BalauTapong;
+        sapAtah[Model.AKhar.DarDua] = Model.AKhar.Balau;
+
+        return sapAtah;
+    }
 };
