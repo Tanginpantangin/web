@@ -8,6 +8,10 @@
 [lang='akt'] [translate] {
   font-family: 'akhar_thrah_1';
 }
+.akt1 {
+  font-family: 'akhar_thrah_1';
+  font-size: 28px;
+}
 * {
   margin: 0;
   padding: 0;
@@ -169,6 +173,10 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   height: auto;
   padding-left: 24px;
 }
+#converter .md-button-convert {
+  color: #ffffff;
+  background-color: #F98D43;
+}
 #converter .title-converter {
   padding: 20px 0;
   margin-bottom: 10px;
@@ -221,6 +229,8 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   min-width: 60px;
   float: right;
   margin-right: 5% !important;
+  color: #ffffff;
+  background-color: #53B8E0;
 }
 #document md-card md-card-actions {
   padding-right: 12px;

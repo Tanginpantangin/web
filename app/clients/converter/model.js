@@ -213,9 +213,9 @@ window.Model = {
         KawomTT: 3
     },
     XMLTransToKeyCol: {
-        KeyCode: 0,
-        Rumi: 1,
-        InraSara: 2,
-        KawomTuekTuah: 3,
+        KeyCode: 'KeyCode',
+        Rumi: 'Rumi',
+        InraSara: 'Inrasara',
+        KawomTuekTuah: 'KTT',
     }
 };

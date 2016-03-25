@@ -25,7 +25,7 @@ angular.module('app')
 
           };
       })
-    .controller('ConverterController', [function() {
+    .controller('ConverterController', ['$timeout', function($timeout) {
         var self = this;
         self.message = 'Convert page';
         self.akhars = [
@@ -36,8 +36,9 @@ angular.module('app')
           self.selectedAkhar = { id: 1, name: 'Akhar BBC' };
 
           self.change = function(){
-              console.log(self.sourceText);
-              var xalih = new window.cam.service.Paxalih();
-              console.log('xalih', xalih);
+              $timeout(function(){
+                  var xalih = new window.cam.service.TransToCamPaxalih();
+                  self.destinationText = xalih.DoConvert(self.sourceText, Model.Enum.TransCamEFEO, Model.Enum.FontYapata);
+              },0);
           };
     }]);
