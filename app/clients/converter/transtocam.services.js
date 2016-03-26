@@ -144,14 +144,15 @@ window.cam.service.TransToCamPaxalih = function() {
             wordArr.forEach(function(item) {
                 var wordAkhar = [];
                 var wordStr = item;
+                wordStr = [wordStr];
 
                 //Cut kanaing at first and last word
                 kanaingAtFirst = self.CutKanaingAtFirst(wordStr);
                 kanaingAtLast = self.CutKanaingAtLast(wordStr);
 
                 //Specail word
-                if (base._kareiCrih[wordStr]) {
-                    wordAkhar = window.cam.service.Utility.CopyListAkhar(base._kareiCrih[wordStr]);
+                if (base._kareiCrih[wordStr[0]]) {
+                    wordAkhar = window.cam.service.Utility.CopyListAkhar(base._kareiCrih[wordStr[0]]);
 
                     // add kanaing at first and last word
                     window.cam.service.Utility.PopStackToList(wordAkhar, kanaingAtFirst, true);
@@ -169,7 +170,6 @@ window.cam.service.TransToCamPaxalih = function() {
                 var prevChar = Model.AKhar.Square;
 
                 var roundCount = 0;
-                wordStr = [wordStr];
                 while (wordStr[0]) {
                     if (roundCount == Model.Constant.MAX_ROUND) {
                         break;
@@ -203,7 +203,7 @@ window.cam.service.TransToCamPaxalih = function() {
                 var indexLastChar = base.GetIndexLastChar(ret);
                 var lastAkhar = ret[indexLastChar];
                 if ((base.IsAkharDiip(lastAkhar) || base.IsTakaiLikuk(lastAkhar)) &&
-                    ret.indexOf(Model.AKhar.DarDua) == -1 &&
+                    ret.indexOf(Model.AKhar.DarDua.toString()) == -1 &&
                     !(lastAkhar == Model.AKhar.TakaiThek && indexLastChar > 0 && ret[indexLastChar - 1] == Model.AKhar.TakaiKuk)) {
                     ret.splice(indexLastChar + 1, 0, Model.AKhar.Balau);
                 }
@@ -228,12 +228,12 @@ window.cam.service.TransToCamPaxalih = function() {
 
         var ret = new Stack();
         var roundCount = 0;
-        while (value) {
+        while (value[0]) {
             if (roundCount == Model.Constant.MAX_ROUND) {
                 break;
             }
 
-            var achar = value.substring(0, 1);
+            var achar = value[0].substr(0, 1);
             if (!base._kanaingChars[achar]) {
                 break;
             }
@@ -241,7 +241,7 @@ window.cam.service.TransToCamPaxalih = function() {
             var listKanaing = self._transToKeycode[achar];
             ret.push(listKanaing[0]);
 
-            value = value.substring(1);
+            value[0] = value[0].substr(1);
             roundCount++;
         }
 
@@ -252,12 +252,12 @@ window.cam.service.TransToCamPaxalih = function() {
 
         var ret = new Stack();
         var roundCount = 0;
-        while (value) {
+        while (value[0]) {
             if (roundCount == Model.Constant.MAX_ROUND) {
                 break;
             }
 
-            var achar = value.substring(value.length - 1, 1);
+            var achar = value[0].substr(value[0].length - 1, 1);
             if (!base._kanaingChars[achar]) {
                 break;
             }
@@ -265,7 +265,7 @@ window.cam.service.TransToCamPaxalih = function() {
             var listKanaing = self._transToKeycode[achar];
             ret.push(listKanaing[0]);
 
-            value = value.substring(0, value.length - 1);
+            value[0] = value[0].substr(0, value[0].length - 1);
             roundCount++;
         }
 
@@ -360,7 +360,7 @@ window.cam.service.TransToCamPaxalih = function() {
             }
 
             //end the word
-            if ((!word[0] || base._kanaingChars[word[0].substring(0, 1)]) && ret.length != 0) {
+            if ((!word[0] || base._kanaingChars[word[0].substr(0, 1)]) && ret.length != 0) {
                 //Convert akhar diip to akhar matai
                 if (base._diipToMaTai[akhar]) {
                     akhar = base._diipToMaTai[akhar];
@@ -437,7 +437,7 @@ window.cam.service.TransToCamPaxalih = function() {
                 (character == self._trans_AI && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
                 (character == self._trans_AO && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
                 (character == self._trans_AU && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode)))) {
-                character = character.substring(0, character.length - 1);
+                character = character.substr(0, character.length - 1);
                 continue;
             }
 
@@ -446,11 +446,11 @@ window.cam.service.TransToCamPaxalih = function() {
                 break;
             }
 
-            character = character.substring(0, character.length - 1);
+            character = character.substr(0, character.length - 1);
         }
 
         var cuttingIndex = character.length? character.length: 1;
-        value[0] = value[0].substring(cuttingIndex);
+        value[0] = value[0].substr(cuttingIndex);
         return ret;
     };
 

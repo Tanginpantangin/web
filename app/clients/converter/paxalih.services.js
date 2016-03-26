@@ -112,7 +112,7 @@ window.cam.service.Paxalih = function() {
 
     self.Check_InaAkhar_PhuAm_Special = function(sabaoh) {
         var vowelSpecial = [Model.AKhar.Mâk, Model.AKhar.Nâk, Model.AKhar.Nyâk, Model.AKhar.Ngâk];
-        return vowelSpecial.indexOf(sabaoh) != -1;
+        return vowelSpecial.indexOf(Number(sabaoh)) != -1;
     };
 
     self.Check_InaAkhar_NguyenAm = function(sabaoh) {
@@ -125,7 +125,7 @@ window.cam.service.Paxalih = function() {
             Model.AKhar.Xak, Model.AKhar.Hak, Model.AKhar.PakPraong, Model.AKhar.SakPraong, Model.AKhar.Ak, Model.AKhar.Ik, Model.AKhar.Uk
         ];
 
-        return langlikuk.indexOf(sabaoh) != -1;
+        return langlikuk.indexOf(Number(sabaoh)) != -1;
     };
 
     self.Check_AkharMatai = function(sabaoh) {
@@ -141,7 +141,7 @@ window.cam.service.Paxalih = function() {
             Model.AKhar.TakaiKuk, Model.AKhar.TakaiKâk, Model.AKhar.TraohAw, Model.AKhar.BalauTapong
         ];
 
-        return array.indexOf(sabaoh) != -1;
+        return array.indexOf(Number(sabaoh)) != -1;
     };
 
     self.Check_TakaiSapPaohAnak = function(sabaoh) {
@@ -154,7 +154,7 @@ window.cam.service.Paxalih = function() {
             Model.AKhar.TraohAwTutTakaiMâk, Model.AKhar.TraohAwPaohNgâk
         ];
 
-        return array.indexOf(sabaoh) != -1;
+        return array.indexOf(Number(sabaoh)) != -1;
     };
 
     self.Check_TakaiAkharAnak = function(sabaoh) {
@@ -165,7 +165,7 @@ window.cam.service.Paxalih = function() {
         var array = [Model.AKhar.TakaiKiak, Model.AKhar.TakaiKuak,
             Model.AKhar.TakaiKlak, Model.AKhar.TakaiKlakTakaiKuak, Model.AKhar.TakaiKlakTakaiKuk
         ];
-        return array.indexOf(sabaoh) != -1;
+        return array.indexOf(Number(sabaoh)) != -1;
     };
 
     self.Check_Balau = function(sabaoh) {
