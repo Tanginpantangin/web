@@ -64,14 +64,14 @@ window.cam.service.Paxalih = function() {
     self.HuLanglikuk = function(list) {
 
         var count = list.length;
-        if (count === 1 && self.IsVowels(list[0])) {
+        if (count == 1 && self.IsVowels(list[0])) {
             return true;
         }
 
         if (count < 2) {
             return false;
         }
-        if (list[count - 2] === Model.AKhar.Ak && list[count - 1] === Model.AKhar.Ak) {
+        if (list[count - 2] == Model.AKhar.Ak && list[count - 1] == Model.AKhar.Ak) {
             return false;
         }
 
@@ -107,12 +107,12 @@ window.cam.service.Paxalih = function() {
     };
 
     self.IsAkharWakMaTai = function(sabaoh, index, count) {
-        return sabaoh === Model.AKhar.Wak && index === count - 1;
+        return sabaoh == Model.AKhar.Wak && index == count - 1;
     };
 
     self.Check_InaAkhar_PhuAm_Special = function(sabaoh) {
         var vowelSpecial = [Model.AKhar.Mâk, Model.AKhar.Nâk, Model.AKhar.Nyâk, Model.AKhar.Ngâk];
-        return vowelSpecial.indexOf(sabaoh) !== -1;
+        return vowelSpecial.indexOf(sabaoh) != -1;
     };
 
     self.Check_InaAkhar_NguyenAm = function(sabaoh) {
@@ -125,11 +125,11 @@ window.cam.service.Paxalih = function() {
             Model.AKhar.Xak, Model.AKhar.Hak, Model.AKhar.PakPraong, Model.AKhar.SakPraong, Model.AKhar.Ak, Model.AKhar.Ik, Model.AKhar.Uk
         ];
 
-        return langlikuk.indexOf(sabaoh) !== -1;
+        return langlikuk.indexOf(sabaoh) != -1;
     };
 
     self.Check_AkharMatai = function(sabaoh) {
-        return sabaoh >= Model.AKhar.KakMatai && sabaoh <= Model.AKhar.PaohDaNih || sabaoh === Model.AKhar.PaohNgâk;
+        return sabaoh >= Model.AKhar.KakMatai && sabaoh <= Model.AKhar.PaohDaNih || sabaoh == Model.AKhar.PaohNgâk;
     };
 
     self.Check_TakaiAkhar = function(sabaoh) {
@@ -141,11 +141,11 @@ window.cam.service.Paxalih = function() {
             Model.AKhar.TakaiKuk, Model.AKhar.TakaiKâk, Model.AKhar.TraohAw, Model.AKhar.BalauTapong
         ];
 
-        return array.indexOf(sabaoh) !== -1;
+        return array.indexOf(sabaoh) != -1;
     };
 
     self.Check_TakaiSapPaohAnak = function(sabaoh) {
-        return sabaoh === Model.AKhar.DarSa || sabaoh === Model.AKhar.DarDua;
+        return sabaoh == Model.AKhar.DarSa || sabaoh == Model.AKhar.DarDua;
     };
 
     self.Check_TakaiSapPaohDiLuic = function(sabaoh) {
@@ -154,22 +154,22 @@ window.cam.service.Paxalih = function() {
             Model.AKhar.TraohAwTutTakaiMâk, Model.AKhar.TraohAwPaohNgâk
         ];
 
-        return array.indexOf(sabaoh) !== -1;
+        return array.indexOf(sabaoh) != -1;
     };
 
     self.Check_TakaiAkharAnak = function(sabaoh) {
-        return sabaoh === Model.AKhar.TakaiKrak;
+        return sabaoh == Model.AKhar.TakaiKrak;
     };
 
     self.Check_TakaiAkharLikuk = function(sabaoh) {
         var array = [Model.AKhar.TakaiKiak, Model.AKhar.TakaiKuak,
             Model.AKhar.TakaiKlak, Model.AKhar.TakaiKlakTakaiKuak, Model.AKhar.TakaiKlakTakaiKuk
         ];
-        return array.indexOf(sabaoh) !== -1;
+        return array.indexOf(sabaoh) != -1;
     };
 
     self.Check_Balau = function(sabaoh) {
-        return sabaoh === Model.AKhar.Balau;
+        return sabaoh == Model.AKhar.Balau;
     };
 
     self.Check_Angka = function(sabaoh) {

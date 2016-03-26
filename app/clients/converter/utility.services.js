@@ -27,37 +27,59 @@ window.cam.service.Utility.SetKeyCodeData = function(waQuyetKeyCode, gilaiPraong
         // var uniCamVN = dtr[Model.XMLKeyCodeCol.UnicodeCamVN].toString();
 
         //WaQuyet - Key code
-        waQuyetKeyCode[waQuyet] = keyCode;
+        if (!waQuyetKeyCode[waQuyet]) {
+            waQuyetKeyCode[waQuyet] = keyCode;
+        }
 
         //GilaiPraong - Key code
-        gilaiPraongKeyCode[gilaiPraong] = keyCode;
+        if (!gilaiPraongKeyCode[gilaiPraong]) {
+            gilaiPraongKeyCode[gilaiPraong] = keyCode;
+        }
 
         //CamEFEO - Key code
-        camEFEOKeyCode[camEFEO] = keyCode;
+        if (!camEFEOKeyCode[camEFEO]) {
+            camEFEOKeyCode[camEFEO] = keyCode;
+        }
 
         //KawomTuekTuah - Key code
-        kawomTTKeyCode[kawomTuekTuah] = keyCode;
+        if (!kawomTTKeyCode[kawomTuekTuah]) {
+            kawomTTKeyCode[kawomTuekTuah] = keyCode;
+        }
 
         //UniCamKur - Key code
-        uniCamKurKeyCode[uniCamKur] = keyCode;
+        if (!uniCamKurKeyCode[uniCamKur]) {
+            uniCamKurKeyCode[uniCamKur] = keyCode;
+        }
 
         // Key code - WaQuyet
-        keyCodeWaQuyet[keyCode] = waQuyet;
+        if (!keyCodeWaQuyet[keyCode]) {
+            keyCodeWaQuyet[keyCode] = waQuyet;
+        }
 
         //Key code - GilaiPraong
-        keyCodeGilaiPraong[keyCode] = gilaiPraong;
+        if (!keyCodeGilaiPraong[keyCode]) {
+            keyCodeGilaiPraong[keyCode] = gilaiPraong;
+        }
 
         //Key code - CamEFEO
-        keyCodeCamEFEO[keyCode] = camEFEO;
+        if (!keyCodeCamEFEO[keyCode]) {
+            keyCodeCamEFEO[keyCode] = camEFEO;
+        }
 
         //Key code - KawomTuekTuah
-        keyCodeKawomTT[keyCode] = kawomTuekTuah;
+        if (!keyCodeKawomTT[keyCode]) {
+            keyCodeKawomTT[keyCode] = kawomTuekTuah;
+        }
 
         //Key code - UniCamKur
-        keyCodeUniCamKur[keyCode] = uniCamKur;
+        if (!keyCodeUniCamKur[keyCode]) {
+            keyCodeUniCamKur[keyCode] = uniCamKur;
+        }
 
         //Key code - UniCamVN
-        keyCodeUniCamVN[keyCode] = uniCamKur;
+        if (!keyCodeUniCamVN[keyCode]) {
+            keyCodeUniCamVN[keyCode] = uniCamKur;
+        }
     });
 };
 
@@ -232,7 +254,7 @@ window.cam.service.Utility.InitDiipToTaKai = function(sourceType) {
     ret[Model.AKhar.Lak] = Model.AKhar.TakaiKlak;
     ret[Model.AKhar.Rak] = Model.AKhar.TakaiKrak;
 
-    if (sourceType === Model.Enum.TransCamEFEO) {
+    if (sourceType == Model.Enum.TransCamEFEO) {
         ret[Model.AKhar.Uk] = Model.AKhar.TakaiKuak;
     } else {
         ret[Model.AKhar.Wak] = Model.AKhar.TakaiKuak;
@@ -357,7 +379,7 @@ window.cam.service.Utility.SetTransToKeyCode = function(transKeycode, desType) {
     var akharIENG = '';
     var sapPaohAU = '';
 
-    if (desType === Model.Enum.TransCamEFEO) {
+    if (desType == Model.Enum.TransCamEFEO) {
         columnNo = Model.XMLTransToKeyCol.Rumi;
         sapPaohAO = Model.Constant.AO_EFEO;
         sapPaohAOM = Model.Constant.AOM_EFEO;
@@ -366,7 +388,7 @@ window.cam.service.Utility.SetTransToKeyCode = function(transKeycode, desType) {
         akharIÉNG = Model.Constant.IÉNG_EFEO;
         akharIENG = Model.Constant.IENG_EFEO;
         sapPaohAU = Model.Constant.AU_EFEO;
-    } else if (desType === Model.Enum.TransInrasara) {
+    } else if (desType == Model.Enum.TransInrasara) {
         columnNo = Model.XMLTransToKeyCol.InraSara;
         sapPaohAO = Model.Constant.AO_SARA;
         sapPaohAOM = Model.Constant.AOM_SARA;
@@ -375,7 +397,7 @@ window.cam.service.Utility.SetTransToKeyCode = function(transKeycode, desType) {
         akharIÉNG = Model.Constant.IÉNG_SARA;
         akharIENG = Model.Constant.IENG_SARA;
         sapPaohAU = Model.Constant.AU_SARA;
-    } else if (desType === Model.Enum.TransKawomTT) {
+    } else if (desType == Model.Enum.TransKawomTT) {
         columnNo = Model.XMLTransToKeyCol.KawomTuekTuah;
         sapPaohAO = Model.Constant.AO_KawomTT;
         sapPaohAOM = Model.Constant.AOM_KawomTT;
@@ -417,40 +439,42 @@ window.cam.service.Utility.SetTransToKeyCode = function(transKeycode, desType) {
 
         //Keycode - Rumi
         var isIrregular = false;
-        if (transChar === sapPaohAO) {
-            listAkhar.push(Model.AKhar.DarSa);
-            listAkhar.push(Model.AKhar.TraohAw);
-            isIrregular = true;
-        }
+        if (!transKeycode[transChar]) {
+            if (transChar == sapPaohAO) {
+                listAkhar.push(Model.AKhar.DarSa);
+                listAkhar.push(Model.AKhar.TraohAw);
+                isIrregular = true;
+            }
 
-        if (transChar === sapPaohAOM) {
-            listAkhar.push(Model.AKhar.DarSa);
-            listAkhar.push(Model.AKhar.TraohAwTutTakaiMâk);
-            isIrregular = true;
-        }
+            if (transChar == sapPaohAOM) {
+                listAkhar.push(Model.AKhar.DarSa);
+                listAkhar.push(Model.AKhar.TraohAwTutTakaiMâk);
+                isIrregular = true;
+            }
 
-        if (transChar === sapPaohAONG) {
-            listAkhar.push(Model.AKhar.DarSa);
-            listAkhar.push(Model.AKhar.TraohAwPaohNgâk);
-            isIrregular = true;
-        }
+            if (transChar == sapPaohAONG) {
+                listAkhar.push(Model.AKhar.DarSa);
+                listAkhar.push(Model.AKhar.TraohAwPaohNgâk);
+                isIrregular = true;
+            }
 
-        if (transChar === sapPaohEM) {
-            listAkhar.push(Model.AKhar.DarSa);
-            listAkhar.push(Model.AKhar.TakaiThek);
-            listAkhar.push(Model.AKhar.TakaiThekTutTakaiMâk);
-            isIrregular = true;
-        }
+            if (transChar == sapPaohEM) {
+                listAkhar.push(Model.AKhar.DarSa);
+                listAkhar.push(Model.AKhar.TakaiThek);
+                listAkhar.push(Model.AKhar.TakaiThekTutTakaiMâk);
+                isIrregular = true;
+            }
 
-        if (!isIrregular) {
-            listAkhar.push(akhar);
-        }
+            if (!isIrregular) {
+                listAkhar.push(akhar);
+            }
 
-        transKeycode[transChar] = listAkhar;
+            transKeycode[transChar] = listAkhar;
+        }
     });
 
     //add au, am dai
-    if (desType === Model.Enum.TransKawomTT) {
+    if (desType == Model.Enum.TransKawomTT) {
         var listAkhar = [];
         listAkhar.push(Model.AKhar.DarSa);
         listAkhar.push(Model.AKhar.TraohAw);
@@ -500,7 +524,7 @@ window.cam.service.Utility.CopyListAkhar = function(listSource) {
 };
 
 window.cam.service.Utility.PopStackToList = function(list, stack, addFirst) {
-    while (stack.length() !== 0) {
+    while (stack.length() != 0) {
         var index = addFirst ? 0 : list.length;
         list.splice(index, 0, stack.pop());
     }

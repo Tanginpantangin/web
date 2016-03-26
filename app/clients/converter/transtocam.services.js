@@ -39,12 +39,13 @@ window.cam.service.TransToCamPaxalih = function() {
         //Convert processing
         words.forEach(function(word) {
             // is newline character
-            if (word === Model.Constant.NEW_LINE || !word) {
+            if (word == Model.Constant.NEW_LINE || !word) {
                 converted.push(word);
                 return;
             }
 
             var lstAkhar = self.ToKeyCodeByWord(word.toUpperCase(), sourceType);
+            console.log('lstAkhar', lstAkhar);
             var convertedWord = '';
 
             for (var i = 0; i < lstAkhar.length; i++) {
@@ -59,7 +60,7 @@ window.cam.service.TransToCamPaxalih = function() {
                         //     break;
                         //
                         // case Model.Enum.FontGilaiPraong:
-                        //     if (akhar === Model.AKhar.GakMatai) {
+                        //     if (akhar == Model.AKhar.GakMatai) {
                         //         convertedWord += base._keyCodeToGilaiPraong[Model.AKhar.KakMatai].toString();
                         //     } else {
                         //         convertedWord += base._keyCodeToGilaiPraong[akhar].toString();
@@ -67,13 +68,13 @@ window.cam.service.TransToCamPaxalih = function() {
                         //     break;
                         //
                         // case Model.Enum.FontCamEFEO:
-                        //     if (akhar === Model.AKhar.TakaiKlakTakaiKuak) {
+                        //     if (akhar == Model.AKhar.TakaiKlakTakaiKuak) {
                         //         convertedWord += base._keyCodeToCamEFEO[Model.AKhar.TakaiKlak].toString();
                         //         convertedWord += base._keyCodeToCamEFEO[Model.AKhar.TakaiKuak].toString();
-                        //     } else if (akhar === Model.AKhar.TakaiKlakTakaiKuk) {
+                        //     } else if (akhar == Model.AKhar.TakaiKlakTakaiKuk) {
                         //         convertedWord += base._keyCodeToCamEFEO[Model.AKhar.TakaiKlak].toString();
                         //         convertedWord += base._keyCodeToCamEFEO[Model.AKhar.TakaiKuk].toString();
-                        //     } else if (akhar === Model.AKhar.GakMatai) {
+                        //     } else if (akhar == Model.AKhar.GakMatai) {
                         //         convertedWord += base._keyCodeToCamEFEO[Model.AKhar.KakMatai].toString();
                         //     } else {
                         //         convertedWord += base._keyCodeToCamEFEO[akhar].toString();
@@ -81,10 +82,10 @@ window.cam.service.TransToCamPaxalih = function() {
                         //     break;
                         //
                         // default:
-                        //     if (akhar === Model.AKhar.TakaiKlakTakaiKuak) {
+                        //     if (akhar == Model.AKhar.TakaiKlakTakaiKuak) {
                         //         convertedWord += base._keyCodeToUniCamKur[Model.AKhar.TakaiKlak].toString();
                         //         convertedWord += base._keyCodeToUniCamKur[Model.AKhar.TakaiKuak].toString();
-                        //     } else if (akhar === Model.AKhar.TakaiKlakTakaiKuk) {
+                        //     } else if (akhar == Model.AKhar.TakaiKlakTakaiKuk) {
                         //         convertedWord += base._keyCodeToUniCamKur[Model.AKhar.TakaiKlak].toString();
                         //         convertedWord += base._keyCodeToUniCamKur[Model.AKhar.TakaiKuk].toString();
                         //     } else {
@@ -127,13 +128,13 @@ window.cam.service.TransToCamPaxalih = function() {
                 break;
         }
 
-        if (sourceType === Model.Enum.TransKawomTT) {
+        if (sourceType == Model.Enum.TransKawomTT) {
             self._sapAtah = window.cam.service.Utility.InitSapAtah();
         }
     };
 
     self.ToKeyCodeByWord = function(word, sourceType) {
-        try {
+        // try {
             var ret = [];
             var kanaingAtFirst = new Stack();
             var kanaingAtLast = new Stack();
@@ -170,7 +171,7 @@ window.cam.service.TransToCamPaxalih = function() {
                 var roundCount = 0;
                 wordStr = [wordStr];
                 while (wordStr[0]) {
-                    if (roundCount === Model.Constant.MAX_ROUND) {
+                    if (roundCount == Model.Constant.MAX_ROUND) {
                         break;
                     }
 
@@ -190,6 +191,7 @@ window.cam.service.TransToCamPaxalih = function() {
                     }
                 }
 
+                console.log('wordAkhar', wordAkhar);
                 wordAkhar.forEach(function(item){
                     ret.push(item);
                 });
@@ -197,16 +199,16 @@ window.cam.service.TransToCamPaxalih = function() {
             });
 
             //add balau on the last char
-            if (ret.length !== 0 && addLastCharProcess) {
+            if (ret.length != 0 && addLastCharProcess) {
                 var indexLastChar = base.GetIndexLastChar(ret);
                 var lastAkhar = ret[indexLastChar];
                 if ((base.IsAkharDiip(lastAkhar) || base.IsTakaiLikuk(lastAkhar)) &&
-                    ret.indexOf(Model.AKhar.DarDua) === -1 &&
-                    !(lastAkhar === Model.AKhar.TakaiThek && indexLastChar > 0 && ret[indexLastChar - 1] === Model.AKhar.TakaiKuk)) {
+                    ret.indexOf(Model.AKhar.DarDua) == -1 &&
+                    !(lastAkhar == Model.AKhar.TakaiThek && indexLastChar > 0 && ret[indexLastChar - 1] == Model.AKhar.TakaiKuk)) {
                     ret.splice(indexLastChar + 1, 0, Model.AKhar.Balau);
                 }
 
-                if (ret.length !== 0 && base._takaiDaokLikuk[ret[0]]) {
+                if (ret.length != 0 && base._takaiDaokLikuk[ret[0]]) {
                     ret.splice(0, 0, Model.AKhar.Ak);
                 }
             }
@@ -216,10 +218,10 @@ window.cam.service.TransToCamPaxalih = function() {
             window.cam.service.Utility.PopStackToList(ret, kanaingAtLast, false);
 
             return ret;
-        } catch (err) {
-            console.log('ToKeyCodeByWord', err);
-            return [];
-        }
+        // } catch (err) {
+        //     console.log('ToKeyCodeByWord', err);
+        //     return [];
+        // }
     };
 
     self.CutKanaingAtFirst = function(value) {
@@ -227,7 +229,7 @@ window.cam.service.TransToCamPaxalih = function() {
         var ret = new Stack();
         var roundCount = 0;
         while (value) {
-            if (roundCount === Model.Constant.MAX_ROUND) {
+            if (roundCount == Model.Constant.MAX_ROUND) {
                 break;
             }
 
@@ -251,7 +253,7 @@ window.cam.service.TransToCamPaxalih = function() {
         var ret = new Stack();
         var roundCount = 0;
         while (value) {
-            if (roundCount === Model.Constant.MAX_ROUND) {
+            if (roundCount == Model.Constant.MAX_ROUND) {
                 break;
             }
 
@@ -272,9 +274,10 @@ window.cam.service.TransToCamPaxalih = function() {
 
     self.ToKeycodeFromCamEFEO = function(word, ret, retForCode) {
         var akharList = self.ToKeyCodeByChar(word, retForCode);
+        console.log('akharList', akharList);
         for (var i = 0; i < akharList.length; i++) {
             var akhar = akharList[i];
-            if (akhar === Model.AKhar.Ak && !base.HuLanglikuk(retForCode) && ret.length !== 0) {
+            if (akhar == Model.AKhar.Ak && !base.HuLanglikuk(retForCode) && ret.length != 0) {
                 retForCode.push(akhar);
                 continue;
             }
@@ -289,12 +292,12 @@ window.cam.service.TransToCamPaxalih = function() {
             if (word[0]) {
                 //Convert akhar diip to takai akhar
                 if (base._diipToTaKai[akhar] && !base._diipToMaTai[nextAkhar] &&
-                    !base.HuLanglikuk(retForCode) && ret.length !== 0 &&
+                    !base.HuLanglikuk(retForCode) && ret.length != 0 &&
                     !base.Check_AkharMatai(ret[ret.length - 1])) {
 
-                    if (!((akhar === Model.AKhar.Rak && ret.length !== 0 &&
+                    if (!((akhar == Model.AKhar.Rak && ret.length != 0 &&
                                 base.IsVowels(ret[ret.length - 1])) ||
-                            ((akhar === Model.AKhar.Ik || akhar === Model.AKhar.Uk) &&
+                            ((akhar == Model.AKhar.Ik || akhar == Model.AKhar.Uk) &&
                                 base.IsConsonant(nextAkhar) && !base._diipToMaTai[nextAkhar]))) {
 
                         akhar = base._diipToTaKai[akhar];
@@ -302,10 +305,10 @@ window.cam.service.TransToCamPaxalih = function() {
                 }
 
                 //"u","o"
-                if ((akhar === Model.AKhar.Ok || akhar === Model.AKhar.Uk) &&
-                    !base.HuLanglikuk(retForCode) && ret.length !== 0) {
+                if ((akhar == Model.AKhar.Ok || akhar == Model.AKhar.Uk) &&
+                    !base.HuLanglikuk(retForCode) && ret.length != 0) {
 
-                    if (akhar === Model.AKhar.Ok) {
+                    if (akhar == Model.AKhar.Ok) {
                         akhar = Model.AKhar.DarSa;
                     } else {
                         akhar = Model.AKhar.TakaiKuk;
@@ -313,25 +316,25 @@ window.cam.service.TransToCamPaxalih = function() {
                 }
 
                 //Convert akhar diip to sap paoh
-                if ((base._diipToMaTai[nextAkhar] && !base.HuLanglikuk(retForCode) && ret.length !== 0) ||
+                if ((base._diipToMaTai[nextAkhar] && !base.HuLanglikuk(retForCode) && ret.length != 0) ||
                     (base.IsConsonant(nextAkhar) && !base._diipToMaTai[nextAkhar])) {
-                    if (akhar === Model.AKhar.Ik) {
+                    if (akhar == Model.AKhar.Ik) {
                         akhar = Model.AKhar.TakaiKik;
-                    } else if (akhar === Model.AKhar.É) {
+                    } else if (akhar == Model.AKhar.É) {
                         akhar = Model.AKhar.DarSa;
                         akharList.push(Model.AKhar.TakaiThek);
                     }
                 }
 
                 //TaikaiKlakTaikaiKuak & TaikaiKlakTaikaiKuk
-                if (akhar === Model.AKhar.TakaiKlakTakaiKuak) {
+                if (akhar == Model.AKhar.TakaiKlakTakaiKuak) {
                     if (!base.IsSapPaoh(nextAkhar)) {
                         akhar = Model.AKhar.TakaiKlakTakaiKuk;
                     }
                 }
 
                 //Mâk, Nâk, Nyâk, Ngâk
-                if (base._consonantKareiCrih[akhar] && nextAkhar === Model.AKhar.Ak) {
+                if (base._consonantKareiCrih[akhar] && nextAkhar == Model.AKhar.Ak) {
                     akhar = base._consonantKareiCrih[akhar];
                 }
             }
@@ -339,29 +342,29 @@ window.cam.service.TransToCamPaxalih = function() {
             //Sap paoh deng anak akhar
             var index = ret.length;
             var indexForCode = retForCode.length;
-            if (akhar === Model.AKhar.DarSa || akhar === Model.AKhar.DarDua ||
-                akhar === Model.AKhar.TakaiKrak) {
+            if (akhar == Model.AKhar.DarSa || akhar == Model.AKhar.DarDua ||
+                akhar == Model.AKhar.TakaiKrak) {
                 index = base.GetIndexAkharDiip(ret);
 
                 //fix have taikai Krak
-                if (index > 0 && ret[index - 1] === Model.AKhar.TakaiKrak) {
+                if (index > 0 && ret[index - 1] == Model.AKhar.TakaiKrak) {
                     index--;
                 }
 
                 indexForCode = base.GetIndexAkharDiip(retForCode);
 
                 //fix have taikai Krak
-                if (indexForCode > 0 && retForCode[indexForCode - 1] === Model.AKhar.TakaiKrak) {
+                if (indexForCode > 0 && retForCode[indexForCode - 1] == Model.AKhar.TakaiKrak) {
                     indexForCode--;
                 }
             }
 
             //end the word
-            if ((!word[0] || base._kanaingChars[word[0].substring(0, 1)]) && ret.length !== 0) {
+            if ((!word[0] || base._kanaingChars[word[0].substring(0, 1)]) && ret.length != 0) {
                 //Convert akhar diip to akhar matai
                 if (base._diipToMaTai[akhar]) {
                     akhar = base._diipToMaTai[akhar];
-                    if (akhar === Model.AKhar.NgâkMatai) {
+                    if (akhar == Model.AKhar.NgâkMatai) {
                         if (!base._sappaohAngaok[ret[ret.length - 1]]) {
                             akhar = Model.AKhar.PaohNgâk;
                         }
@@ -370,7 +373,7 @@ window.cam.service.TransToCamPaxalih = function() {
                         if (indexAkharDiip - 1 >= 0) {
 
                             var akharDengAnak = ret[indexAkharDiip - 1];
-                            if (akharDengAnak === Model.AKhar.DarSa || akharDengAnak === Model.AKhar.DarDua) {
+                            if (akharDengAnak == Model.AKhar.DarSa || akharDengAnak == Model.AKhar.DarDua) {
                                 akhar = Model.AKhar.NgâkMatai;
                             }
                         }
@@ -378,38 +381,38 @@ window.cam.service.TransToCamPaxalih = function() {
                 }
 
                 //"i"
-                if (akhar === Model.AKhar.Ik) {
+                if (akhar == Model.AKhar.Ik) {
                     akhar = Model.AKhar.TakaiKikTutTakaiMâkDalem;
                 }
 
                 //"é"
-                if (akhar === Model.AKhar.É) {
+                if (akhar == Model.AKhar.É) {
                     akharList.push(Model.AKhar.DarSa);
                     akharList.push(Model.AKhar.BalauTapong);
                     continue;
                 }
 
                 //"o"
-                if (akhar === Model.AKhar.Ok) {
+                if (akhar == Model.AKhar.Ok) {
                     akharList.push(Model.AKhar.DarSa);
                     continue;
                 }
 
                 //"u"
-                if (akhar === Model.AKhar.Uk) {
+                if (akhar == Model.AKhar.Uk) {
                     akharList.push(Model.AKhar.TakaiKuk);
                     continue;
                 }
 
                 //"e"
-                if (akhar === Model.AKhar.TakaiThek && !(akharList.length > 1 && akharList[akharList.length - 2] === Model.AKhar.TakaiKuk)) {
+                if (akhar == Model.AKhar.TakaiThek && !(akharList.length > 1 && akharList[akharList.length - 2] == Model.AKhar.TakaiKuk)) {
                     akharList.push(Model.AKhar.BalauTapong);
                     continue;
                 }
             }
 
             //Remove takai kâkk when have consonant KareiCrih
-            if (akhar === Model.AKhar.TakaiKâk && ret.length !== 0 && base._consonantKareiCrih[ret[base.GetIndexAkharDiip(ret)]]) {
+            if (akhar == Model.AKhar.TakaiKâk && ret.length != 0 && base._consonantKareiCrih[ret[base.GetIndexAkharDiip(ret)]]) {
                 retForCode.splice(indexForCode, 0, akhar);
                 continue;
             }
@@ -428,12 +431,12 @@ window.cam.service.TransToCamPaxalih = function() {
 
             //fix "IM" is takai kik & akhar nâk | fix "LU" Is Akhar Lak
             //fix "AI" Is Akhar Ak
-            if ((character === self._trans_I && value[0].length > 2) ||
-                (character === self._trans_LU && retForCode && (retForCode.length === 0 || base.HuLanglikuk(retForCode))) ||
-                (character === self._trans_LW && retForCode && (retForCode.length === 0 || base.HuLanglikuk(retForCode))) ||
-                (character === self._trans_AI && retForCode && (retForCode.length === 0 || base.HuLanglikuk(retForCode))) ||
-                (character === self._trans_AO && retForCode && (retForCode.length === 0 || base.HuLanglikuk(retForCode))) ||
-                (character === self._trans_AU && retForCode && (retForCode.length === 0 || base.HuLanglikuk(retForCode)))) {
+            if ((character == self._trans_I && value[0].length > 2) ||
+                (character == self._trans_LU && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
+                (character == self._trans_LW && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
+                (character == self._trans_AI && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
+                (character == self._trans_AO && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
+                (character == self._trans_AU && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode)))) {
                 character = character.substring(0, character.length - 1);
                 continue;
             }
@@ -446,14 +449,15 @@ window.cam.service.TransToCamPaxalih = function() {
             character = character.substring(0, character.length - 1);
         }
 
-        value[0] = value[0].substring(character.length);
+        var cuttingIndex = character.length? character.length: 1;
+        value[0] = value[0].substring(cuttingIndex);
         return ret;
     };
 
     self.GetNextChar = function(word) {
         var ret = Model.AKhar.Square;
-        var nextAkharList = self.ToKeyCodeByChar(word);
-        if (nextAkharList.length !== 0) {
+        var nextAkharList = self.ToKeyCodeByChar(word.slice());
+        if (nextAkharList.length != 0) {
             ret = nextAkharList[0];
         }
 

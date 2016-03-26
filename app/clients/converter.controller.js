@@ -38,6 +38,7 @@ angular.module('app')
           self.change = function(){
               $timeout(function(){
                   var xalih = new window.cam.service.TransToCamPaxalih();
+                  //self.sourceText
                   self.destinationText = xalih.DoConvert(self.sourceText, Model.Enum.TransCamEFEO, Model.Enum.FontYapata);
               },0);
           };
