@@ -39,7 +39,7 @@ angular.module('app')
               $timeout(function(){
                   var xalih = new window.cam.service.TransToCamPaxalih();
                   //self.sourceText
-                  self.destinationText = xalih.DoConvert(self.sourceText, Model.Enum.TransCamEFEO, Model.Enum.FontYapata);
+                  self.destinationText = xalih.DoConvert(self.sourceText, Model.Enum.TransInrasara, Model.Enum.FontYapata);
               },0);
           };
     }]);
