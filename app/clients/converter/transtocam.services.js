@@ -576,8 +576,8 @@ window.cam.service.TransToCamPaxalih = function() {
             var akhar = akharList[i];
 
             //Sap Atah Process
-            if (retForCode.length != 0 && base._sapAtah[akhar] && akhar == preChar[0]) {
-                var akharAtah = base._sapAtah[akhar];
+            if (retForCode.length != 0 && self._sapAtah[akhar] && akhar == preChar[0]) {
+                var akharAtah = self._sapAtah[akhar];
                 if (akharAtah == Model.AKhar.BalauTapong) {
                     ret.splice(ret.length - 1, 1);
                     retForCode.splice(retForCode.length - 1, 1);
