@@ -31,6 +31,7 @@ window.cam.service.TransToCamPaxalih = function() {
 
         //Trig newline character
         data = data.replace(/(?:\r\n|\r|\n)/g, ' \n ');
+        console.log('data', data);
         // data = data.replace(Model.Constant.NEW_LINE, ' ' + Model.Constant.NEW_LINE + ' ');
 
         //Plit to words array
@@ -102,6 +103,8 @@ window.cam.service.TransToCamPaxalih = function() {
 
         // //Trig newline character
         // result = result.Replace(' ' + Model.Constant.NEW_LINE + ' ', Model.Constant.NEW_LINE);
+        result = result.replace(/(\n)/g, ' \r\n ');
+        console.log('result', result);
 
         return result;
     };

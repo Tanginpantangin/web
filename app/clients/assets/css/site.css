@@ -11,6 +11,10 @@
 .akt1 {
   font-family: 'akhar_thrah_1';
   font-size: 28px;
+  line-height: 30px;
+}
+.akt1 br {
+  margin-bottom: 24px;
 }
 * {
   margin: 0;
