@@ -55,43 +55,43 @@ window.cam.service.TransToCamPaxalih = function() {
                         convertedWord += base._keyCodeToWaYapata[akhar].toString();
                         break;
 
-                        // case Model.Enum.FontKTT:
-                        //     convertedWord += base._keyCodeToKTT[akhar].toString();
-                        //     break;
-                        //
-                        // case Model.Enum.FontGilaiPraong:
-                        //     if (akhar == Model.AKhar.GakMatai) {
-                        //         convertedWord += base._keyCodeToGilaiPraong[Model.AKhar.KakMatai].toString();
-                        //     } else {
-                        //         convertedWord += base._keyCodeToGilaiPraong[akhar].toString();
-                        //     }
-                        //     break;
-                        //
-                        // case Model.Enum.FontCamEFEO:
-                        //     if (akhar == Model.AKhar.TakaiKlakTakaiKuak) {
-                        //         convertedWord += base._keyCodeToCamEFEO[Model.AKhar.TakaiKlak].toString();
-                        //         convertedWord += base._keyCodeToCamEFEO[Model.AKhar.TakaiKuak].toString();
-                        //     } else if (akhar == Model.AKhar.TakaiKlakTakaiKuk) {
-                        //         convertedWord += base._keyCodeToCamEFEO[Model.AKhar.TakaiKlak].toString();
-                        //         convertedWord += base._keyCodeToCamEFEO[Model.AKhar.TakaiKuk].toString();
-                        //     } else if (akhar == Model.AKhar.GakMatai) {
-                        //         convertedWord += base._keyCodeToCamEFEO[Model.AKhar.KakMatai].toString();
-                        //     } else {
-                        //         convertedWord += base._keyCodeToCamEFEO[akhar].toString();
-                        //     }
-                        //     break;
-                        //
-                        // default:
-                        //     if (akhar == Model.AKhar.TakaiKlakTakaiKuak) {
-                        //         convertedWord += base._keyCodeToUniCamKur[Model.AKhar.TakaiKlak].toString();
-                        //         convertedWord += base._keyCodeToUniCamKur[Model.AKhar.TakaiKuak].toString();
-                        //     } else if (akhar == Model.AKhar.TakaiKlakTakaiKuk) {
-                        //         convertedWord += base._keyCodeToUniCamKur[Model.AKhar.TakaiKlak].toString();
-                        //         convertedWord += base._keyCodeToUniCamKur[Model.AKhar.TakaiKuk].toString();
-                        //     } else {
-                        //         convertedWord += base._keyCodeToUniCamKur[akhar].toString();
-                        //     }
-                        //     break;
+                        case Model.Enum.FontKTT:
+                            convertedWord += base._keyCodeToKTT[akhar].toString();
+                            break;
+
+                        case Model.Enum.FontGilaiPraong:
+                            if (akhar == Model.AKhar.GakMatai) {
+                                convertedWord += base._keyCodeToGilaiPraong[Model.AKhar.KakMatai].toString();
+                            } else {
+                                convertedWord += base._keyCodeToGilaiPraong[akhar].toString();
+                            }
+                            break;
+
+                        case Model.Enum.FontCamEFEO:
+                            if (akhar == Model.AKhar.TakaiKlakTakaiKuak) {
+                                convertedWord += base._keyCodeToCamEFEO[Model.AKhar.TakaiKlak].toString();
+                                convertedWord += base._keyCodeToCamEFEO[Model.AKhar.TakaiKuak].toString();
+                            } else if (akhar == Model.AKhar.TakaiKlakTakaiKuk) {
+                                convertedWord += base._keyCodeToCamEFEO[Model.AKhar.TakaiKlak].toString();
+                                convertedWord += base._keyCodeToCamEFEO[Model.AKhar.TakaiKuk].toString();
+                            } else if (akhar == Model.AKhar.GakMatai) {
+                                convertedWord += base._keyCodeToCamEFEO[Model.AKhar.KakMatai].toString();
+                            } else {
+                                convertedWord += base._keyCodeToCamEFEO[akhar].toString();
+                            }
+                            break;
+
+                        default:
+                            if (akhar == Model.AKhar.TakaiKlakTakaiKuak) {
+                                convertedWord += base._keyCodeToUniCamKur[Model.AKhar.TakaiKlak].toString();
+                                convertedWord += base._keyCodeToUniCamKur[Model.AKhar.TakaiKuak].toString();
+                            } else if (akhar == Model.AKhar.TakaiKlakTakaiKuk) {
+                                convertedWord += base._keyCodeToUniCamKur[Model.AKhar.TakaiKlak].toString();
+                                convertedWord += base._keyCodeToUniCamKur[Model.AKhar.TakaiKuk].toString();
+                            } else {
+                                convertedWord += base._keyCodeToUniCamKur[akhar].toString();
+                            }
+                            break;
                 }
             }
 
@@ -239,7 +239,9 @@ window.cam.service.TransToCamPaxalih = function() {
             }
 
             var listKanaing = self._transToKeycode[achar];
-            ret.push(listKanaing[0]);
+            if(listKanaing){
+                ret.push(listKanaing[0]);
+            }
 
             value[0] = value[0].substr(1);
             roundCount++;
@@ -263,7 +265,9 @@ window.cam.service.TransToCamPaxalih = function() {
             }
 
             var listKanaing = self._transToKeycode[achar];
-            ret.push(listKanaing[0]);
+            if(listKanaing){
+                ret.push(listKanaing[0]);
+            }
 
             value[0] = value[0].substr(0, value[0].length - 1);
             roundCount++;

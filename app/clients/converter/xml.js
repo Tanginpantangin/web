@@ -293,7 +293,7 @@ window.XML.KeyToFont = [{
     'WaQuyet': 'i',
     'GilaiPraong': 'I',
     'CamEFEO': 'i',
-    'KawomTuekTuah': '\'',
+    'KawomTuekTuah': '"',
     'UniCamKur': 'ꨁ'
 }, {
     '-id': '38',
@@ -602,8 +602,8 @@ window.XML.KeyToFont = [{
 }, {
     '-id': '76',
     'KeyCode': '75',
-    'WaQuyet': '\'',
-    'GilaiPraong': '\'',
+    'WaQuyet': '"',
+    'GilaiPraong': '"',
     'CamEFEO': '#',
     'KawomTuekTuah': 'F',
     'UniCamKur': ''
