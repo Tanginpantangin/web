@@ -23,6 +23,11 @@ window.cam.service.TransToCamPaxalih = function() {
     self._sapAtah = {};
 
     self.DoConvert = function(data, sourceType, destitionType) {
+        // Validate inputed string
+        var validString = [data];
+        base.ValidateInput(validString, sourceType);
+        data = validString[0];
+
         //Init Rumi To Cam data
         self.InitTransToCamData(sourceType, destitionType);
 
@@ -31,7 +36,7 @@ window.cam.service.TransToCamPaxalih = function() {
 
         //Trig newline character
         data = data.replace(/(?:\r\n|\r|\n)/g, ' \n ');
-        console.log('data', data);
+        // console.log('data', data);
         // data = data.replace(Model.Constant.NEW_LINE, ' ' + Model.Constant.NEW_LINE + ' ');
 
         //Plit to words array
@@ -46,7 +51,7 @@ window.cam.service.TransToCamPaxalih = function() {
             }
 
             var lstAkhar = self.ToKeyCodeByWord(word.toUpperCase(), sourceType);
-            console.log('lstAkhar', lstAkhar);
+            // console.log('lstAkhar', lstAkhar);
             var convertedWord = '';
 
             for (var i = 0; i < lstAkhar.length; i++) {
@@ -104,7 +109,7 @@ window.cam.service.TransToCamPaxalih = function() {
         // //Trig newline character
         // result = result.Replace(' ' + Model.Constant.NEW_LINE + ' ', Model.Constant.NEW_LINE);
         result = result.replace(/(\n)/g, ' \r\n ');
-        console.log('result', result);
+        // console.log('result', result);
 
         return result;
     };
@@ -137,94 +142,94 @@ window.cam.service.TransToCamPaxalih = function() {
     };
 
     self.ToKeyCodeByWord = function(word, sourceType) {
-        // try {
-        var ret = [];
-        var kanaingAtFirst = new Stack();
-        var kanaingAtLast = new Stack();
+        try {
+            var ret = [];
+            var kanaingAtFirst = new Stack();
+            var kanaingAtLast = new Stack();
 
-        var addLastCharProcess = true;
-        var wordArr = word.split(self._DASH);
-        wordArr.forEach(function(item) {
-            var wordAkhar = [];
-            var wordStr = item;
-            wordStr = [wordStr];
+            var addLastCharProcess = true;
+            var wordArr = word.split(self._DASH);
+            wordArr.forEach(function(item) {
+                var wordAkhar = [];
+                var wordStr = item;
+                wordStr = [wordStr];
 
-            //Cut kanaing at first and last word
-            kanaingAtFirst = self.CutKanaingAtFirst(wordStr);
-            kanaingAtLast = self.CutKanaingAtLast(wordStr);
+                //Cut kanaing at first and last word
+                kanaingAtFirst = self.CutKanaingAtFirst(wordStr);
+                kanaingAtLast = self.CutKanaingAtLast(wordStr);
 
-            //Specail word
-            if (base._kareiCrih[wordStr[0]]) {
-                wordAkhar = window.cam.service.Utility.CopyListAkhar(base._kareiCrih[wordStr[0]]);
+                //Specail word
+                if (base._kareiCrih[wordStr[0]]) {
+                    wordAkhar = window.cam.service.Utility.CopyListAkhar(base._kareiCrih[wordStr[0]]);
 
-                // add kanaing at first and last word
-                window.cam.service.Utility.PopStackToList(wordAkhar, kanaingAtFirst, true);
-                window.cam.service.Utility.PopStackToList(wordAkhar, kanaingAtLast, false);
+                    // add kanaing at first and last word
+                    window.cam.service.Utility.PopStackToList(wordAkhar, kanaingAtFirst, true);
+                    window.cam.service.Utility.PopStackToList(wordAkhar, kanaingAtLast, false);
 
+                    wordAkhar.forEach(function(item) {
+                        ret.push(item);
+                    });
+                    addLastCharProcess = false;
+                    return;
+                }
+
+                addLastCharProcess = true;
+                var retForCode = [];
+                var prevChar = [Model.AKhar.Square];
+
+                var roundCount = 0;
+                while (wordStr[0]) {
+                    if (roundCount == Model.Constant.MAX_ROUND) {
+                        break;
+                    }
+
+                    //convert to keycode
+                    switch (sourceType) {
+                        case Model.Enum.TransCamEFEO:
+                            self.ToKeycodeFromCamEFEO(wordStr, wordAkhar, retForCode);
+                            break;
+
+                        case Model.Enum.TransInrasara:
+                            self.ToKeycodeFromInrasara(wordStr, wordAkhar, retForCode);
+                            break;
+
+                        default:
+                            self.ToKeycodeFromKTT(wordStr, wordAkhar, retForCode, prevChar);
+                            break;
+                    }
+                }
+
+                // console.log('wordAkhar', wordAkhar);
                 wordAkhar.forEach(function(item) {
                     ret.push(item);
                 });
-                addLastCharProcess = false;
-                return;
-            }
-
-            addLastCharProcess = true;
-            var retForCode = [];
-            var prevChar = [Model.AKhar.Square];
-
-            var roundCount = 0;
-            while (wordStr[0]) {
-                if (roundCount == Model.Constant.MAX_ROUND) {
-                    break;
-                }
-
-                //convert to keycode
-                switch (sourceType) {
-                    case Model.Enum.TransCamEFEO:
-                        self.ToKeycodeFromCamEFEO(wordStr, wordAkhar, retForCode);
-                        break;
-
-                    case Model.Enum.TransInrasara:
-                        self.ToKeycodeFromInrasara(wordStr, wordAkhar, retForCode);
-                        break;
-
-                    default:
-                        self.ToKeycodeFromKTT(wordStr, wordAkhar, retForCode, prevChar);
-                        break;
-                }
-            }
-
-            console.log('wordAkhar', wordAkhar);
-            wordAkhar.forEach(function(item) {
-                ret.push(item);
+                roundCount++;
             });
-            roundCount++;
-        });
 
-        //add balau on the last char
-        if (ret.length != 0 && addLastCharProcess) {
-            var indexLastChar = base.GetIndexLastChar(ret);
-            var lastAkhar = ret[indexLastChar];
-            if ((base.IsAkharDiip(lastAkhar) || base.IsTakaiLikuk(lastAkhar)) &&
-                ret.indexOf(Model.AKhar.DarDua.toString()) == -1 &&
-                !(lastAkhar == Model.AKhar.TakaiThek && indexLastChar > 0 && ret[indexLastChar - 1] == Model.AKhar.TakaiKuk)) {
-                ret.splice(indexLastChar + 1, 0, Model.AKhar.Balau);
+            //add balau on the last char
+            if (ret.length != 0 && addLastCharProcess) {
+                var indexLastChar = base.GetIndexLastChar(ret);
+                var lastAkhar = ret[indexLastChar];
+                if ((base.IsAkharDiip(lastAkhar) || base.IsTakaiLikuk(lastAkhar)) &&
+                    ret.indexOf(Model.AKhar.DarDua.toString()) == -1 &&
+                    !(lastAkhar == Model.AKhar.TakaiThek && indexLastChar > 0 && ret[indexLastChar - 1] == Model.AKhar.TakaiKuk)) {
+                    ret.splice(indexLastChar + 1, 0, Model.AKhar.Balau);
+                }
+
+                if (ret.length != 0 && base._takaiDaokLikuk[ret[0]]) {
+                    ret.splice(0, 0, Model.AKhar.Ak);
+                }
             }
 
-            if (ret.length != 0 && base._takaiDaokLikuk[ret[0]]) {
-                ret.splice(0, 0, Model.AKhar.Ak);
-            }
+            // add kanaing at first and last word
+            window.cam.service.Utility.PopStackToList(ret, kanaingAtFirst, true);
+            window.cam.service.Utility.PopStackToList(ret, kanaingAtLast, false);
+
+            return ret;
+        } catch (err) {
+            console.log('ToKeyCodeByWord', err);
+            return [];
         }
-
-        // add kanaing at first and last word
-        window.cam.service.Utility.PopStackToList(ret, kanaingAtFirst, true);
-        window.cam.service.Utility.PopStackToList(ret, kanaingAtLast, false);
-
-        return ret;
-        // } catch (err) {
-        //     console.log('ToKeyCodeByWord', err);
-        //     return [];
-        // }
     };
 
     self.CutKanaingAtFirst = function(value) {
@@ -281,7 +286,7 @@ window.cam.service.TransToCamPaxalih = function() {
 
     self.ToKeycodeFromCamEFEO = function(word, ret, retForCode) {
         var akharList = self.ToKeyCodeByChar(word, retForCode);
-        console.log('akharList', akharList);
+        // console.log('akharList', akharList);
         for (var i = 0; i < akharList.length; i++) {
             var akhar = akharList[i];
             if (akhar == Model.AKhar.Ak && !base.HuLanglikuk(retForCode) && ret.length != 0) {
@@ -674,105 +679,105 @@ window.cam.service.TransToCamPaxalih = function() {
 
             //end the word
             if ((!word[0] || base._kanaingChars[word[0].substr(0, 1)]) && ret.length != 0) {
-            //Convert akhar diip to akhar matai
-            if (base._diipToMaTai[akhar]) {
-                akhar = base._diipToMaTai[akhar];
-                if (akhar == Model.AKhar.NgâkMatai) {
-                    if (!base._sappaohAngaok[ret[ret.length - 1]]) {
-                        akhar = Model.AKhar.PaohNgâk;
-                    }
+                //Convert akhar diip to akhar matai
+                if (base._diipToMaTai[akhar]) {
+                    akhar = base._diipToMaTai[akhar];
+                    if (akhar == Model.AKhar.NgâkMatai) {
+                        if (!base._sappaohAngaok[ret[ret.length - 1]]) {
+                            akhar = Model.AKhar.PaohNgâk;
+                        }
 
-                    var indexAkharDiip = base.GetIndexAkharDiip(ret);
-                    if (indexAkharDiip - 1 >= 0) {
-                        var akharDengAnak = ret[indexAkharDiip - 1];
-                        if (akharDengAnak == Model.AKhar.DarSa || akharDengAnak == Model.AKhar.DarDua) {
-                            akhar = Model.AKhar.NgâkMatai;
+                        var indexAkharDiip = base.GetIndexAkharDiip(ret);
+                        if (indexAkharDiip - 1 >= 0) {
+                            var akharDengAnak = ret[indexAkharDiip - 1];
+                            if (akharDengAnak == Model.AKhar.DarSa || akharDengAnak == Model.AKhar.DarDua) {
+                                akhar = Model.AKhar.NgâkMatai;
+                            }
                         }
                     }
                 }
+
+                //"i"
+                if (akhar == Model.AKhar.Ik) {
+                    akhar = Model.AKhar.TakaiKikTutTakaiMâkDalem;
+                }
+
+                //"é"
+                if (akhar == Model.AKhar.É) {
+                    akharList.push(Model.AKhar.DarSa);
+                    akharList.push(Model.AKhar.BalauTapong);
+                    continue;
+                }
+
+                //"o"
+                if (akhar == Model.AKhar.Ok) {
+                    akharList.push(Model.AKhar.DarSa);
+                    continue;
+                }
+
+                //"u"
+                if (akhar == Model.AKhar.Uk) {
+                    akharList.push(Model.AKhar.TakaiKuk);
+                    continue;
+                }
+
+                //"e"
+                if (akhar == Model.AKhar.TakaiThek && !(akharList.length > 1 && akharList[akharList.length - 2] == Model.AKhar.TakaiKuk)) {
+                    akharList.push(Model.AKhar.BalauTapong);
+                    continue;
+                }
             }
 
-            //"i"
-            if (akhar == Model.AKhar.Ik) {
-                akhar = Model.AKhar.TakaiKikTutTakaiMâkDalem;
-            }
-
-            //"é"
-            if (akhar == Model.AKhar.É) {
-                akharList.push(Model.AKhar.DarSa);
-                akharList.push(Model.AKhar.BalauTapong);
+            //Remove takai kâkk when have consonant KareiCrih
+            if (akhar == Model.AKhar.TakaiKâk && ret.length != 0 && base._consonantKareiCrih[ret[base.GetIndexAkharDiip(ret)]]) {
+                retForCode.splice(indexForCode, 0, akhar);
                 continue;
             }
 
-            //"o"
-            if (akhar == Model.AKhar.Ok) {
-                akharList.push(Model.AKhar.DarSa);
-                continue;
-            }
-
-            //"u"
-            if (akhar == Model.AKhar.Uk) {
-                akharList.push(Model.AKhar.TakaiKuk);
-                continue;
-            }
-
-            //"e"
-            if (akhar == Model.AKhar.TakaiThek && !(akharList.length > 1 && akharList[akharList.length - 2] == Model.AKhar.TakaiKuk)) {
-                akharList.push(Model.AKhar.BalauTapong);
-                continue;
-            }
-        }
-
-        //Remove takai kâkk when have consonant KareiCrih
-        if (akhar == Model.AKhar.TakaiKâk && ret.length != 0 && base._consonantKareiCrih[ret[base.GetIndexAkharDiip(ret)]]) {
+            ret.splice(index, 0, akhar);
             retForCode.splice(indexForCode, 0, akhar);
-            continue;
         }
-
-        ret.splice(index, 0, akhar);
-        retForCode.splice(indexForCode, 0, akhar);
     }
-}
 
-self.ToKeyCodeByChar = function(value, retForCode) {
+    self.ToKeyCodeByChar = function(value, retForCode) {
 
-    var ret = [];
-    var character = value[0];
+        var ret = [];
+        var character = value[0];
 
-    for (var i = character.length; i > 0; i--) {
+        for (var i = character.length; i > 0; i--) {
 
-        //fix "IM" is takai kik & akhar nâk | fix "LU" Is Akhar Lak
-        //fix "AI" Is Akhar Ak
-        if ((character == self._trans_I && value[0].length > 2) ||
-            (character == self._trans_LU && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
-            (character == self._trans_LW && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
-            (character == self._trans_AI && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
-            (character == self._trans_AO && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
-            (character == self._trans_AU && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode)))) {
+            //fix "IM" is takai kik & akhar nâk | fix "LU" Is Akhar Lak
+            //fix "AI" Is Akhar Ak
+            if ((character == self._trans_I && value[0].length > 2) ||
+                (character == self._trans_LU && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
+                (character == self._trans_LW && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
+                (character == self._trans_AI && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
+                (character == self._trans_AO && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
+                (character == self._trans_AU && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode)))) {
+                character = character.substr(0, character.length - 1);
+                continue;
+            }
+
+            if (self._transToKeycode[character]) {
+                ret = window.cam.service.Utility.CopyListAkhar(self._transToKeycode[character]);
+                break;
+            }
+
             character = character.substr(0, character.length - 1);
-            continue;
         }
 
-        if (self._transToKeycode[character]) {
-            ret = window.cam.service.Utility.CopyListAkhar(self._transToKeycode[character]);
-            break;
+        var cuttingIndex = character.length ? character.length : 1;
+        value[0] = value[0].substr(cuttingIndex);
+        return ret;
+    };
+
+    self.GetNextChar = function(word) {
+        var ret = Model.AKhar.Square;
+        var nextAkharList = self.ToKeyCodeByChar(word.slice());
+        if (nextAkharList.length != 0) {
+            ret = nextAkharList[0];
         }
 
-        character = character.substr(0, character.length - 1);
-    }
-
-    var cuttingIndex = character.length ? character.length : 1;
-    value[0] = value[0].substr(cuttingIndex);
-    return ret;
-};
-
-self.GetNextChar = function(word) {
-    var ret = Model.AKhar.Square;
-    var nextAkharList = self.ToKeyCodeByChar(word.slice());
-    if (nextAkharList.length != 0) {
-        ret = nextAkharList[0];
-    }
-
-    return ret;
-};
+        return ret;
+    };
 };

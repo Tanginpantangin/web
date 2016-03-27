@@ -42,7 +42,7 @@ angular.module('app')
                 //   TransCamEFEO: 6,
                 //   TransInrasara: 7,
                 //   TransKawomTT: 8
-                  self.destinationText = xalih.DoConvert(self.sourceText, Model.Enum.TransCamEFEO, Model.Enum.FontYapata);
+                  self.destinationText = xalih.DoConvert(self.sourceText, Model.Enum.TransKawomTT, Model.Enum.FontYapata);
               },0);
           };
     }]);

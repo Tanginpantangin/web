@@ -209,4 +209,98 @@ window.cam.service.Paxalih = function() {
 
         return ret;
     };
+
+    self.ValidateInput = function(dataArr, dataType) {
+        //Replace enter
+        dataArr[0] = dataArr[0].replace(/(?:\r\n|\r|\n)/g, ' ');
+
+        //Get hashtable
+        var dictionary = self.GetDictionaty(dataType);
+
+        //Split data
+        var words = dataArr[0].split(' ');
+        var wordReplaced = [];
+
+        //Check input by word
+        var ret = true;
+        words.forEach(function(word) {
+            var wordCheck = [word];
+            // is newline character
+            if (word == Model.Constant.NEW_LINE || !word) {
+                wordReplaced.push(word);
+                return;
+            }
+            if (!self.ValidateWord(wordCheck, dataType, dictionary)) {
+                ret = false;
+            }
+            wordReplaced.push(wordCheck[0]);
+        });
+
+        dataArr[0] = wordReplaced.join(' ');
+        return ret;
+    };
+
+    self.GetDictionaty = function(dataType) {
+        var ret;
+        switch (dataType) {
+            case Model.Enum.FontYapata:
+                ret = self._waYapataToKeyCode;
+                break;
+
+            case Model.Enum.FontGilaiPraong:
+                ret = self._gilaiPraongToKeyCode;
+                break;
+
+            case Model.Enum.FontCamEFEO:
+                ret = self._camEFEOToKeyCode;
+                break;
+
+            case Model.Enum.FontKTT:
+                ret = self._KTTToKeyCode;
+                break;
+
+            case Model.Enum.FontUniCamKur:
+                ret = self._uniCamKurToKeyCode;
+                break;
+
+            case Model.Enum.FontUniCamVN:
+                ret = self._uniCamVNToKeyCode;
+                break;
+
+            case Model.Enum.TransCamEFEO:
+                ret = self._validRumiChar;
+                break;
+
+            case Model.Enum.TransInrasara:
+                ret = self._validInraChar;
+                break;
+
+            default:
+                ret = self._validKTTChar;
+                break;
+        }
+
+        return ret;
+    };
+
+    self.ValidateWord = function(wordArr, dataType, dictionary) {
+
+        if (dataType == Model.Enum.TransCamEFEO || dataType == Model.Enum.TransInrasara || dataType == Model.Enum.TransKawomTT) {
+            wordArr[0] = wordArr[0].toUpperCase();
+        }
+
+        var ret = true;
+        var wordReplaced = '';
+        for(var i = 0; i < wordArr[0].length; i++){
+            var c = wordArr[0][i];
+            if (dictionary[c] == undefined) {
+                ret = false;
+                continue;
+            }
+            wordReplaced += c;
+        }
+
+        wordArr[0] = wordReplaced;
+        return ret;
+    };
 };
