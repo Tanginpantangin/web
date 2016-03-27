@@ -212,7 +212,7 @@ window.cam.service.Paxalih = function() {
 
     self.ValidateInput = function(dataArr, dataType) {
         //Replace enter
-        dataArr[0] = dataArr[0].replace(/(?:\r\n|\r|\n)/g, ' ');
+        dataArr[0] = dataArr[0].replace(/(?:\r\n|\r|\n)/g, ' \n ');
 
         //Get hashtable
         var dictionary = self.GetDictionaty(dataType);

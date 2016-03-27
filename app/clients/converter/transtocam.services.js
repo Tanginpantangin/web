@@ -108,10 +108,9 @@ window.cam.service.TransToCamPaxalih = function() {
 
         // //Trig newline character
         // result = result.Replace(' ' + Model.Constant.NEW_LINE + ' ', Model.Constant.NEW_LINE);
-        result = result.replace(/(\n)/g, ' \r\n ');
-        // console.log('result', result);
+        // console.log('result', result.split('\n'));
 
-        return result;
+        return result.split('\n');
     };
 
     self.InitTransToCamData = function(sourceType) {
