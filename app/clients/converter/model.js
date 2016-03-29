@@ -207,10 +207,10 @@ window.Model = {
         UnicodeCamVN: 6
     },
     XMLRumiCol: {
-        KeyCode: 0,
-        Rumi: 1,
-        InraSara: 2,
-        KawomTT: 3
+        KeyCode: 'KeyCode',
+        Rumi: 'Rumi',
+        InraSara: 'InraSara',
+        KawomTT: 'KawomTuekTuah'
     },
     XMLTransToKeyCol: {
         KeyCode: 'KeyCode',

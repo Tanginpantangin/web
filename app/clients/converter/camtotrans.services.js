@@ -38,9 +38,9 @@ window.cam.service.CamToTransPaxalih = function() {
         words.forEach(function(word) {
             try {
                 // is newline character
-                if (word == Model.Constant.NEW_LINE || String.IsNullOrEmpty(word)) {
+                if (word == Model.Constant.NEW_LINE || !word) {
                     converted.push(word);
-                    continue;
+                    return;
                 }
 
                 var lstAkhar = [];
@@ -54,8 +54,8 @@ window.cam.service.CamToTransPaxalih = function() {
                 var kanaingAtLast = new Stack();
 
                 //Cut kanaing at first and last word
-                kanaingAtFirst = base.CutKanaingAtFirst(ref lstAkhar);
-                kanaingAtLast = base.CutKanaingAtLast(ref lstAkhar);
+                kanaingAtFirst = base.CutKanaingAtFirst(lstAkhar);
+                kanaingAtLast = base.CutKanaingAtLast(lstAkhar);
 
                 var ret = self.ToRumiByWord(lstAkhar, destinationType);
 
@@ -122,7 +122,7 @@ window.cam.service.CamToTransPaxalih = function() {
             Model.AKhar.TakaiThek
         ];
         if (word[0] == wordKareiCrih[0] && word[1] == wordKareiCrih[1] && word[2] == wordKareiCrih[2] && word[3] == wordKareiCrih[3]) {
-            return result = 'asau';
+            return 'asau';
         }
 
         if (count == 0) {
@@ -133,8 +133,6 @@ window.cam.service.CamToTransPaxalih = function() {
         var word1 = [];
         var word2 = [];
         for (var i = 0; i < count; i++) {
-
-            var item = word[i];
             if (base.Check_AkharMatai(word[i]) && i != word.length - 1 && i != 0) {
                 word1 = word.GetRange(0, i + 1);
                 word2 = word.GetRange(i + 1, word.length - (i + 1));
@@ -149,7 +147,6 @@ window.cam.service.CamToTransPaxalih = function() {
             for (var i = 0; i < count; i++) {
 
                 var item = word[i];
-
                 if (base.Check_Angka(item)) {
                     result += self._keyCodeToTrans[item];
                     continue;
@@ -163,14 +160,14 @@ window.cam.service.CamToTransPaxalih = function() {
                 //end angka
                 if ((base.Check_InaAkhar_PhuAm(item) || base.Check_InaAkhar_NguyenAm(item)) && !base.IsAkharWakMaTai(item, i, count)) {
 
-                    if (!String.IsNullOrEmpty(akhar_diip)) {
+                    if (akhar_diip) {
                         result += akhar_diip;
                     }
 
                     akhar_diip_model = item; //??
                     akhar_diip = self._keyCodeToTrans[item];
 
-                    if (!String.IsNullOrEmpty(takaiAkharAnak)) //Takai krak
+                    if (takaiAkharAnak) //Takai krak
                     {
                         if (self._keyCodeToTrans[akhar_diip_model].length > 2) //or > 2 ??
                         {
@@ -195,7 +192,7 @@ window.cam.service.CamToTransPaxalih = function() {
 
                     }
 
-                    if (!String.IsNullOrEmpty(takaiSappaohAnak)) {
+                    if (takaiSappaohAnak) {
                         //Akhar Ak
                         if (akhar_diip_model == Model.AKhar.Ak) {
                             akhar_diip = akhar_diip.substr(0, 1) + akhar_diip.substr(1).Replace('a', takaiSappaohAnak);
@@ -205,7 +202,6 @@ window.cam.service.CamToTransPaxalih = function() {
                             akhar_diip = akhar_diip.Replace(sap_Â, takaiSappaohAnak); //(â-ư)
                         }
                     }
-
                     continue;
                 }
 
@@ -217,12 +213,11 @@ window.cam.service.CamToTransPaxalih = function() {
                 if (base.Check_TakaiSapPaohLikuk(item) || base.Check_TakaiSapPaohDiLuic(item)) {
 
                     var takaiAkhar = self._keyCodeToTrans[item];
-                    if (!String.IsNullOrEmpty(akhar_diip)) {
-                        if (!String.IsNullOrEmpty(takaiSappaohAnak)) {
+                    if (akhar_diip) {
+                        if (takaiSappaohAnak) {
                             if (takaiSappaohAnak == sap_Ô) {
-
-                                var sappaohCombine = Convert.ToInt32(((int) Model.AKhar.DarSa).ToString() + ((int) item).ToString());
-                                sapPaoh_temp = self._keyCodeToTrans[sappaohCombine].ToString();
+                                var sappaohCombine = Model.AKhar.DarSa.toString() + item.toString();
+                                sapPaoh_temp = self._keyCodeToTrans[sappaohCombine].toString();
                             }
 
                             akhar_diip = akhar_diip.Replace(sap_Ô, sapPaoh_temp);
@@ -234,14 +229,13 @@ window.cam.service.CamToTransPaxalih = function() {
                             } else {
                                 //takai thek <+> takai kuk (ơu - au)
                                 if (item == Model.AKhar.TakaiKuk && addedTakaiThek) {
-                                    var sappaohCombine = Convert.ToInt32(((int) Model.AKhar.TakaiThek).ToString() + ((int) item).ToString());
-                                    sapPaoh_temp = self._keyCodeToTrans[sappaohCombine].ToString();
+                                    var sappaohCombine = Model.AKhar.TakaiThek.toString() + item.toString();
+                                    sapPaoh_temp = self._keyCodeToTrans[sappaohCombine].toString();
 
                                     akhar_diip = akhar_diip.Replace(sap_E, sapPaoh_temp);
                                 } else if (item == Model.AKhar.TakaiThek && addedTakaiKuk) {
-                                    var sappaohCombine = Convert.ToInt32(((int) Model.AKhar.TakaiThek).ToString() + ((int) Model.AKhar.TakaiKuk).ToString());
-                                    sapPaoh_temp = self._keyCodeToTrans[sappaohCombine].ToString();
-
+                                    var sappaohCombine = Model.AKhar.TakaiThek.toString() + Model.AKhar.TakaiKuk.toString();
+                                    sapPaoh_temp = self._keyCodeToTrans[sappaohCombine].toString();
                                     akhar_diip = akhar_diip.Replace('u', sapPaoh_temp);
                                 } else {
                                     akhar_diip = akhar_diip.Replace('a', takaiAkhar); //???aua...
@@ -262,18 +256,18 @@ window.cam.service.CamToTransPaxalih = function() {
                     continue;
                 }
 
-                if (this.Check_TakaiAkharAnak(item)) {
+                if (base.Check_TakaiAkharAnak(item)) {
 
-                    takaiAkharAnak = self._keyCodeToTrans[item].ToString();
+                    takaiAkharAnak = self._keyCodeToTrans[item].toString();
                     continue;
                 }
 
-                if (this.Check_TakaiAkharLikuk(item)) //aiek wek
+                if (base.Check_TakaiAkharLikuk(item)) //aiek wek
                 {
 
-                    var takaiAkhar = self._keyCodeToTrans[item].ToString();
-                    if (!String.IsNullOrEmpty(akhar_diip)) {
-                        if (self._keyCodeToTrans[akhar_diip_model].ToString().length > 3) //nhja
+                    var takaiAkhar = self._keyCodeToTrans[item].toString();
+                    if (akhar_diip) {
+                        if (self._keyCodeToTrans[akhar_diip_model].toString().length > 3) //nhja
                         {
                             //wak check -r di dahlau
                             if (huTakaiKrak) {
@@ -281,16 +275,11 @@ window.cam.service.CamToTransPaxalih = function() {
                             } else {
                                 akhar_diip = akhar_diip.substr(0, 3) + takaiAkhar + akhar_diip.substr(3); //aiek wek
                             }
-                        } else if (self._keyCodeToTrans[akhar_diip_model].ToString().length == 3) //> 2??
+                        } else if (self._keyCodeToTrans[akhar_diip_model].toString().length == 3) //> 2??
                         {
                             //wak check -r di dahlau
                             if (huTakaiKrak) //Is_Hu_TakaiKrak_blaoh(akhar_diip)
                             {
-                                //if (base.Check_InaAkhar_PhuAm_Special(akhar_diip_model))
-                                //{
-                                //    akhar_diip = akhar_diip.substr(0, 3) + takaiAkhar + akhar_diip.substr(3);//???aiek wek
-                                //}
-                                //else
                                 if (desType == Model.Enum.TransCamEFEO) {
                                     akhar_diip = akhar_diip.substr(0, 3) + takaiAkhar + akhar_diip.substr(3);
                                 } else {
@@ -298,15 +287,7 @@ window.cam.service.CamToTransPaxalih = function() {
                                 }
 
                             } else
-                            //if (desType == Model.Enum.TransCamEFEO)
-                            //{
                                 akhar_diip = akhar_diip.substr(0, 2) + takaiAkhar + akhar_diip.substr(2);
-                            //}
-                            //else
-                            //{
-                            //    akhar_diip = akhar_diip.substr(0, 3) + takaiAkhar + akhar_diip.substr(3);//aiek wek
-                            //}
-
                         } else {
                             if (huTakaiKrak) //Is_Hu_TakaiKrak_blaoh(akhar_diip)
                             {
@@ -319,7 +300,6 @@ window.cam.service.CamToTransPaxalih = function() {
                                         akhar_diip = akhar_diip.substr(0, 1) + takaiAkhar + akhar_diip.substr(1);
                                 } else
                                     akhar_diip = akhar_diip.substr(0, 1) + akhar_diip.substr(1).Replace(akhar_diip.substr(1), takaiAkhar);
-                                //??? aiek hu replace ('â','a')
                             }
                         }
                     } else {
@@ -328,9 +308,9 @@ window.cam.service.CamToTransPaxalih = function() {
                     continue;
                 }
 
-                if (this.Check_AkharMatai(item) || base.IsAkharWakMaTai(item, i, count)) {
+                if (base.Check_AkharMatai(item) || base.IsAkharWakMaTai(item, i, count)) {
 
-                    var akharMatai = self._keyCodeToTrans[item].ToString();
+                    var akharMatai = self._keyCodeToTrans[item].toString();
                     if (item == Model.AKhar.Wak) {
                         akharMatai = akharMatai.substr(0, 1);
                     }
@@ -340,10 +320,9 @@ window.cam.service.CamToTransPaxalih = function() {
                     continue;
                 }
 
-                //Aiek wek????
-                if (this.Check_DauCau(item)) {
+                if (base.Check_DauCau(item)) {
 
-                    var dau_cau = self._keyCodeToTrans[item].ToString();
+                    var dau_cau = self._keyCodeToTrans[item].toString();
                     if (!akharDiipAdded) {
                         akhar_diip += dau_cau;
                     } else
@@ -376,32 +355,32 @@ window.cam.service.CamToTransPaxalih = function() {
 
             //Double Vowel
             if (huBalau && word[word.length - 1] != Model.AKhar.Balau && desType == Model.Enum.TransKawomTT) {
-                result = DoubleVowel(result);
+                result = self.DoubleVowel(result);
             }
 
             //Cut Vowel
             if (desType == Model.Enum.TransKawomTT) {
                 for (var i = result.length - 1; i > 0; i--) {
                     //e -> ai
-                    if (result[i].ToString() == 'e' && i == result.length - 1) {
+                    if (result[i].toString() == 'e' && i == result.length - 1) {
                         result = result.Replace('e', 'ai');
                         break;
                     }
 
                     //oo -> ao
-                    if (result[i].ToString() + result[i - 1].ToString() == 'oo' && i == result.length - 1) {
+                    if (result[i].toString() + result[i - 1].toString() == 'oo' && i == result.length - 1) {
                         result = result.Replace('oo', 'ao');
                         break;
                     }
 
                     //ii -> i
-                    if (result[i].ToString() + result[i - 1].ToString() == 'ii' && i == result.length - 1) {
+                    if (result[i].toString() + result[i - 1].toString() == 'ii' && i == result.length - 1) {
                         result = result.Replace('ii', 'i');
                         break;
                     }
 
                     //ơơ -> ơ
-                    if (result[i].ToString() + result[i - 1].ToString() == 'ơơ' && i == result.length - 1) {
+                    if (result[i].toString() + result[i - 1].toString() == 'ơơ' && i == result.length - 1) {
                         result = result.Replace('ơơ', 'ơ');
                         break;
                     }
@@ -422,50 +401,31 @@ window.cam.service.CamToTransPaxalih = function() {
         return result;
     }
 
-    private
-    var DoubleVowel(var result) {
+    self.DoubleVowel = functon(result) {
 
         for (var i = result.length - 2; i > 0; i--) // not available vowel at the end!!!
         {
-
-            var key = result[i].ToString();
-            if (this._vowelKTT.ContainsKey(key)) {
+            var key = result[i].toString();
+            if (seft._vowelKTT.ContainsKey(key)) {
                 result = result.Remove(i, 1);
-                result = result.Insert(i, this._vowelKTT[key].ToString());
+                result = result.splice(i, 0, seft._vowelKTT[key].toString());
                 break;
             }
         }
         return result;
     }
 
-    /// <summary>
-    /// Add item from Stack into List
-    /// </summary>
-    /// <param name='list'>var list</param>
-    /// <param name='stack'>Stack of akhar</param>
-    /// <param name='addFirst'>add to first flag</param>
-    protected void PopStackToList(ref
-        var list, Stack <
-            var > stack,
-            var addFirst) {
+    self.PopStackToList = function(list, stack, addFirst) {
         while (stack.length != 0) {
-
             var index = addFirst ? 0 : list.length;
-
-            list = list.Insert(index, self._keyCodeToTrans[stack.Pop()].ToString());
+            list = list.splice(index, 0, self._keyCodeToTrans[stack.pop()].toString());
         }
     }
 
-    /// <summary>
-    /// Init data converting
-    /// </summary>
-    protected void InitCamToTransData(Model.Enum destinationType) {
+    self.InitCamToTransData(destinationType) {
 
-        this._kanaingChars = Utility.InitKanaing();
-        this._vowelKTT = Utility.InitVowelKTT();
-        //Set Keycode to Trans hashtable
-        Utility.SetTransFromXML(ref self._keyCodeToTrans, destinationType);
+        base._kanaingChars = window.cam.service.Utility.InitKanaing();
+        seft._vowelKTT = window.cam.service.Utility.InitVowelKTT();
+        window.cam.service.Utility.SetTransFromXML(self._keyCodeToTrans, destinationType);
     }
-
-}
 };

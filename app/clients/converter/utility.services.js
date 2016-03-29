@@ -529,3 +529,25 @@ window.cam.service.Utility.PopStackToList = function(list, stack, addFirst) {
         list.splice(index, 0, stack.pop());
     }
 };
+
+window.cam.service.Utility.SetTransFromXML = function(keyCodeTrans, desType) {
+    var colNo = Model.XMLRumiCol.Rumi;
+    if (desType == Model.Enum.TransCamEFEO) {
+        colNo = Model.XMLRumiCol.Rumi;
+    } else if (desType == Model.Enum.TransInrasara) {
+        colNo = Model.XMLRumiCol.InraSara;
+    } else if (desType == Model.Enum.TransKawomTT) {
+        colNo = Model.XMLRumiCol.KawomTT;
+    }
+
+    var keyToTrans = this.ReadXMLFile(Model.Constant.KEY_TO_TRANS_FILE);
+    keyToTrans.forEach(function(dtr) {
+        var keyCode = dtr[Model.XMLRumiCol.KeyCode];
+        var trans = dtr[colNo];
+
+        //Keycode - Trans
+        if (!keyCodeTrans[keyCode]) {
+            keyCodeTrans[keyCode] = trans;
+        }
+    });
+};

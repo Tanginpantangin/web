@@ -1579,3 +1579,634 @@ window.XML.TransToKey = [{
     'Inrasara': 'y',
     'KTT': 'y'
 }];
+window.XML.KeyToTrans = [{
+    '-id': '1',
+    'KeyCode': '0',
+    'Rumi': 'ka',
+    'InraSara': 'ka',
+    'KawomTuekTuah': 'ka'
+}, {
+    '-id': '2',
+    'KeyCode': '1',
+    'Rumi': 'kha',
+    'InraSara': 'kha',
+    'KawomTuekTuah': 'kha'
+}, {
+    '-id': '3',
+    'KeyCode': '2',
+    'Rumi': 'ga',
+    'InraSara': 'ga',
+    'KawomTuekTuah': 'ga'
+}, {
+    '-id': '4',
+    'KeyCode': '3',
+    'Rumi': 'gha',
+    'InraSara': 'gha',
+    'KawomTuekTuah': 'gha'
+}, {
+    '-id': '5',
+    'KeyCode': '4',
+    'Rumi': 'ngâ',
+    'InraSara': 'ngư',
+    'KawomTuekTuah': 'ngư'
+}, {
+    '-id': '6',
+    'KeyCode': '5',
+    'Rumi': 'nga',
+    'InraSara': 'nga',
+    'KawomTuekTuah': 'nga'
+}, {
+    '-id': '7',
+    'KeyCode': '6',
+    'Rumi': 'ca',
+    'InraSara': 'ca',
+    'KawomTuekTuah': 'ca'
+}, {
+    '-id': '8',
+    'KeyCode': '7',
+    'Rumi': 'cha',
+    'InraSara': 'cha',
+    'KawomTuekTuah': 'cha'
+}, {
+    '-id': '9',
+    'KeyCode': '8',
+    'Rumi': 'ja',
+    'InraSara': 'ja',
+    'KawomTuekTuah': 'ja'
+}, {
+    '-id': '10',
+    'KeyCode': '9',
+    'Rumi': 'jha',
+    'InraSara': 'jha',
+    'KawomTuekTuah': 'jha'
+}, {
+    '-id': '11',
+    'KeyCode': '10',
+    'Rumi': 'nyâ',
+    'InraSara': 'như',
+    'KawomTuekTuah': 'như'
+}, {
+    '-id': '12',
+    'KeyCode': '11',
+    'Rumi': 'nya',
+    'InraSara': 'nha',
+    'KawomTuekTuah': 'nha'
+}, {
+    '-id': '13',
+    'KeyCode': '12',
+    'Rumi': 'nja',
+    'InraSara': 'nhja',
+    'KawomTuekTuah': 'nhja'
+}, {
+    '-id': '14',
+    'KeyCode': '13',
+    'Rumi': 'ta',
+    'InraSara': 'ta',
+    'KawomTuekTuah': 'ta'
+}, {
+    '-id': '15',
+    'KeyCode': '14',
+    'Rumi': 'tha',
+    'InraSara': 'tha',
+    'KawomTuekTuah': 'tha'
+}, {
+    '-id': '16',
+    'KeyCode': '15',
+    'Rumi': 'da',
+    'InraSara': 'da',
+    'KawomTuekTuah': 'da'
+}, {
+    '-id': '17',
+    'KeyCode': '16',
+    'Rumi': 'dha',
+    'InraSara': 'dha',
+    'KawomTuekTuah': 'dha'
+}, {
+    '-id': '18',
+    'KeyCode': '17',
+    'Rumi': 'nâ',
+    'InraSara': 'nư',
+    'KawomTuekTuah': 'nư'
+}, {
+    '-id': '19',
+    'KeyCode': '18',
+    'Rumi': 'na',
+    'InraSara': 'na',
+    'KawomTuekTuah': 'na'
+}, {
+    '-id': '20',
+    'KeyCode': '19',
+    'Rumi': 'nda',
+    'InraSara': 'đa',
+    'KawomTuekTuah': 'đa'
+}, {
+    '-id': '21',
+    'KeyCode': '20',
+    'Rumi': 'pa',
+    'InraSara': 'pa',
+    'KawomTuekTuah': 'pa'
+}, {
+    '-id': '22',
+    'KeyCode': '21',
+    'Rumi': 'pha',
+    'InraSara': 'pha',
+    'KawomTuekTuah': 'pha'
+}, {
+    '-id': '23',
+    'KeyCode': '22',
+    'Rumi': 'ba',
+    'InraSara': 'ba',
+    'KawomTuekTuah': 'ba'
+}, {
+    '-id': '24',
+    'KeyCode': '23',
+    'Rumi': 'bha',
+    'InraSara': 'bha',
+    'KawomTuekTuah': 'bha'
+}, {
+    '-id': '25',
+    'KeyCode': '24',
+    'Rumi': 'mâ',
+    'InraSara': 'mư',
+    'KawomTuekTuah': 'mư'
+}, {
+    '-id': '26',
+    'KeyCode': '25',
+    'Rumi': 'ma',
+    'InraSara': 'ma',
+    'KawomTuekTuah': 'ma'
+}, {
+    '-id': '27',
+    'KeyCode': '26',
+    'Rumi': 'mba',
+    'InraSara': 'bba',
+    'KawomTuekTuah': 'bba'
+}, {
+    '-id': '28',
+    'KeyCode': '27',
+    'Rumi': 'ya',
+    'InraSara': 'ya',
+    'KawomTuekTuah': 'ya'
+}, {
+    '-id': '29',
+    'KeyCode': '28',
+    'Rumi': 'ra',
+    'InraSara': 'ra',
+    'KawomTuekTuah': 'ra'
+}, {
+    '-id': '30',
+    'KeyCode': '29',
+    'Rumi': 'la',
+    'InraSara': 'la',
+    'KawomTuekTuah': 'la'
+}, {
+    '-id': '31',
+    'KeyCode': '30',
+    'Rumi': 'wa',
+    'InraSara': 'wa',
+    'KawomTuekTuah': 'wa'
+}, {
+    '-id': '32',
+    'KeyCode': '31',
+    'Rumi': 'xa',
+    'InraSara': 'xa',
+    'KawomTuekTuah': 'xa'
+}, {
+    '-id': '33',
+    'KeyCode': '32',
+    'Rumi': 'ha',
+    'InraSara': 'ha',
+    'KawomTuekTuah': 'ha'
+}, {
+    '-id': '34',
+    'KeyCode': '33',
+    'Rumi': 'ppa',
+    'InraSara': 'ppa',
+    'KawomTuekTuah': 'ppa'
+}, {
+    '-id': '35',
+    'KeyCode': '34',
+    'Rumi': 'sa',
+    'InraSara': 'sa',
+    'KawomTuekTuah': 'sa'
+}, {
+    '-id': '36',
+    'KeyCode': '35',
+    'Rumi': 'aa',
+    'InraSara': 'aa',
+    'KawomTuekTuah': 'aa'
+}, {
+    '-id': '37',
+    'KeyCode': '36',
+    'Rumi': 'i',
+    'InraSara': 'i',
+    'KawomTuekTuah': 'i'
+}, {
+    '-id': '38',
+    'KeyCode': '37',
+    'Rumi': 'u',
+    'InraSara': 'u',
+    'KawomTuekTuah': 'u'
+}, {
+    '-id': '39',
+    'KeyCode': '38',
+    'Rumi': 'é',
+    'InraSara': 'e',
+    'KawomTuekTuah': 'ê'
+}, {
+    '-id': '40',
+    'KeyCode': '39',
+    'Rumi': 'ai',
+    'InraSara': 'ai',
+    'KawomTuekTuah': 'ai'
+}, {
+    '-id': '41',
+    'KeyCode': '40',
+    'Rumi': 'o',
+    'InraSara': 'o',
+    'KawomTuekTuah': 'ô'
+}, {
+    '-id': '42',
+    'KeyCode': '41',
+    'Rumi': 'k',
+    'InraSara': 'k',
+    'KawomTuekTuah': 'k'
+}, {
+    '-id': '43',
+    'KeyCode': '42',
+    'Rumi': 'k',
+    'InraSara': 'k',
+    'KawomTuekTuah': 'g'
+}, {
+    '-id': '44',
+    'KeyCode': '43',
+    'Rumi': 'ng',
+    'InraSara': 'ng',
+    'KawomTuekTuah': 'ng'
+}, {
+    '-id': '45',
+    'KeyCode': '44',
+    'Rumi': 'c',
+    'InraSara': 'c',
+    'KawomTuekTuah': 'c'
+}, {
+    '-id': '46',
+    'KeyCode': '45',
+    'Rumi': 't',
+    'InraSara': 't',
+    'KawomTuekTuah': 't'
+}, {
+    '-id': '47',
+    'KeyCode': '46',
+    'Rumi': 'n',
+    'InraSara': 'n',
+    'KawomTuekTuah': 'n'
+}, {
+    '-id': '48',
+    'KeyCode': '47',
+    'Rumi': 'p',
+    'InraSara': 'p',
+    'KawomTuekTuah': 'p'
+}, {
+    '-id': '49',
+    'KeyCode': '48',
+    'Rumi': 'm',
+    'InraSara': 'm',
+    'KawomTuekTuah': 'm'
+}, {
+    '-id': '50',
+    'KeyCode': '49',
+    'Rumi': 'y',
+    'InraSara': 'y',
+    'KawomTuekTuah': 'y'
+}, {
+    '-id': '51',
+    'KeyCode': '50',
+    'Rumi': 'r',
+    'InraSara': 'r',
+    'KawomTuekTuah': 'r'
+}, {
+    '-id': '52',
+    'KeyCode': '51',
+    'Rumi': 'l',
+    'InraSara': 'l',
+    'KawomTuekTuah': 'l'
+}, {
+    '-id': '53',
+    'KeyCode': '52',
+    'Rumi': 'w',
+    'InraSara': 'w',
+    'KawomTuekTuah': 'w'
+}, {
+    '-id': '54',
+    'KeyCode': '53',
+    'Rumi': 'x',
+    'InraSara': 'x',
+    'KawomTuekTuah': 'x'
+}, {
+    '-id': '55',
+    'KeyCode': '54',
+    'Rumi': 'h',
+    'InraSara': 'h',
+    'KawomTuekTuah': 'h'
+}, {
+    '-id': '56',
+    'KeyCode': '55',
+    'Rumi': '',
+    'InraSara': '',
+    'KawomTuekTuah': ''
+}, {
+    '-id': '57',
+    'KeyCode': '56',
+    'Rumi': 'e',
+    'InraSara': 'ơ',
+    'KawomTuekTuah': 'ơơ'
+}, {
+    '-id': '58',
+    'KeyCode': '57',
+    'Rumi': 'o',
+    'InraSara': 'o',
+    'KawomTuekTuah': 'ô'
+}, {
+    '-id': '59',
+    'KeyCode': '58',
+    'Rumi': 'ai',
+    'InraSara': 'ai',
+    'KawomTuekTuah': 'e'
+}, {
+    '-id': '60',
+    'KeyCode': '59',
+    'Rumi': 'i',
+    'InraSara': 'i',
+    'KawomTuekTuah': 'i'
+}, {
+    '-id': '61',
+    'KeyCode': '60',
+    'Rumi': 'i',
+    'InraSara': 'i',
+    'KawomTuekTuah': 'ii'
+}, {
+    '-id': '62',
+    'KeyCode': '61',
+    'Rumi': 'im',
+    'InraSara': 'im',
+    'KawomTuekTuah': 'im'
+}, {
+    '-id': '63',
+    'KeyCode': '62',
+    'Rumi': 'ei',
+    'InraSara': 'ei',
+    'KawomTuekTuah': 'ei'
+}, {
+    '-id': '64',
+    'KeyCode': '63',
+    'Rumi': 'e',
+    'InraSara': 'ơ',
+    'KawomTuekTuah': 'ơ'
+}, {
+    '-id': '65',
+    'KeyCode': '64',
+    'Rumi': 'em',
+    'InraSara': 'ơm',
+    'KawomTuekTuah': 'ơm'
+}, {
+    '-id': '66',
+    'KeyCode': '65',
+    'Rumi': 'eng',
+    'InraSara': 'ơng',
+    'KawomTuekTuah': 'ơng'
+}, {
+    '-id': '67',
+    'KeyCode': '66',
+    'Rumi': 'u',
+    'InraSara': 'u',
+    'KawomTuekTuah': 'u'
+}, {
+    '-id': '68',
+    'KeyCode': '67',
+    'Rumi': 'â',
+    'InraSara': 'ư',
+    'KawomTuekTuah': 'ư'
+}, {
+    '-id': '69',
+    'KeyCode': '68',
+    'Rumi': 'r',
+    'InraSara': 'r',
+    'KawomTuekTuah': 'r'
+}, {
+    '-id': '70',
+    'KeyCode': '69',
+    'Rumi': 'i',
+    'InraSara': 'i',
+    'KawomTuekTuah': 'i'
+}, {
+    '-id': '71',
+    'KeyCode': '70',
+    'Rumi': 'u',
+    'InraSara': 'w',
+    'KawomTuekTuah': 'w'
+}, {
+    '-id': '72',
+    'KeyCode': '71',
+    'Rumi': 'l',
+    'InraSara': 'l',
+    'KawomTuekTuah': 'l'
+}, {
+    '-id': '73',
+    'KeyCode': '72',
+    'Rumi': 'lu',
+    'InraSara': 'lw',
+    'KawomTuekTuah': 'lw'
+}, {
+    '-id': '74',
+    'KeyCode': '73',
+    'Rumi': 'lu',
+    'InraSara': 'lu',
+    'KawomTuekTuah': 'lu'
+}, {
+    '-id': '75',
+    'KeyCode': '74',
+    'Rumi': 'ao',
+    'InraSara': 'au',
+    'KawomTuekTuah': 'o'
+}, {
+    '-id': '76',
+    'KeyCode': '75',
+    'Rumi': 'aong',
+    'InraSara': 'aung',
+    'KawomTuekTuah': 'ong'
+}, {
+    '-id': '77',
+    'KeyCode': '76',
+    'Rumi': 'aom',
+    'InraSara': 'aum',
+    'KawomTuekTuah': 'om'
+}, {
+    '-id': '78',
+    'KeyCode': '77',
+    'Rumi': 'ng',
+    'InraSara': 'ng',
+    'KawomTuekTuah': 'ng'
+}, {
+    '-id': '79',
+    'KeyCode': '78',
+    'Rumi': '1',
+    'InraSara': '1',
+    'KawomTuekTuah': '1'
+}, {
+    '-id': '80',
+    'KeyCode': '79',
+    'Rumi': '2',
+    'InraSara': '2',
+    'KawomTuekTuah': '2'
+}, {
+    '-id': '81',
+    'KeyCode': '80',
+    'Rumi': '3',
+    'InraSara': '3',
+    'KawomTuekTuah': '3'
+}, {
+    '-id': '82',
+    'KeyCode': '81',
+    'Rumi': '4',
+    'InraSara': '4',
+    'KawomTuekTuah': '4'
+}, {
+    '-id': '83',
+    'KeyCode': '82',
+    'Rumi': '5',
+    'InraSara': '5',
+    'KawomTuekTuah': '5'
+}, {
+    '-id': '84',
+    'KeyCode': '83',
+    'Rumi': '6',
+    'InraSara': '6',
+    'KawomTuekTuah': '6'
+}, {
+    '-id': '85',
+    'KeyCode': '84',
+    'Rumi': '7',
+    'InraSara': '7',
+    'KawomTuekTuah': '7'
+}, {
+    '-id': '86',
+    'KeyCode': '85',
+    'Rumi': '8',
+    'InraSara': '8',
+    'KawomTuekTuah': '8'
+}, {
+    '-id': '87',
+    'KeyCode': '86',
+    'Rumi': '9',
+    'InraSara': '9',
+    'KawomTuekTuah': '9'
+}, {
+    '-id': '88',
+    'KeyCode': '87',
+    'Rumi': '0',
+    'InraSara': '0',
+    'KawomTuekTuah': '0'
+}, {
+    '-id': '89',
+    'KeyCode': '88',
+    'Rumi': ',',
+    'InraSara': ',',
+    'KawomTuekTuah': ','
+}, {
+    '-id': '90',
+    'KeyCode': '89',
+    'Rumi': '.',
+    'InraSara': '.',
+    'KawomTuekTuah': '.'
+}, {
+    '-id': '91',
+    'KeyCode': '90',
+    'Rumi': '@',
+    'InraSara': '@',
+    'KawomTuekTuah': '@'
+}, {
+    '-id': '92',
+    'KeyCode': '91',
+    'Rumi': ':',
+    'InraSara': ':',
+    'KawomTuekTuah': ':'
+}, {
+    '-id': '93',
+    'KeyCode': '92',
+    'Rumi': '!',
+    'InraSara': '!',
+    'KawomTuekTuah': '!'
+}, {
+    '-id': '94',
+    'KeyCode': '93',
+    'Rumi': '?',
+    'InraSara': '?',
+    'KawomTuekTuah': '?'
+}, {
+    '-id': '95',
+    'KeyCode': '94',
+    'Rumi': '-',
+    'InraSara': '-',
+    'KawomTuekTuah': '-'
+}, {
+    '-id': '96',
+    'KeyCode': '95',
+    'Rumi': '+',
+    'InraSara': '+',
+    'KawomTuekTuah': '+'
+}, {
+    '-id': '97',
+    'KeyCode': '96',
+    'Rumi': '',
+    'InraSara': '',
+    'KawomTuekTuah': ''
+}, {
+    '-id': '98',
+    'KeyCode': '5774',
+    'Rumi': 'ao',
+    'InraSara': 'au',
+    'KawomTuekTuah': 'oo'
+}, {
+    '-id': '99',
+    'KeyCode': '5763',
+    'Rumi': 'é',
+    'InraSara': 'e',
+    'KawomTuekTuah': 'ê'
+}, {
+    '-id': '100',
+    'KeyCode': '5756',
+    'Rumi': 'é',
+    'InraSara': 'e',
+    'KawomTuekTuah': 'ê'
+}, {
+    '-id': '101',
+    'KeyCode': '5776',
+    'Rumi': 'aom',
+    'InraSara': 'aum',
+    'KawomTuekTuah': 'oom'
+}, {
+    '-id': '102',
+    'KeyCode': '5775',
+    'Rumi': 'aong',
+    'InraSara': 'aung',
+    'KawomTuekTuah': 'oong'
+}, {
+    '-id': '103',
+    'KeyCode': '5765',
+    'Rumi': 'éng',
+    'InraSara': 'eng',
+    'KawomTuekTuah': 'êng'
+}, {
+    '-id': '104',
+    'KeyCode': '5764',
+    'Rumi': 'ém',
+    'InraSara': 'em',
+    'KawomTuekTuah': 'êm'
+}, {
+    '-id': '105',
+    'KeyCode': '6366',
+    'Rumi': 'au',
+    'InraSara': 'ơu',
+    'KawomTuekTuah': 'ơu'
+}];
