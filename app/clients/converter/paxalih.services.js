@@ -1,4 +1,4 @@
-/* global Model */
+/* global Model,Stack */
 'use strict';
 
 if (!window.cam) {
@@ -291,7 +291,7 @@ window.cam.service.Paxalih = function() {
 
         var ret = true;
         var wordReplaced = '';
-        for(var i = 0; i < wordArr[0].length; i++){
+        for (var i = 0; i < wordArr[0].length; i++) {
             var c = wordArr[0][i];
             if (dictionary[c] == undefined) {
                 ret = false;
@@ -301,6 +301,37 @@ window.cam.service.Paxalih = function() {
         }
 
         wordArr[0] = wordReplaced;
+        return ret;
+    };
+
+    self.CutKanaingAtFirst = function(list) {
+        var ret = new Stack();
+        while (list.length != 0) {
+            var akhar = list[0];
+            if (self.Check_DauCau(akhar)) {
+                ret.push(akhar);
+                list.splice(0, 1);
+                continue;
+            }
+            break;
+        }
+
+        return ret;
+    };
+
+    self.CutKanaingAtLast = function(list) {
+
+        var ret = new Stack();
+        while (list.length != 0) {
+            var akhar = list[list.length - 1];
+            if (self.Check_DauCau(akhar)) {
+                ret.push(akhar);
+                list.splice(list.length - 1, 1);
+                continue;
+            }
+            break;
+        }
+
         return ret;
     };
 };

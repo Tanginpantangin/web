@@ -37,12 +37,13 @@ angular.module('app')
 
           self.change = function(){
               $timeout(function(){
-                  var xalih = new window.cam.service.TransToCamPaxalih();
+                //   var xalih = new window.cam.service.TransToCamPaxalih();
+                var xalih = new window.cam.service.CamToTransPaxalih();
                   //self.sourceText
                 //   TransCamEFEO: 6,
                 //   TransInrasara: 7,
                 //   TransKawomTT: 8
-                  self.results = xalih.DoConvert(self.sourceText, Model.Enum.TransCamEFEO, Model.Enum.FontYapata);
+                  self.results = xalih.DoConvert(self.sourceText, Model.Enum.FontYapata, Model.Enum.TransCamEFEO);
               },0);
           };
     }]);

@@ -25,8 +25,8 @@
                     <md-icon md-svg-icon="clients/assets/img/exchange2.svg"></md-icon>
                 </md-button>
             </div>
-            <div flex="100" class="box-convert">
-                <textarea ng-model="ctrl.sourceText" ng-change="ctrl.change(this)" rows="8" class="text-convert" spellcheck="false" id="test1" placeholder="Taong akhar pak ni" value="">
+            <div flex="100" class="box-convert akt1">
+                <textarea ng-model="ctrl.sourceText" ng-change="ctrl.change(this)" rows="8" class="text-convert akt1" spellcheck="false" id="test1" placeholder="Taong akhar pak ni" value="">
                 </textarea>
             </div>
         </div>
@@ -48,7 +48,7 @@
                 </md-menu>
             </div>
             <div flex>
-                <md-content id="page_content" class="akt1" layout-padding class="content-convert">
+                <md-content id="page_content" layout-padding class="content-convert">
                     <p ng-repeat="result in ctrl.results track by $index">{{result}}</p>
                 </md-content>
             </div>
