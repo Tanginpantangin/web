@@ -13,7 +13,7 @@ window.cam.service.TransToTransPaxalih = function() {
 
     self.DoConvert = function(data, sourceType, destitionType) {
         // Validate inputed string
-        var validvar = [data];
+        var validString = [data];
         base.ValidateInput(validString, sourceType);
         data = validString[0];
 
@@ -21,7 +21,7 @@ window.cam.service.TransToTransPaxalih = function() {
         var converted = [];
 
         //Trig newline character
-        //    data = data.Replace(Model.Constant.NEW_LINE, ' ' + Model.Constant.NEW_LINE + ' ');
+        //    data = data.replace(Model.Constant.NEW_LINE, ' ' + Model.Constant.NEW_LINE + ' ');
         data = data.replace(/(?:\r\n|\r|\n)/g, ' \n ');
 
         //Plit to words array
@@ -63,179 +63,174 @@ window.cam.service.TransToTransPaxalih = function() {
         var result = converted.join(' ').toLowerCase();
 
         //Trig newline character
-        // result = result.Replace(' ' + Model.Constant.NEW_LINE + ' ', Model.Constant.NEW_LINE);
+        // result = result.replace(' ' + Model.Constant.NEW_LINE + ' ', Model.Constant.NEW_LINE);
 
         return result.split('\n');
     };
 
     self.InrasaraToCamEFEOByWord = function(word) {
-        var result = word;
-        var hashInra2EFEO = [];
-        hashInra2EFEO.push('nhj', 'nj');
-        hashInra2EFEO.push('bb', 'mb');
-        hashInra2EFEO.push('ư', 'â');
-        hashInra2EFEO.push('e', 'é');
-        hashInra2EFEO.push('au', 'ao');
-
+        var result = word.toLowerCase();
+        var hashInra2EFEO = {};
+        hashInra2EFEO.nhj = 'nj';
+        hashInra2EFEO.bb = 'mb';
+        hashInra2EFEO.ư = 'â';
+        hashInra2EFEO.e = 'é';
+        hashInra2EFEO.au = 'ao';
         try {
-            foreach(DictionaryEntry entry in hashInra2EFEO) {
-                if (!result.Contains('ei')) {
-                    result = result.Replace(entry.Key.ToString(), entry.Value.ToString());
+            var keys = Object.keys(hashInra2EFEO);
+            keys.forEach(function(key) {
+                if (result.indexOf('ei') === -1) {
+                    result = result.replace(new RegExp(key, 'g'), hashInra2EFEO[key]);
                 }
-            }
-            result = result.Replace('ơ', 'e');
-            result = result.Replace('nh', 'ny');
+            });
+
+            result = result.replace(new RegExp('ơ', 'g'), 'e');
+            result = result.replace(new RegExp('nh', 'g'), 'ny');
 
             //Akhar wak
-            if (result.Contains('w')) {
-                int idex = result.IndexOf('w');
+            if (result.indexOf('w') !== -1) {
+                var idex = result.indexOf('w');
                 var str_check = 'aưiu';
-                if ((idex != result.Length - 1) && (idex != 0) && !(str_check.Contains(result[idex - 1].ToString()))) {
-                    result = result.Replace('w', 'u');
+                if ((idex != result.length - 1) && (idex != 0) &&
+                    (str_check.indexOf(result[idex - 1]) === -1)) {
+                    result = result.replace(new RegExp('w', 'g'), 'u');
                 }
             }
 
             return result;
-        } catch (Exception ex) {
-
-            Service.Log.WriteLog(ex);
-            return String.Empty;
+        } catch (ex) {
+            console.log('InrasaraToCamEFEOByWord', ex);
+            return '';
         }
-    }
+    };
 
-    /// <summary>
-    /// Covert from Cam EFEO Trans To Inrasara Trans by word
-    /// </summary>
-    /// <param name='word'>word</param>
-    private var CamEFEOToInrasaraByWord(var word) {
-        var result = word;
-        Hashtable hashEFEO2Inra = new Hashtable();
-        hashEFEO2Inra.push('nj', 'nhj');
-        hashEFEO2Inra.push('ny', 'nh');
-        hashEFEO2Inra.push('mb', 'bb');
-        hashEFEO2Inra.push('â', 'ư');
-        hashEFEO2Inra.push('e', 'ơ');
+    self.CamEFEOToInrasaraByWord = function(word) {
+        var result = word.toLowerCase();
+        var hashEFEO2Inra = {};
+        hashEFEO2Inra.nj = 'nhj';
+        hashEFEO2Inra.ny = 'nh';
+        hashEFEO2Inra.mb = 'bb';
+        hashEFEO2Inra.â = 'ư';
+        hashEFEO2Inra.e = 'ơ';
 
         try {
-            foreach(DictionaryEntry entry in hashEFEO2Inra) {
-                if (!result.Contains('ei')) {
-                    result = result.Replace(entry.Key.ToString(), entry.Value.ToString());
+            var keys = Object.keys(hashEFEO2Inra);
+            keys.forEach(function(key) {
+                if (result.indexOf('ei') === -1) {
+                    result = result.replace(new RegExp(key, 'g'), hashEFEO2Inra[key]);
                 }
-            }
+            });
 
             //Akhar wak
-            if (result.Contains('u')) {
-                int idex = result.IndexOf('u');
+            if (result.indexOf('u') !== -1) {
+                var idex = result.indexOf('u');
                 var str_check = 'aie';
-                if ((idex != result.Length - 1) && (idex != 0) && (str_check.Contains(result[idex + 1].ToString()))) {
-                    result = result.Replace('u', 'w');
+                if ((idex != result.length - 1) && (idex != 0) &&
+                    (str_check.indexOf(result[idex - 1]) !== -1)) {
+                    result = result.replace(new RegExp('u', 'g'), 'w');
                 }
             }
 
-            result = result.Replace('é', 'e');
-            result = result.Replace('ao', 'au');
+            result = result.replace(new RegExp('é', 'g'), 'e');
+            result = result.replace(new RegExp('ao', 'g'), 'au');
 
             return result;
-        } catch (Exception ex) {
-
-            Service.Log.WriteLog(ex);
-            return String.Empty;
+        } catch (ex) {
+            console.log('CamEFEOToInrasaraByWord', ex);
+            return '';
         }
-    }
+    };
 
-    /// <summary>
-    /// Covert from KTTT Trans To EFEO Trans by word
-    /// </summary>
-    /// <param name='word'>word</param>
-    private var KTTToCamEFEOByWord(var word) {
-        var result = word.ToLower();
-        Hashtable hashKTTT2EFEO = new Hashtable();
-        hashKTTT2EFEO.push('nhj', 'nj');
-        hashKTTT2EFEO.push('nh', 'ny');
-        hashKTTT2EFEO.push('bb', 'mb');
-        hashKTTT2EFEO.push('đ', 'nd');
-        hashKTTT2EFEO.push('aa', 'a');
-        hashKTTT2EFEO.push('ưư', 'â');
-        hashKTTT2EFEO.push('uu', 'u');
-        hashKTTT2EFEO.push('ơ', 'e');
-        hashKTTT2EFEO.push('ơơ', 'e');
-        hashKTTT2EFEO.push('ê', 'é');
-        hashKTTT2EFEO.push('ô', 'o');
-        hashKTTT2EFEO.push('oo', 'ao');
-        hashKTTT2EFEO.push('ee', 'ai');
+    self.KTTToCamEFEOByWord = function(word) {
+        var result = word.toLowerCase();
+        var hashKTTT2EFEO = {};
+        hashKTTT2EFEO.nhj = 'nj';
+        hashKTTT2EFEO.nh = 'ny';
+        hashKTTT2EFEO.bb = 'mb';
+        hashKTTT2EFEO.đ = 'nd';
+        hashKTTT2EFEO.aa = 'a';
+        hashKTTT2EFEO.ưư = 'â';
+        hashKTTT2EFEO.uu = 'u';
+        hashKTTT2EFEO.ơ = 'e';
+        hashKTTT2EFEO.ơơ = 'e';
+        hashKTTT2EFEO.ê = 'é';
+        hashKTTT2EFEO.ô = 'o';
+        hashKTTT2EFEO.oo = 'ao';
+        hashKTTT2EFEO.ee = 'ai';
 
-        Hashtable hashKTTT2EFEO_plus = new Hashtable();
-        hashKTTT2EFEO_plus.push('e', 'ai');
-        hashKTTT2EFEO_plus.push('o', 'ao');
-        hashKTTT2EFEO_plus.push('ư', 'â');
+        var hashKTTT2EFEO_plus = {};
+        hashKTTT2EFEO_plus.e = 'ai';
+        hashKTTT2EFEO_plus.o = 'ao';
+        hashKTTT2EFEO_plus.ư = 'â'
 
         try {
+            var keys = [];
+            if (result.indexOf('ei') === -1 && result.indexOf('oo') === -1 &&
+                result.indexOf('ee') === -1 && result.indexOf('ưư') === -1) {
 
-            if (!result.Contains('ei') && !result.Contains('oo') && !result.Contains('ee') && !result.Contains('ưư')) {
-
-                foreach(DictionaryEntry entry in hashKTTT2EFEO_plus) {
-                    result = result.Replace(entry.Key.ToString(), entry.Value.ToString());
-                }
+                keys = Object.keys(hashKTTT2EFEO_plus);
+                keys.forEach(function(key) {
+                    result = result.replace(new RegExp(key, 'g'), hashKTTT2EFEO_plus[key]);
+                });
             }
 
-            foreach(DictionaryEntry entry in hashKTTT2EFEO) {
-                result = result.Replace(entry.Key.ToString(), entry.Value.ToString());
-            }
+            keys = Object.keys(hashKTTT2EFEO);
+            keys.forEach(function(key) {
+                result = result.replace(new RegExp(key, 'g'), hashKTTT2EFEO[key]);
+            });
 
-            if (result.Contains('w')) {
-                int idex = result.IndexOf('w');
+            if (result.indexOf('w') !== -1) {
+                var idex = result.indexOf('w');
                 var str_check = 'aâiu';
-                if ((idex != result.Length - 1) && (idex != 0) && !(str_check.Contains(result[idex - 1].ToString()))) {
-                    result = result.Replace('w', 'u');
+                if ((idex != result.length - 1) && (idex != 0) &&
+                    (str_check.indexOf(result[idex - 1]) === -1)) {
+                    result = result.replace(new RegExp('w', 'g'), 'u');
                 }
-                //else
-
             }
             return result;
-        } catch (Exception ex) {
-
-            Service.Log.WriteLog(ex);
-            return String.Empty;
+        } catch (ex) {
+            console.log('KTTToCamEFEOByWord', ex);
+            return '';
         }
-    }
+    };
 
-    /// <summary>
-    /// Covert from KTTT Trans To Inrasara Trans by word
-    /// </summary>
-    /// <param name='word'>word</param>
-    private var KTTToInrasaraByWord(var word) {
-        var result = word;
-        Hashtable hashKTTT2Inra = new Hashtable();
+    self.KTTToInrasaraByWord = function(word) {
+        var result = word.toLowerCase();
+        var hashKTTT2Inra = {};
 
-        hashKTTT2Inra.push('aa', 'a');
-        hashKTTT2Inra.push('ưư', 'ư');
-        hashKTTT2Inra.push('uu', 'u');
-        hashKTTT2Inra.push('ơơ', 'ơ');
-        hashKTTT2Inra.push('ê', 'e');
-        hashKTTT2Inra.push('ô', 'o');
-        hashKTTT2Inra.push('oo', 'au');
-        hashKTTT2Inra.push('ee', 'ai');
+        hashKTTT2Inra.aa = 'a';
+        hashKTTT2Inra.ưư = 'ư';
+        hashKTTT2Inra.uu = 'u';
+        hashKTTT2Inra.ơơ = 'ơ';
+        hashKTTT2Inra.ê = 'e';
+        hashKTTT2Inra.ô = 'o';
+        hashKTTT2Inra.oo = 'au';
+        hashKTTT2Inra.ee = 'ai';
 
-        Hashtable hashKTTT2Inra_plus = new Hashtable();
-        hashKTTT2Inra_plus.push('e', 'ai');
-        hashKTTT2Inra_plus.push('o', 'au');
+        var hashKTTT2Inra_plus = {};
+        hashKTTT2Inra_plus.e = 'ai';
+        hashKTTT2Inra_plus.o = 'au';
 
         try {
-            if (!result.Contains('ei') && !result.Contains('oo') && !result.Contains('ee')) {
+            var keys = [];
 
-                foreach(DictionaryEntry entry in hashKTTT2Inra_plus) {
-                    result = result.Replace(entry.Key.ToString(), entry.Value.ToString());
-                }
+            if (result.indexOf('ei') === -1 && result.indexOf('oo') === -1 &&
+                result.indexOf('ee') === -1) {
+                keys = Object.keys(hashKTTT2Inra_plus);
+                keys.forEach(function(key) {
+                    result = result.replace(new RegExp(key, 'g'), hashKTTT2Inra_plus[key]);
+                });
             }
 
-            foreach(DictionaryEntry entry in hashKTTT2Inra) {
-                result = result.Replace(entry.Key.ToString(), entry.Value.ToString());
-            }
+            keys = Object.keys(hashKTTT2Inra);
+            keys.forEach(function(key) {
+                result = result.replace(new RegExp(key, 'g'), hashKTTT2Inra[key]);
+            });
+
             return result;
-        } catch (Exception ex) {
-
-            Service.Log.WriteLog(ex);
-            return String.Empty;
+        } catch (ex) {
+            console.log('KTTToInrasaraByWord', ex);
+            return '';
         }
-    }
-}
+    };
+};

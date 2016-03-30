@@ -116,7 +116,8 @@ angular
                             'clients/converter/utility.services.js',
                             'clients/converter/paxalih.services.js',
                             'clients/converter/transtocam.services.js',
-                            'clients/converter/camtotrans.services.js'
+                            'clients/converter/camtotrans.services.js',
+                            'clients/converter/transtotrans.services.js'
                         ]
                     });
                 }
