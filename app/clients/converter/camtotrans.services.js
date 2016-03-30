@@ -121,7 +121,7 @@ window.cam.service.CamToTransPaxalih = function() {
             Model.AKhar.TakaiKuk,
             Model.AKhar.TakaiThek
         ];
-        if (word[0] == wordKareiCrih[0] && word[1] == wordKareiCrih[1] && word[2] == wordKareiCrih[2] && word[3] == wordKareiCrih[3]) {
+        if (count == 4 && word[0] == wordKareiCrih[0] && word[1] == wordKareiCrih[1] && word[2] == wordKareiCrih[2] && word[3] == wordKareiCrih[3]) {
             return 'asau';
         }
 
@@ -165,7 +165,7 @@ window.cam.service.CamToTransPaxalih = function() {
                     }
 
                     akhar_diip_model = item; //??
-                    akhar_diip = self._keyCodeToTrans[item];
+                    akhar_diip = self._keyCodeToTrans[item].toUpperCase();
 
                     if (takaiAkharAnak) //Takai krak
                     {
@@ -173,18 +173,20 @@ window.cam.service.CamToTransPaxalih = function() {
                         {
                             if (base.Check_InaAkhar_PhuAm_Special(akhar_diip_model)) //aiek wek hu repale('â','a')
                             {
-                                akhar_diip = akhar_diip.substr(0, 2) + takaiAkharAnak + akhar_diip.substr(2).replace(new RegExp(sap_Â, 'g'), 'a'); //Repalce or none???
+                                akhar_diip = akhar_diip.substr(0, 2) + takaiAkharAnak + akhar_diip.substr(2).replace(new RegExp(sap_Â, 'g'), 'A'); //Repalce or none???
                             } else {
-                                if (desType == Model.Enum.TransCamEFEO) {
-                                    akhar_diip = akhar_diip.substr(0, 2) + takaiAkharAnak + akhar_diip.substr(2);
-                                } else
-                                    akhar_diip = akhar_diip.substr(0, 3) + takaiAkharAnak + akhar_diip.substr(3);
+                                if (self._keyCodeToTrans[akhar_diip_model].length > 3)//nhjra
+                                   {
+                                       akhar_diip = akhar_diip.substr(0, 3) + takaiAkharAnak + akhar_diip.substr(3);//mba; bba; nhjra ???
+                                   }
+                                   else
+                                       akhar_diip = akhar_diip.substr(0, 2) + takaiAkharAnak + akhar_diip.substr(2);
                             }
                             huTakaiKrak = true;
                         } else {
                             if (base.Check_InaAkhar_PhuAm_Special(akhar_diip_model)) //aiek wek hu repale('â','a')
                             {
-                                akhar_diip = akhar_diip.substr(0, 1) + takaiAkharAnak + akhar_diip.substr(1).replace(new RegExp(sap_Â, 'g'), 'a'); //Repalce or none???
+                                akhar_diip = akhar_diip.substr(0, 1) + takaiAkharAnak + akhar_diip.substr(1).replace(new RegExp(sap_Â, 'g'), 'A'); //Repalce or none???
                             } else
                                 akhar_diip = akhar_diip.substr(0, 1) + takaiAkharAnak + akhar_diip.substr(1);
                             huTakaiKrak = true;
@@ -195,10 +197,10 @@ window.cam.service.CamToTransPaxalih = function() {
                     if (takaiSappaohAnak) {
                         //Akhar Ak
                         if (akhar_diip_model == Model.AKhar.Ak) {
-                            akhar_diip = akhar_diip.substr(0, 1) + akhar_diip.substr(1).replace(new RegExp('a', 'g'), takaiSappaohAnak);
+                            akhar_diip = akhar_diip.substr(0, 1) + akhar_diip.substr(1).replace(new RegExp('A', 'g'), takaiSappaohAnak);
                             klakAkharAk = false; //
                         } else {
-                            akhar_diip = akhar_diip.replace(new RegExp('a', 'g'), takaiSappaohAnak);
+                            akhar_diip = akhar_diip.replace(new RegExp('A', 'g'), takaiSappaohAnak);
                             akhar_diip = akhar_diip.replace(new RegExp(sap_Â, 'g'), takaiSappaohAnak); //(â-ư)
                         }
                     }
@@ -207,38 +209,38 @@ window.cam.service.CamToTransPaxalih = function() {
 
                 //
                 if (base.Check_TakaiSapPaohAnak(item)) {
-                    takaiSappaohAnak = self._keyCodeToTrans[item];
+                    takaiSappaohAnak = self._keyCodeToTrans[item].toUpperCase();
                     continue;
                 }
                 if (base.Check_TakaiSapPaohLikuk(item) || base.Check_TakaiSapPaohDiLuic(item)) {
 
-                    var takaiAkhar = self._keyCodeToTrans[item];
+                    var takaiAkhar = self._keyCodeToTrans[item].toUpperCase();
                     if (akhar_diip) {
                         if (takaiSappaohAnak) {
                             if (takaiSappaohAnak == sap_Ô) {
                                 var sappaohCombine = Model.AKhar.DarSa.toString() + item.toString();
-                                sapPaoh_temp = self._keyCodeToTrans[sappaohCombine].toString();
+                                sapPaoh_temp = self._keyCodeToTrans[sappaohCombine].toString().toUpperCase();
                             }
 
                             akhar_diip = akhar_diip.replace(new RegExp(sap_Ô, 'g'), sapPaoh_temp);
                         } else {
                             if (akhar_diip_model == Model.AKhar.Ak) {
 
-                                akhar_diip = akhar_diip.substr(0, 1) + akhar_diip.substr(1).replace(new RegExp('a', 'g'), takaiAkhar);
+                                akhar_diip = akhar_diip.substr(0, 1) + akhar_diip.substr(1).replace(new RegExp('A', 'g'), takaiAkhar);
                                 klakAkharAk = false;
                             } else {
                                 //takai thek <+> takai kuk (ơu - au)
                                 if (item == Model.AKhar.TakaiKuk && addedTakaiThek) {
                                     var sappaohCombine = Model.AKhar.TakaiThek.toString() + item.toString();
-                                    sapPaoh_temp = self._keyCodeToTrans[sappaohCombine].toString();
+                                    sapPaoh_temp = self._keyCodeToTrans[sappaohCombine].toString().toUpperCase();
 
                                     akhar_diip = akhar_diip.replace(new RegExp(sap_E, 'g'), sapPaoh_temp);
                                 } else if (item == Model.AKhar.TakaiThek && addedTakaiKuk) {
                                     var sappaohCombine = Model.AKhar.TakaiThek.toString() + Model.AKhar.TakaiKuk.toString();
-                                    sapPaoh_temp = self._keyCodeToTrans[sappaohCombine].toString();
-                                    akhar_diip = akhar_diip.replace(new RegExp('u', 'g'), sapPaoh_temp);
+                                    sapPaoh_temp = self._keyCodeToTrans[sappaohCombine].toString().toUpperCase();
+                                    akhar_diip = akhar_diip.replace(new RegExp('U', 'g'), sapPaoh_temp);
                                 } else {
-                                    akhar_diip = akhar_diip.replace(new RegExp('a', 'g'), takaiAkhar); //???aua...
+                                    akhar_diip = akhar_diip.replace(new RegExp('A', 'g'), takaiAkhar); //???aua...
                                     akhar_diip = akhar_diip.replace(new RegExp(sap_Â, 'g'), takaiAkhar);
 
                                     if (item == Model.AKhar.TakaiThek) {
@@ -258,14 +260,14 @@ window.cam.service.CamToTransPaxalih = function() {
 
                 if (base.Check_TakaiAkharAnak(item)) {
 
-                    takaiAkharAnak = self._keyCodeToTrans[item].toString();
+                    takaiAkharAnak = self._keyCodeToTrans[item].toString().toUpperCase();
                     continue;
                 }
 
                 if (base.Check_TakaiAkharLikuk(item)) //aiek wek
                 {
 
-                    var takaiAkhar = self._keyCodeToTrans[item].toString();
+                    var takaiAkhar = self._keyCodeToTrans[item].toString().toUpperCase();
                     if (akhar_diip) {
                         if (self._keyCodeToTrans[akhar_diip_model].toString().length > 3) //nhja
                         {
@@ -295,7 +297,7 @@ window.cam.service.CamToTransPaxalih = function() {
                             } else {
                                 if (takaiAkhar.length == 1) {
                                     if (base.Check_InaAkhar_PhuAm_Special(akhar_diip_model))
-                                        akhar_diip = akhar_diip.substr(0, 1) + takaiAkhar + akhar_diip.substr(1).replace(new RegExp(sap_Â, 'g'), 'a'); //??? aiek wek
+                                        akhar_diip = akhar_diip.substr(0, 1) + takaiAkhar + akhar_diip.substr(1).replace(new RegExp(sap_Â, 'g'), 'A'); //??? aiek wek
                                     else
                                         akhar_diip = akhar_diip.substr(0, 1) + takaiAkhar + akhar_diip.substr(1);
                                 } else
@@ -340,14 +342,15 @@ window.cam.service.CamToTransPaxalih = function() {
             //Klak 'aa...'
             var libik_a = 0;
             for (var j = 0; j < result.length - 1; j++) {
-                if (result[j] == result[j + 1] && result[j] == 'a' && result != 'xaai' && klakAkharAk) //if hu akhar Ak (Xaai)
+                if (result[j] == result[j + 1] && result[j] == 'A' && result != 'XAAI' && klakAkharAk) //if hu akhar Ak (Xaai)
                 {
                     libik_a = j + 1;
                     result = result.substr(0, libik_a) + result.substr(libik_a + 1);
                     break;
                 }
 
-                if (result.length > 2 && (result[0] == 'a' && result[1] == 'a') || (result[0] == 'a' && result[1] == 'â') || (result[0] == 'a' && result[1] == 'ư')) //char vs var ???
+                if (result.length > 2 && (result[0] == 'A' && result[1] == 'A') ||
+                (result[0] == 'A' && result[1] == 'Â') || (result[0] == 'A' && result[1] == 'Ư')) //char vs var ???
                 {
                     result = result.substr(1);
                 }
@@ -355,50 +358,50 @@ window.cam.service.CamToTransPaxalih = function() {
 
             //Double Vowel
             if (huBalau && word[word.length - 1] != Model.AKhar.Balau && desType == Model.Enum.TransKawomTT) {
-                result = self.DoubleVowel(result);
+                result = self.DoubleVowel(result).toUpperCase();
             }
 
             //Cut Vowel
             if (desType == Model.Enum.TransKawomTT) {
                 for (var i = result.length - 1; i > 0; i--) {
                     //e -> ai
-                    if (result[i].toString() == 'e' && i == result.length - 1) {
-                        result = result.replace(new RegExp('e', 'g'), 'ai');
+                    if (result[i].toString() == 'E' && i == result.length - 1) {
+                        result = result.replace(new RegExp('E', 'g'), 'AI');
                         break;
                     }
 
                     //oo -> ao
-                    if (result[i].toString() + result[i - 1].toString() == 'oo' && i == result.length - 1) {
-                        result = result.replace(new RegExp('oo', 'g'), 'ao');
+                    if (result[i].toString() + result[i - 1].toString() == 'OO' && i == result.length - 1) {
+                        result = result.replace(new RegExp('OO', 'g'), 'AO');
                         break;
                     }
 
                     //ii -> i
-                    if (result[i].toString() + result[i - 1].toString() == 'ii' && i == result.length - 1) {
-                        result = result.replace(new RegExp('ii', 'g'), 'i');
+                    if (result[i].toString() + result[i - 1].toString() == 'II' && i == result.length - 1) {
+                        result = result.replace(new RegExp('II', 'g'), 'I');
                         break;
                     }
 
                     //ơơ -> ơ
-                    if (result[i].toString() + result[i - 1].toString() == 'ơơ' && i == result.length - 1) {
-                        result = result.replace(new RegExp('ơơ', 'g'), 'ơ');
+                    if (result[i].toString() + result[i - 1].toString() == 'ƠƠ' && i == result.length - 1) {
+                        result = result.replace(new RegExp('ƠƠ', 'g'), 'Ơ');
                         break;
                     }
                 }
             }
 
             //End klak ak
-            if (result.indexOf('ppong') != -1)
-                result = result.replace(new RegExp('ppong', 'g'), 'ppo');
+            if (result.indexOf('PPONG') != -1)
+                result = result.replace(new RegExp('PPONG', 'g'), 'PPO');
 
-            if (result.indexOf('ppông') != -1)
-                result = result.replace(new RegExp('ppông', 'g'), 'ppô');
+            if (result.indexOf('PPÔNG') != -1)
+                result = result.replace(new RegExp('PPÔNG', 'g'), 'PPÔ');
 
-            if (result.indexOf('xaii') != -1)
-                result = result.replace(new RegExp('xaii', 'g'), 'xaai');
+            if (result.indexOf('XAII') != -1)
+                result = result.replace(new RegExp('XAII', 'g'), 'XAAI');
         }
 
-        return result;
+        return result.toLowerCase();
     };
 
     self.DoubleVowel = function(result) {

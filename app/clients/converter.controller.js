@@ -38,12 +38,20 @@ angular.module('app')
           self.change = function(){
               $timeout(function(){
                 //   var xalih = new window.cam.service.TransToCamPaxalih();
-                var xalih = new window.cam.service.TransToTransPaxalih();
+                // var xalih = new window.cam.service.TransToTransPaxalih();
+                var xalih = new window.cam.service.CamToTransPaxalih();
                   //self.sourceText
+                //   FontYapata: 0,
+                //   FontGilaiPraong: 1,
+                //   FontCamEFEO: 2,
+                //   FontKTT: 3,
+                //   FontUniCamKur: 4,
+                //   FontUniCamVN: 5,
+                  //
                 //   TransCamEFEO: 6,
                 //   TransInrasara: 7,
                 //   TransKawomTT: 8
-                  self.results = xalih.DoConvert(self.sourceText, Model.Enum.TransKawomTT, Model.Enum.TransInrasara);
+                  self.results = xalih.DoConvert(self.sourceText, Model.Enum.FontYapata, Model.Enum.TransCamEFEO);
               },0);
           };
     }]);
