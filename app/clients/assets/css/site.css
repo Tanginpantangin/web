@@ -1,12 +1,20 @@
 @font-face {
-  font-family: 'akhar_thrah_1';
+  font-family: 'Akhar Thrah 1';
   src: url('akhar_thrah_1-webfont.eot');
   src: url('akhar_thrah_1-webfont.eot?#iefix') format('embedded-opentype'), url('akhar_thrah_1-webfont.woff2') format('woff2'), url('akhar_thrah_1-webfont.woff') format('woff'), url('akhar_thrah_1-webfont.ttf') format('truetype'), url('akhar_thrah_1-webfont.svg#akhar_thrah_1regular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 [lang='akt'] [translate] {
-  font-family: 'akhar_thrah_1';
+  font-family: 'Akhar Thrah 1';
+}
+.akt1 {
+  font-family: 'Akhar Thrah 1';
+  font-size: 28px;
+  line-height: 30px;
+}
+.akt1 br {
+  margin-bottom: 24px;
 }
 * {
   margin: 0;
@@ -169,6 +177,10 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   height: auto;
   padding-left: 24px;
 }
+#converter .md-button-convert {
+  color: #ffffff;
+  background-color: #F98D43;
+}
 #converter .title-converter {
   padding: 20px 0;
   margin-bottom: 10px;
@@ -176,6 +188,7 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 }
 #converter .bt-converter button {
   margin: 10px 0;
+  margin-right: 5px;
   text-transform: initial;
 }
 #converter .content-converter {
@@ -221,6 +234,49 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   min-width: 60px;
   float: right;
   margin-right: 5% !important;
+  color: #ffffff;
+  background-color: #53B8E0;
+}
+#converter table,
+#converter th,
+#converter td {
+  border-collapse: collapse;
+}
+#converter .table-convert1 {
+  text-align: center;
+  margin: 10px 0;
+}
+#converter .table-convert1 table {
+  width: 50%;
+  font-weight: bold;
+  display: inline-table;
+}
+#converter .table-convert1 table,
+#converter .table-convert1 th {
+  border-bottom: 2px solid #77BDD8;
+  border-top: 2px solid #77BDD8;
+}
+#converter .table-convert1 table tr:first-child {
+  background-color: #F3F3F3;
+}
+#converter .table-convert1 table th {
+  color: #77BDD8;
+}
+#converter .table-convert1 table td span {
+  font-family: 'akhar_thrah_1';
+  font-size: 25px;
+}
+#converter .table-convert1 th,
+#converter .table-convert1 td {
+  padding: 5px;
+}
+#converter p.indent-text {
+  text-indent: 50px;
+}
+#converter .text-descript {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 #document md-card md-card-actions {
   padding-right: 12px;
@@ -291,5 +347,13 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   #home-page .xalih .product-description {
     font-size: inherit;
     line-height: inherit;
+  }
+  #converter .table-convert1 table {
+    width: 90%;
+  }
+}
+@media (min-width: 600px) and (max-width: 959px) {
+  #converter .table-convert1 table {
+    width: 90%;
   }
 }
