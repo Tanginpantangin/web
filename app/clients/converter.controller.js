@@ -39,7 +39,8 @@ angular.module('app')
               $timeout(function(){
                 //   var xalih = new window.cam.service.TransToCamPaxalih();
                 // var xalih = new window.cam.service.TransToTransPaxalih();
-                var xalih = new window.cam.service.CamToTransPaxalih();
+                // var xalih = new window.cam.service.CamToTransPaxalih();
+                var xalih = new window.cam.service.FontToFontPaxalih();
                   //self.sourceText
                 //   FontYapata: 0,
                 //   FontGilaiPraong: 1,
@@ -47,11 +48,10 @@ angular.module('app')
                 //   FontKTT: 3,
                 //   FontUniCamKur: 4,
                 //   FontUniCamVN: 5,
-                  //
                 //   TransCamEFEO: 6,
                 //   TransInrasara: 7,
                 //   TransKawomTT: 8
-                  self.results = xalih.DoConvert(self.sourceText, Model.Enum.FontYapata, Model.Enum.TransCamEFEO);
+                  self.results = xalih.DoConvert(self.sourceText, Model.Enum.FontYapata, Model.Enum.FontKTT);
               },0);
           };
     }]);

@@ -1,4 +1,4 @@
-/* global Model,Stack */
+/* global Model */
 'use strict';
 if (!window.cam) {
     window.cam = {};
