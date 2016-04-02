@@ -14,5 +14,9 @@ Check google chrome **http://localhost:8080**
 # Build project using gulp #
 1. gulp styles: build less css and minify
 
-# Install Atom IDE add on
-apm install atom-beautify seti-ui monokai-seti open-recent project-manager todo-show minimap highlight-selected minimap-highlight-selected autoclose-html pigments linter linter-htmlhint linter-csslint linter-jshint auto-detect-indentation atom-beautify emmet
+# End to end testing
+1. How to setup Protractor  for end to end testing:
+**https://angular.github.io/protractor/#/tutorial**
+2. Run these command for testing
+webdriver-manager start
+protractor testing/config.js
