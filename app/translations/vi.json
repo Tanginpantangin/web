@@ -1,7 +1,9 @@
 {
-    "xalih_name": "Cham language converter",
+    "xalih_name": "Chuyển tự chữ Chăm",
     "xalih_des": "Bộ công cụ giúp chuyển đổi giữa Akhar Thrah sang các kiểu chuyển tự latin và ngược lại; giữa các loại font chữ Cham có cấu trúc khác nhau; giữa Akhar Thrah (không theo chuẩn Unicode) và các loại chuyển tự latin sang Akhar Thrah theo chuẩn Unicode và ngược lại.",
     "about_us": "Nhóm Tangin Pan Tangin",
+    "aboutus_descrip1": "Tangin Pan Tangin (TPT) là một dự án về các ứng dụng của ngôn ngữ Cham vào thực tế cuộc sống. TPT tập hợp các bạn trẻ yêu thích công nghệ, cùng góp tay tạo ra những sản phẩm mã nguồn mở và phi lợi nhuận.  Mong muốn của TPT là có thể đóng góp một phần nhỏ vào việc bảo tồn và phát huy những giá trị truyền thống của văn hóa Cham. Chúng muốn làm mới những nét đẹp ấy theo kịp thời đại, theo xu hướng phát triển chung của thế giới.",
+    "aboutus_descrip2":"TPT rất mong nhận được sự cộng tác, đóng góp từ cộng đồng. Đặc biệt là những góp ý để sản phẩm của chúng tôi được tiện lợi và hữu dụng nhất.",
     "Inalang_Aymoney_Name": "Inâ lang Cam-France (Aymoney - Cabaton)",
     "Inalang_Aymoney_Description": "Đây là 1 trong những cuốn từ điển chữ Cham đầu tiên được xuất bản từ năm ???. Từ điển được biên soạn công phu và khoa học ",
     "Inalang_Mousay_Name": "Inâ lang Cam-Viet (Mousay - Po Dharma)",

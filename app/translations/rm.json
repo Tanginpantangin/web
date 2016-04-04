@@ -1,7 +1,9 @@
 {
-    "xalih_name": "Cham language converter",
-    "xalih_des": "Bộ công cụ giúp chuyển đổi giữa Akhar Thrah sang các kiểu chuyển tự latin và ngược lại; giữa các loại font chữ Cham có cấu trúc khác nhau; giữa Akhar Thrah (không theo chuẩn Unicode) và các loại chuyển tự latin sang Akhar Thrah theo chuẩn Unicode và ngược lại.",
+    "xalih_name": "Xalih Akhar Cam",
+    "xalih_des": "Tangân Pan Tangân pajup xalih dom pamblow akhar Cam o ka yasa so gep. Mâng akhar Thrah, akhar latin xatel dom pho akhar Cam karei jam yayau tapa so unâkot.",
     "about_us": "Wom Dahlak",
+    "aboutus_descrip1":"Tangân Pan Tangân nan sa proyrok ba dom kaya pandar bahaxa cam tamâ dalam ray diip. pato dom urang dam takrâ sa tangân ngap jio dom tuei jalan peh so oh mâk jio. Co takrâ hu buh sa haxit prân yawa dalam gruk khik ramâk so ba tagok ilimâ adat cambat urang Cam. khol dahlak khing ngap biruw dom adat mâkrâ nan nâ tuei sumâ tuei sa jalan ppatagok so dunya.",
+    "aboutus_descrip2":"Cong tok hu dom kadha do pajup di buen bhap. Karei crih nan hu dom kadha patow pakai pioh hu mâkrâ so lagaih di abih.",
     "Inalang_Aymoney_Name": "Inâ lang Cam-France (Aymoney - Cabaton)",
     "Inalang_Aymoney_Description": "Đây là 1 trong những cuốn từ điển chữ Cham đầu tiên được xuất bản từ năm ???. Từ điển được biên soạn công phu và khoa học ",
     "Inalang_Mousay_Name": "Inâ lang Cam-Viet (Mousay - Po Dharma)",

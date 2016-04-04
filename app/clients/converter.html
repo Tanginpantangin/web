@@ -7,22 +7,22 @@
   <div layout="row" layout-align="start start" layout-sm="column" layout-xs="column" class="row-content">
         <div layout="column" flex>
           <div flex="100" class="bt-converter">
-
-                 <md-button ng-class="{btactive:$index==ctrl.indexSource}" ng-click="ctrl.setIndexSource($index)"
-                 ng-repeat="akhar in ctrl.sourceList | limitTo:3" class="md-raised md-button-convert" >{{akhar.name}}</md-button>
+                 <md-button class="md-raised md-button-convert">Akhar Thrah</md-button>
+                 <md-button class="md-raised md-button-convert">Rumi EFEO</md-button>
+                 <md-button class="md-raised md-button-convert">Akhar BBS</md-button>
 
                 <md-menu>
                   <md-button ng-click="$mdOpenMenu($event)" class="md-raised md-button-convert bt-viewmore">
                         <md-icon md-svg-icon="clients/assets/img/arrows.svg"></md-icon>
                   </md-button>
                   <md-menu-content>
-                    <md-menu-item ng-repeat="akhar in ctrl.sourceList  | limitTo:9:3">
-                      <md-button ng-click="ctrl.selectItemSource($index)">{{akhar.name}}</md-button>
+                    <md-menu-item ng-repeat="akhar in ctrl.akhars">
+                      <md-button ng-click="doSomething()">{{akhar.name}}</md-button>
                     </md-menu-item>
                   </md-menu-content>
-                </md-menu>
-                  <md-button class="md-raised bt-exchange" ng-click="ctrl.changeConvert()">
-                      <md-icon md-svg-icon="clients/assets/img/exchange2.svg" ></md-icon>
+                 </md-menu>
+                  <md-button class="md-raised bt-exchange">
+                      <md-icon md-svg-icon="clients/assets/img/exchange2.svg"></md-icon>
                   </md-button>
           </div>
           <div flex="100" class="box-convert">
@@ -47,7 +47,7 @@
                  </md-menu>
           </div>
           <div flex>
-            <md-content id="page_content" ng-keypress="ctrl.updateEditor()" layout-padding class="content-convert" >
+            <md-content id="page_content" ng-keypress="ctrl.updateEditor()" layout-padding class="content-convert">
                 Lorem ipsum dolor sit amet, ne quod novum mei.
             </md-content>
           </div>
@@ -63,7 +63,8 @@
   </div>
   <style>
   button.btactive{
-    background-color: #FF6800!important;
+    background-color: #F1BD00!important;
+      color: black!important;
   }
 
   </style>

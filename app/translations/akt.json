@@ -1,7 +1,9 @@
 {
-    "xalih_name": "Cham language converter",
-    "xalih_des": "Bộ công cụ giúp chuyển đổi giữa Akhar Thrah sang các kiểu chuyển tự latin và ngược lại; giữa các loại font chữ Cham có cấu trúc khác nhau; giữa Akhar Thrah (không theo chuẩn Unicode) và các loại chuyển tự latin sang Akhar Thrah theo chuẩn Unicode và ngược lại.",
-    "about_us": "Wom dahlak",
+    "xalih_name": "xl{H aAR c&#39;",
+    "xalih_des": "tz{N pN tz{N pj~P xl{H -d&#39; p-O*&lt;w aAR c&#39; o% k%y%s% -s&quot;\" g@P.m/ aAR \\EH, aAR lt{N xt@L -d' -f\" aAR c' kr] j' yy~@ tp% -s\" un{-kT." ,
+    "about_us": "-w' dh*K",
+    "aboutus_descrip1": "tz{N pN tz{N qN s% -\\p%-y@K b% -d' ky% pQR bhx% c' tm% dl' rY d`{P. p-t> -d' ur/ d' t\\k;% s% tz{N ZP -j`$ -d t&] jlN p@H -s\" oH mK -j`$. -c\" t\\k;% h~% b~H s% hx{T \\p%;N yw% dl' \\g~K A{K rm{K -s\" b% t-gK il{-m% adT cOT ur/ c'. -AL dh*K A{U ZP b{r~w -d' adT m\\k;% qN -n< t&] s~m~% t&] s% jlN Ft-gK -s\" d~Ny%.",
+    "aboutus_descrip2":"-c\" -tK h~% -d' kD% -d\" pj~P d} b&@N BP. kr] \\c{H qN h~% -d' kD% p-t<w p=k -p`@H h~% m\\k;% -s\" l=gH d} ab{H.",
     "Inalang_Aymoney_Name": "Inâ lang Cam-France (Aymoney - Cabaton)",
     "Inalang_Aymoney_Description": "Đây là 1 trong những cuốn từ điển chữ Cham đầu tiên được xuất bản từ năm ???. Từ điển được biên soạn công phu và khoa học ",
     "Inalang_Mousay_Name": "Inâ lang Cam-Viet (Mousay - Po Dharma)",
