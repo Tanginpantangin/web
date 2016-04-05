@@ -73,11 +73,7 @@ angular.module('app')
               self.indexSource=self.indexDestination;
               self.indexDestination = temp;
             };
-            Array.prototype.swap = function(a, b){
-              var temp = this[a];
-              this[a] = this[b];
-              this[b] = temp;
-            };
+          
             var moveActive = function(index1, index2){
               if(index1==0)
               {

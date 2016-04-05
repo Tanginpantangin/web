@@ -29,7 +29,7 @@ angular.module('app')
                     };
 
                     $scope.getActiveClass = function(page) {
-                        return page.href === $location.path() ? 'active' : '';
+                        return page.href == $location.path() ? 'active' : '';
                     };
                 }
             };
