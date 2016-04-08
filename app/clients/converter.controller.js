@@ -42,7 +42,7 @@ angular.module('app')
             name: 'AT Unicode Cam kar'
         }, {
             id: Model.Enum.FontUniCamVN,
-            name: 'TA Unicode Cam VN'
+            name: 'AT Unicode Cam VN'
         }, {
             id: Model.Enum.TransCamEFEO,
             name: 'Latin tuei EFEO'
@@ -108,6 +108,9 @@ angular.module('app')
             var temp = self.indexSource;
             self.indexSource = self.indexDestination;
             self.indexDestination = temp;
+
+            // Convert data
+            self.convertData();
         };
 
         var moveActive = function(index1, index2) {
