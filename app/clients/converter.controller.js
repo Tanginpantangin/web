@@ -27,52 +27,81 @@ angular.module('app')
         // Data source of combobox
         self.sourceList = [{
             id: Model.Enum.FontYapata,
-            name: 'AT Font Yapata'
+            name: 'AT Font Yapata',
+            font: 'akt1',
+            isDisabled: false
         }, {
             id: Model.Enum.FontGilaiPraong,
-            name: 'AT Font Gilai Praong'
+            name: 'AT Font Gilai Praong',
+            font: 'champa_2',
+            isDisabled: false
         }, {
             id: Model.Enum.FontCamEFEO,
-            name: 'AT Font Cam EFEO'
+            name: 'AT Font Cam EFEO',
+            font: 'cam-efeo',
+            isDisabled: false
         }, {
             id: Model.Enum.FontKTT,
-            name: 'AT Kawom Tuek Tuah'
+            name: 'AT Kawom Tuek Tuah',
+            font: 'blue1',
+            isDisabled: false
         }, {
             id: Model.Enum.FontUniCamKur,
-            name: 'AT Unicode Cam kar'
+            name: 'AT Unicode Cam kar',
+            font: 'cjmkh',
+            isDisabled: false
         }, {
             id: Model.Enum.FontUniCamVN,
-            name: 'AT Unicode Cam VN'
+            name: 'AT Unicode Cam VN',
+            font: 'cham_roman',
+            isDisabled: false
         }, {
             id: Model.Enum.TransCamEFEO,
-            name: 'Latin tuei EFEO'
+            name: 'Latin tuei EFEO',
+            font: "",
+            isDisabled: false
         }, {
             id: Model.Enum.TransInrasara,
-            name: 'Latin tuei Inrasara'
+            name: 'Latin tuei Inrasara',
+            font: "",
+            isDisabled: false
         }, {
             id: Model.Enum.TransKawomTT,
-            name: 'Latin Kawom Tuek Tuah'
+            name: 'Latin Kawom Tuek Tuah',
+            font: "",
+            isDisabled: false
         }];
         self.destinationList = angular.copy(self.sourceList);
 
         // Selected source index
         self.indexSource = Model.Enum.FontYapata;
-
+        self.fontSource = self.sourceList[0].font;
         // Source button clicked event
-        self.setIndexSource = function(index) {
+        self.setIndexSource = function(index, font) {
             self.indexSource = index;
+            self.fontSource = font;
             if (self.indexSource === self.indexDestination) {
                 self.indexDestination = moveActive(self.indexSource, self.indexDestination);
+                self.fontDestination = self.destinationList[self.indexDestination].font;
             }
-
+                     
             // Convert data
             self.convertData();
         };
 
         // Source Dropdownlist selected item changedevent
-        self.selectItemSource = function(index) {
+        self.selectItemSource = function(index, font) {
             self.indexDestination = selectItemConvert(index, self.sourceList, self.destinationList, self.indexDestination);
             self.indexSource = 2;
+            self.fontSource = font;
+            self.fontDestination = self.destinationList[self.indexDestination].font;
+            self.destinationList[6].isDisabled = false;
+            self.destinationList[7].isDisabled = false;
+            if(index==5)
+            {
+              self.destinationList[6].isDisabled = true;
+              self.destinationList[7].isDisabled = true;
+            }
 
             // Convert data
             self.convertData();
@@ -80,31 +109,38 @@ angular.module('app')
 
         // Selected destination index
         self.indexDestination = Model.Enum.FontGilaiPraong;
-
+        self.fontDestination = self.destinationList[1].font;
         // Destination button clicked event
-        self.setIndexDestination = function(index) {
+        self.setIndexDestination = function(index,font) {
             self.indexDestination = index;
             if (self.indexDestination === self.indexSource) {
                 self.indexSource = moveActive(self.indexDestination, self.indexSource);
+                self.fontSource = self.sourceList[self.indexSource].font;
             }
-
+            self.fontDestination = font;
             // Convert data
             self.convertData();
         };
 
         // Source Dropdownlist selected item changedevent
-        self.selectItemDestination = function(index) {
+        self.selectItemDestination = function(index, font) {
             self.indexSource = selectItemConvert(index, self.destinationList, self.sourceList, self.indexSource);
             self.indexDestination = 2;
-
+            self.fontDestination = font;
+            self.fontSource = self.sourceList[self.indexSource].font;
             // Convert data
             self.convertData();
         };
 
         self.changeConvert = function() {
+            var tempfont = self.fontDestination;
+            self.fontDestination = self.fontSource;
+            self.fontSource = tempfont;
+
             var tempList = self.destinationList;
             self.destinationList = self.sourceList;
             self.sourceList = tempList;
+
             var temp = self.indexSource;
             self.indexSource = self.indexDestination;
             self.indexDestination = temp;
@@ -173,6 +209,9 @@ angular.module('app')
                 }
                 self.destinations = result;
             }, 0);
+        };
+        self.changeFont = function(){
+
         };
 
         // Check convert type is font
