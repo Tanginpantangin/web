@@ -14,7 +14,7 @@
                     </md-button>
                     <md-menu-content>
                         <md-menu-item ng-repeat="akhar in ctrl.sourceList  | limitTo:9:3">
-                            <md-button id="source-{{akhar.id}}"  ng-click="ctrl.selectItemSource($index, akhar.font)" ng-disabled="akhar.isDisabled">{{akhar.name}}</md-button>
+                            <md-button id="source-{{akhar.id}}"  ng-click="ctrl.selectItemSource($index, akhar.font)" ng-disabled="ctrl.isDisabled1">{{akhar.name}}</md-button>
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>
@@ -36,7 +36,7 @@
                     </md-button>
                     <md-menu-content>
                         <md-menu-item ng-repeat="akhar in ctrl.destinationList  | limitTo:9:3">
-                            <md-button id="destination-{{akhar.id}}" ng-disabled="akhar.isDisabled" ng-click="ctrl.selectItemDestination($index, akhar.font)">{{akhar.name}}</md-button>
+                            <md-button id="destination-{{akhar.id}}" ng-disabled="ctrl.SourceId==8 && (akhar.id==6 || akhar.id==7)" ng-click="ctrl.selectItemDestination($index, akhar.font)">{{akhar.name}}</md-button>
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>

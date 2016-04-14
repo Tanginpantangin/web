@@ -28,80 +28,67 @@ angular.module('app')
         self.sourceList = [{
             id: Model.Enum.FontYapata,
             name: 'AT Font Yapata',
-            font: 'akt1',
-            isDisabled: false
+            font: 'font-yapata'
         }, {
             id: Model.Enum.FontGilaiPraong,
             name: 'AT Font Gilai Praong',
-            font: 'champa_2',
-            isDisabled: false
+            font: 'font-gilaipraong'
         }, {
             id: Model.Enum.FontCamEFEO,
             name: 'AT Font Cam EFEO',
-            font: 'cam-efeo',
-            isDisabled: false
+            font: 'font-cham-efeo'
         }, {
             id: Model.Enum.FontKTT,
             name: 'AT Kawom Tuek Tuah',
-            font: 'blue1',
-            isDisabled: false
+            font: 'font-ktt'
         }, {
             id: Model.Enum.FontUniCamKur,
-            name: 'AT Unicode Cam kar',
-            font: 'cjmkh',
-            isDisabled: false
+            name: 'AT Unicode Cam Kur',
+            font: 'font-uni-camkur'
         }, {
             id: Model.Enum.FontUniCamVN,
             name: 'AT Unicode Cam VN',
-            font: 'cham_roman',
-            isDisabled: false
+            font: 'font-uni-camvn'
         }, {
             id: Model.Enum.TransCamEFEO,
             name: 'Latin tuei EFEO',
-            font: "",
-            isDisabled: false
+            font: "font-yuen"
         }, {
             id: Model.Enum.TransInrasara,
             name: 'Latin tuei Inrasara',
-            font: "",
+            font: "font-yuen",
             isDisabled: false
         }, {
             id: Model.Enum.TransKawomTT,
             name: 'Latin Kawom Tuek Tuah',
-            font: "",
-            isDisabled: false
+            font: "font-yuen"
         }];
         self.destinationList = angular.copy(self.sourceList);
-
         // Selected source index
         self.indexSource = Model.Enum.FontYapata;
         self.fontSource = self.sourceList[0].font;
         // Source button clicked event
         self.setIndexSource = function(index, font) {
+            self.SourceId = self.sourceList[index].id; //use for disable
             self.indexSource = index;
             self.fontSource = font;
             if (self.indexSource === self.indexDestination) {
                 self.indexDestination = moveActive(self.indexSource, self.indexDestination);
                 self.fontDestination = self.destinationList[self.indexDestination].font;
             }
-                     
+
             // Convert data
             self.convertData();
         };
 
+        console.log(self.sourceList);
         // Source Dropdownlist selected item changedevent
         self.selectItemSource = function(index, font) {
+            self.SourceId = self.sourceList[index+3].id; //use for disable
             self.indexDestination = selectItemConvert(index, self.sourceList, self.destinationList, self.indexDestination);
             self.indexSource = 2;
             self.fontSource = font;
             self.fontDestination = self.destinationList[self.indexDestination].font;
-            self.destinationList[6].isDisabled = false;
-            self.destinationList[7].isDisabled = false;
-            if(index==5)
-            {
-              self.destinationList[6].isDisabled = true;
-              self.destinationList[7].isDisabled = true;
-            }
 
             // Convert data
             self.convertData();
@@ -156,6 +143,9 @@ angular.module('app')
             if ((index1 === 1) || (self.sourceList[2].id === self.destinationList[2].id)) {
                 return index2 - 1;
             }
+            if(self.sourceList[2].id==8 &&(self.destinationList[2].id==6 || self.destinationList[2].id==7) ){
+              return index2 - 1;
+            }
             return index2;
         };
 
@@ -165,6 +155,9 @@ angular.module('app')
             listMain.swap(index, 2);
             if (listMain[2].id === listCondition[2].id) {
                 indexCondition = indexCondition - 1;
+            }
+            if(listMain[2].id==8 &&(listCondition[2].id==6 || listCondition[2].id==7)){
+              indexCondition = indexCondition - 1;
             }
             return indexCondition;
         };
