@@ -73,7 +73,7 @@ angular.module('app')
             self.indexSource = index;
             self.fontSource = font;
             if (self.indexSource === self.indexDestination) {
-                self.indexDestination = moveActive(self.indexSource, self.indexDestination);
+                self.indexDestination = moveActive(self.indexSource, self.indexDestination, true);
                 self.fontDestination = self.destinationList[self.indexDestination].font;
             }
 
@@ -85,7 +85,7 @@ angular.module('app')
         // Source Dropdownlist selected item changedevent
         self.selectItemSource = function(index, font) {
             self.SourceId = self.sourceList[index+3].id; //use for disable
-            self.indexDestination = selectItemConvert(index, self.sourceList, self.destinationList, self.indexDestination);
+            self.indexDestination = selectItemConvert(index, self.sourceList, self.destinationList, self.indexDestination, true);
             self.indexSource = 2;
             self.fontSource = font;
             self.fontDestination = self.destinationList[self.indexDestination].font;
@@ -101,7 +101,7 @@ angular.module('app')
         self.setIndexDestination = function(index,font) {
             self.indexDestination = index;
             if (self.indexDestination === self.indexSource) {
-                self.indexSource = moveActive(self.indexDestination, self.indexSource);
+                self.indexSource = moveActive(self.indexDestination, self.indexSource, false);
                 self.fontSource = self.sourceList[self.indexSource].font;
             }
             self.fontDestination = font;
@@ -111,7 +111,7 @@ angular.module('app')
 
         // Source Dropdownlist selected item changedevent
         self.selectItemDestination = function(index, font) {
-            self.indexSource = selectItemConvert(index, self.destinationList, self.sourceList, self.indexSource);
+            self.indexSource = selectItemConvert(index, self.destinationList, self.sourceList, self.indexSource, false);
             self.indexDestination = 2;
             self.fontDestination = font;
             self.fontSource = self.sourceList[self.indexSource].font;
@@ -131,32 +131,39 @@ angular.module('app')
             var temp = self.indexSource;
             self.indexSource = self.indexDestination;
             self.indexDestination = temp;
-
+            if(self.indexSource == self.indexDestination)
+            {
+                if((self.sourceList[2].id==6 || self.sourceList[2].id==7)&&self.destinationList[2].id==8)
+                {
+                    self.indexDestination = self.indexDestination -1;
+                }
+            }
             // Convert data
             self.convertData();
         };
 
-        var moveActive = function(index1, index2) {
+        var moveActive = function(index1, index2, isSource) {
             if (index1 === 0) {
                 return index2 + 1;
             }
             if ((index1 === 1) || (self.sourceList[2].id === self.destinationList[2].id)) {
                 return index2 - 1;
             }
-            if(self.sourceList[2].id==8 &&(self.destinationList[2].id==6 || self.destinationList[2].id==7) ){
+            if((self.sourceList[2].id==6 || self.sourceList[2].id ==7) && (self.destinationList[2].id==8)){
               return index2 - 1;
             }
+
             return index2;
         };
 
-        var selectItemConvert = function(index, listMain, listCondition, indexCondition) {
+        var selectItemConvert = function(index, listMain, listCondition, indexCondition, isSource) {
             // Fist position in list dropdownlist have position=3
             index = index + 3;
             listMain.swap(index, 2);
-            if (listMain[2].id === listCondition[2].id) {
+            if (listMain[2].id === listCondition[2].id && indexCondition ==2) {
                 indexCondition = indexCondition - 1;
             }
-            if(listMain[2].id==8 &&(listCondition[2].id==6 || listCondition[2].id==7)){
+            if((listMain[2].id==6 || listMain[2].id==7) && listCondition[2].id==8 && isSource==true && indexCondition ==2){
               indexCondition = indexCondition - 1;
             }
             return indexCondition;

@@ -36,7 +36,7 @@
                     </md-button>
                     <md-menu-content>
                         <md-menu-item ng-repeat="akhar in ctrl.destinationList  | limitTo:9:3">
-                            <md-button id="destination-{{akhar.id}}" ng-disabled="ctrl.SourceId==8 && (akhar.id==6 || akhar.id==7)" ng-click="ctrl.selectItemDestination($index, akhar.font)">{{akhar.name}}</md-button>
+                            <md-button id="destination-{{akhar.id}}" ng-disabled="akhar.id==8 && (ctrl.SourceId==6 || ctrl.SourceId==7)" ng-click="ctrl.selectItemDestination($index, akhar.font)">{{akhar.name}}</md-button>
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>
