@@ -126,7 +126,7 @@ window.cam.service.TransToTransPaxalih = function() {
                 var idex = result.indexOf('u');
                 var str_check = 'aie';
                 if ((idex != result.length - 1) && (idex != 0) &&
-                    (str_check.indexOf(result[idex - 1]) !== -1)) {
+                    (str_check.indexOf(result[idex + 1]) !== -1)) {
                     result = result.replace(new RegExp('u', 'g'), 'w');
                 }
             }
