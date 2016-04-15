@@ -409,9 +409,9 @@ window.cam.service.CamToTransPaxalih = function() {
         for (var i = result.length - 2; i > 0; i--) // not available vowel at the end!!!
         {
             var key = result[i].toString();
-            if (seft._vowelKTT.ContainsKey(key)) {
+            if (self._vowelKTT[key]) {
                 result = result.slice(0, i) + result.slice(i + 1, result.length);
-                result = result.splice(i, 0, seft._vowelKTT[key].toString());
+                result = result.splice(i, 0, self._vowelKTT[key].toString());
                 break;
             }
         }
