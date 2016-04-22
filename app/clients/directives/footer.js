@@ -33,6 +33,7 @@ angular.module('app')
 
                         // Reset current language value
                         $rootScope.lang = langKey;
+
                         $scope.currentLanguge = $filter('filter')($scope.languages, {
                             value: $rootScope.lang
                         })[0];

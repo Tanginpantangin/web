@@ -21,9 +21,9 @@ angular.module('app')
 
         };
     })
-    .controller('ConverterController', ['$timeout', function($timeout) {
+    .controller('ConverterController', ['$timeout', '$rootScope', function($timeout, $rootScope) {
         var self = this;
-
+        self.lang = $rootScope.lang;
         // Data source of combobox
         self.sourceList = [{
             id: Model.Enum.FontYapata,
