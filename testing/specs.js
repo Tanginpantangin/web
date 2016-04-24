@@ -109,7 +109,7 @@ describe('Convert from Cham to transliteration', function() {
         var expected = 'hajan bal liawa, rup trơm aia amư lian yuh yuh. pađiak bilan ywak amek nao moot aao khan ôh nguy thir. bbơng kiêm bbơng ưn amek amư halar tian. mưrat sa jalan roong anưk nao bac. ligôy ngak apah ligah ngak cadwa ôh mưda bbwah kar. brah padai mưthrey jiên đôc nhim amek amư anit payêr. xanưng atah ciip rabbah jhak dahluw siam hadei. êl rup drei halei buw tal. aơơn ngai prong gloong anưk likuw đwa noong, thun anak bilan hadei, aia harei hadah hadai, anưk wơk gilac mai ppôk lithei ppôk aia, sa rituh thun taha amek amư buy tian. sang ppađê paga jalơh ô mong drơh yuw urang. min amek amư tian ha hôy prong ka anưk ralô. xanưng atah ciip rabbah piêh ka jalan hadei. war rup drei ka anưk dah bbook.';
         assert(source, expected);
     });
-});
+});*/
 
 describe('Convert from transliteration to transliteration', function() {
     beforeEach(function() {
@@ -137,7 +137,7 @@ describe('Convert from transliteration to transliteration', function() {
 
     it('should convert from Inrasara to EFEO transliteration', function() {
         select(convertType.TransInrasara, convertType.TransCamEFEO);
-        var expected = 'hajan bal liaua, rup trem aia amâ lian yuh yuh. pandiak bilan yuak amaik nao maot ao khan oh nguy thir. mbeng kiém mbeng ân amaik amâ halar tian. mârat sa jalan raong anâk nao bac. ligoy ngak apah ligah ngak cadua oh mâda mbuah kar. brah padai mâthraiy jién ndoc nyim amaik amâ anit payér. xanâng atah ciip rambah jhak dahluw siam hadei. él rup drei halei buw tal. aen ngai praong glaong anâk likuw ndua naong, thun anak bilan hadei, aia harei hadah hadai, anâk wek gilac mai ppok lithei ppok aia, sa rituh thun taha amaik amâ buy tian. sang ppandé paga jaleh o maong dreh yuw urang. min amaik amâ tian ha hoy praong ka anâk ralo. xanâng atah ciip rambah piéh ka jalan hadei. war rup drei ka anâk dah mbaok.';
+        var expected = 'hajan bal liawa, rup trem aia amâ lian yuh yuh. pandiak bilan yuak amaik nao maot ao khan oh nguy thir. mbeng kiém mbeng ân amaik amâ halar tian. mârat sa jalan raong anâk nao bac. ligoy ngak apah ligah ngak cadua oh mâda mbuah kar. brah padai mâthraiy jién ndoc nyim amaik amâ anit payér. xanâng atah ciip rambah jhak dahluw siam hadei. él rup drei halei buw tal. aen ngai praong glaong anâk likuw ndua naong, thun anak bilan hadei, aia harei hadah hadai, anâk wek gilac mai ppok lithei ppok aia, sa rituh thun taha amaik amâ buy tian. sang ppandé paga jaleh o maong dreh yuw urang. min amaik amâ tian ha hoy praong ka anâk ralo. xanâng atah ciip rambah piéh ka jalan hadei. war rup drei ka anâk dah mbaok.';
         var source = 'hajan bal liawa, rup trơm aia amư lian yuh yuh. pandiak bilan ywak amaik nau maut au khan oh nguy thir. bbơng kiem bbơng ưn amaik amư halar tian. mưrat sa jalan raung anưk nau bac. ligoy ngak apah ligah ngak cadwa oh mưda bbwah kar. brah padai mưthraiy jien ndoc nhim amaik amư anit payer. xanưng atah ciip rabbah jhak dahluw siam hadei. el rup drei halei buw tal. aơn ngai praung glaung anưk likuw ndwa naung, thun anak bilan hadei, aia harei hadah hadai, anưk wơk gilac mai ppok lithei ppok aia, sa rituh thun taha amaik amư buy tian. sang ppande paga jalơh o maung drơh yuw urang. min amaik amư tian ha hoy praung ka anưk ralo. xanưng atah ciip rabbah pieh ka jalan hadei. war rup drei ka anưk dah bbauk.';
         assert(source, expected);
     });
@@ -152,50 +152,50 @@ describe('Convert from transliteration to transliteration', function() {
     it('should convert from KTT to Inrasara transliteration', function() {
         select(convertType.TransKawomTT, convertType.TransInrasara);
         var source = 'Hajaan bal li-awa ruup trơm ia amư li-an yuh yuh. Pađiak bilaan ywak ameek naw moot aw khan ôh nguy thin. Bbơng kiêm bbơng ưưn ameek amư halaar tian. Mưraat sa jalaan roong anưưk naw bac. Ligôy ngak apah ligah ngak cadwa ôh mưda bbwah kar. Brah padai mưthrey jiên đôc nhim ameek amư anit payêr. Xanưng atah ciip rabbah jhaak dahluw siam hadei. El ruup drei halei buw tal. Ơn ngai prong gloong anưưk likuw đwa noong, Thun anak bilan hadei, ia harei hadah hadai, Anưưk wơk gilac mai ppôk lithei ppôk ia, Sa rituh thun taha ameek amư buy tian. Sang pađiê paga jalơh ô mong drơh yuw urang. Min ameek amư tian ha hôy prong ka anưưk ralô. Xanưng atah ciip rabbah piêh ka jalaan hadei. War ruup drei ka anưưk dah bbook.';
-        var expected = 'hajan bal li-awa rup trơm ia amư li-an yuh yuh. pađiak bilan ywak amaik naw maut aw khan oh nguy thin. bbơng kiem bbơng ưn amaik amư halar tian. mưrat sa jalan raung anưk naw bac. ligoy ngak apah ligah ngak cadwa oh mưda bbwah kar. brah padai mưthraiy jien đoc nhim amaik amư anit payer. xanưng atah ciip rabbah jhak dahluw siam hadei. el rup drei halei buw tal. ơn ngai praung glaung anưk likuw đwa naung, thun anak bilan hadei, ia harei hadah hadai, anưk wơk gilac mai ppok lithei ppok ia, sa rituh thun taha amaik amư buy tian. sang pađie paga jalơh o maung drơh yuw urang. min amaik amư tian ha hoy praung ka anưk ralo. xanưng atah ciip rabbah pieh ka jalan hadei. war rup drei ka anưk dah bbauk.';
+        var expected = 'hajan bal li-awa rup trơm ia amư li-an yuh yuh. pađiak bilan ywak amaik naw maut aw khan oh nguy thin. bbơng kiem bbơng ưn amaik amư halar tian. mưrat sa jalan raung anưk naw bac. ligoy ngak apah ligah ngak cadwa oh mưda bbwah kar. brah padai mưthraiy jien đoc nhim amaik amư anit payer. xanưng atah ciip rabbah jhak dahluw siam hadei. ail rup drei halei buw tal. ơn ngai praung glaung anưk likuw đwa naung, thun anak bilan hadei, ia harei hadah hadai, anưk wơk gilac mai ppok lithei ppok ia, sa rituh thun taha amaik amư buy tian. sang pađie paga jalơh o maung drơh yuw urang. min amaik amư tian ha hoy praung ka anưk ralo. xanưng atah ciip rabbah pieh ka jalan hadei. war rup drei ka anưk dah bbauk.';
         assert(source, expected);
     });
 });
-*/
 
-describe('Convert from transliteration to Akhar Thrah', function() {
-    beforeEach(function() {
-        // Open convert page
-        browser.get('http://localhost:8080/#/converter', 20000);
-    });
 
-    var select = function(soureType, destinationType) {
-
-        // Select EFEO transliteration
-        element(by.id('source-more')).click();
-        element(by.id('source-' + soureType)).click();
-
-        // Select Yapata font
-        element(by.id('destination-more')).click();
-        element(by.id('destination-' + destinationType)).click();
-    };
-
-    it('should convert from transliteration EFEO to FontYapata', function() {
-        select(convertType.TransCamEFEO, convertType.FontYapata);
-        var source = 'Tamâkai yamân, yamân mbluak xaradang piéh cang xa-ai.';
-        var expected = 'tm=k ymN, ymN O)K xrd/ -p`@H c/ x=I.';
-        assert(source, expected);
-    });
-
-  it('should convert from transliteration Inrasara to FontYapata', function() {
-        select(convertType.TransInrasara, convertType.FontYapata);
-        var source = 'Tamưkai yamưn, yamưn bblwak xaradang pieh cang xa-ai.';
-        var expected = 'tm=k ymN, ymN O)K xrd/ -p`@H c/ x=I.';
-        assert(source, expected);
-    });
-
-    it('should convert from transliteration KTT to FontYapata', function() {
-        select(convertType.TransKawomTT, convertType.FontYapata);
-        var source = 'Tamưkai yamưưn, yamưưn bblwak xaradang piêh cang xa-ai.';
-        var expected = 'tm=k ymN, ymN O)K xrd/ -p`@H c/ x=I.';
-        assert(source, expected);
-    });
-});
+// describe('Convert from transliteration to Akhar Thrah', function() {
+//     beforeEach(function() {
+//         // Open convert page
+//         browser.get('http://localhost:8080/#/converter', 20000);
+//     });
+//
+//     var select = function(soureType, destinationType) {
+//
+//         // Select EFEO transliteration
+//         element(by.id('source-more')).click();
+//         element(by.id('source-' + soureType)).click();
+//
+//         // Select Yapata font
+//         element(by.id('destination-more')).click();
+//         element(by.id('destination-' + destinationType)).click();
+//     };
+//
+//     it('should convert from transliteration EFEO to FontYapata', function() {
+//         select(convertType.TransCamEFEO, convertType.FontYapata);
+//         var source = 'Tamâkai yamân, yamân mbluak xaradang piéh cang xa-ai.';
+//         var expected = 'tm=k ymN, ymN O)K xrd/ -p`@H c/ x=I.';
+//         assert(source, expected);
+//     });
+//
+//   it('should convert from transliteration Inrasara to FontYapata', function() {
+//         select(convertType.TransInrasara, convertType.FontYapata);
+//         var source = 'Tamưkai yamưn, yamưn bblwak xaradang pieh cang xa-ai.';
+//         var expected = 'tm=k ymN, ymN O)K xrd/ -p`@H c/ x=I.';
+//         assert(source, expected);
+//     });
+//
+//     it('should convert from transliteration KTT to FontYapata', function() {
+//         select(convertType.TransKawomTT, convertType.FontYapata);
+//         var source = 'Tamưkai yamưưn, yamưưn bblwak xaradang piêh cang xa-ai.';
+//         var expected = 'tm=k ymN, ymN O)K xrd/ -p`@H c/ x=I.';
+//         assert(source, expected);
+//     });
+// });
 
 
 /* Waiting!!!!!!!!!!!!!!! */
