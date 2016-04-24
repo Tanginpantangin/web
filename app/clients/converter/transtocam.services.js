@@ -747,7 +747,7 @@ window.cam.service.TransToCamPaxalih = function() {
 
             //fix "IM" is takai kik & akhar nâk | fix "LU" Is Akhar Lak
             //fix "AI" Is Akhar Ak
-            if ((character == self._trans_I && value[0].length > 2) ||
+            if ((character == self._trans_IM && value[0].length > 2) ||
                 (character == self._trans_LU && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
                 (character == self._trans_LW && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
                 (character == self._trans_AI && retForCode && (retForCode.length == 0 || base.HuLanglikuk(retForCode))) ||
