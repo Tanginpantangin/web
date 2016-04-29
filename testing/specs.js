@@ -207,14 +207,16 @@ describe('Convert from Akhar Thrah to Akhar Thrah', function() {
         browser.get('http://localhost:8080/#/converter', 20000);
     });
 
-    var select = function(soureType, destinationType) {
+    var select = function(soureType, clickSource,  destinationType) {
 
         // Select Source font
-        element(by.id('source-more')).click();
+        if(clickSource){
+            element(by.id('source-more')).click();
+        }
         element(by.id('source-' + soureType)).click();
 
         // Select Yapata font
-        element(by.id('destination-more')).click();
+        // element(by.id('destination-more')).click();
         element(by.id('destination-' + destinationType)).click();
     };
 
@@ -235,7 +237,7 @@ describe('Convert from Akhar Thrah to Akhar Thrah', function() {
     it('should convert from FontYapata to FontKTT', function() {
         select(convertType.FontYapata, convertType.FontKTT);
         var source = '=m rw$ pl] ad] =h x=I -n< s% jl%N O$ ikN s% d-n<.';
-        var expected = '=y ;,I u'S :pS =/ .=? -r$ {^ i'^R [I "aR {^ p-r$.';
+        var expected = '=y ;,I u\'S :pS =/ .=? -r$ {^ i\'^R [I "aR {^ p-r$.';
         assert(source, expected);
     });
 
