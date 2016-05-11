@@ -132,6 +132,17 @@ window.cam.service.Paxalih = function() {
         return sabaoh >= Model.AKhar.KakMatai && sabaoh <= Model.AKhar.PaohDaNih || sabaoh == Model.AKhar.PaohNgâk;
     };
 
+    self.CheckEndCharacter = function(sabaoh) {
+        var endCharacters = [
+            Model.AKhar.PaohNgâk, Model.AKhar.TakaiKikTutTakaiMâkDalem,
+            Model.AKhar.TakaiKikTutTakaiMâkLingiw, Model.AKhar.TakaiKikTutTakaiYak, Model.AKhar.TakaiThekTutTakaiMâk,
+            Model.AKhar.TakaiThekPaohNgâk, Model.AKhar.TraohAwPaohNgâk, Model.AKhar.TraohAwTutTakaiMâk
+        ];
+
+        return (sabaoh >= Model.AKhar.KakMatai && sabaoh <= Model.AKhar.PaohDaNih) ||
+            endCharacters.indexOf(Number(sabaoh)) != -1;
+    };
+
     self.Check_TakaiAkhar = function(sabaoh) {
         return sabaoh > Model.AKhar.Balau && sabaoh <= Model.AKhar.PaohNgâk;
     };
