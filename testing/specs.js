@@ -46,7 +46,7 @@ var select = function(soureType, clickSourceMore,  destinationType, clickDestina
 describe('Convert page', function() {
     beforeEach(function() {
         // Open convert page
-        browser.get('http://localhost:8080/#/converter', 30000);
+        browser.get('http://localhost:8080/#/converter', 50000);
     });
 
     it('convert from EFEO to font Yapata 1', function() {
@@ -67,7 +67,7 @@ describe('Convert page', function() {
 describe('Convert from akhar thrah to transliteration', function() {
     beforeEach(function() {
         // Open convert page
-        browser.get('http://localhost:8080/#/converter', 30000);
+        browser.get('http://localhost:8080/#/converter', 50000);
     });
 
     it('should convert from font Yapata to EFEO transliteration', function() {
@@ -148,7 +148,7 @@ describe('Convert from transliteration to transliteration', function() {
 describe('Convert from transliteration to Akhar Thrah', function() {
     beforeEach(function() {
         // Open convert page
-        browser.get('http://localhost:8080/#/converter', 20000);
+        browser.get('http://localhost:8080/#/converter', 50000);
     });
 
     it('should convert from transliteration EFEO to FontYapata', function() {
@@ -169,6 +169,13 @@ describe('Convert from transliteration to Akhar Thrah', function() {
         select(convertType.TransKawomTT, true, convertType.FontYapata, false);
         var source = 'Tamưkai yamưưn, yamưưn bblwak xaradang piêh cang xa-ai.';
         var expected = 'tm=k ymN, ymN O)K xrd/ -p`@H c/ x=I.';
+        assert(source, expected);
+    });
+
+    it('should convert from transliteration KTT to FontYapata 2', function() {
+        select(convertType.TransKawomTT, true, convertType.FontYapata, false);
+        var source = 'ciim';
+        var expected = 'c`[';
         assert(source, expected);
     });
 });
