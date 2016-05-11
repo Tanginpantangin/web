@@ -410,6 +410,11 @@ window.cam.service.Utility.SetTransToKeyCode = function(transKeycode, desType) {
         var sappaohE = [];
         sappaohE.push(Model.AKhar.DarDua);
         transKeycode.E = sappaohE;
+
+        var iim = [];
+        iim.push(Model.AKhar.TakaiKiak);
+        iim.push(Model.AKhar.TakaiKikTutTakaiMâkLingiw);
+        transKeycode.IIM = iim;
     }
 
     //Add au
