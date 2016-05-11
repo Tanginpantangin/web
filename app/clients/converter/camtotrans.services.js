@@ -133,7 +133,7 @@ window.cam.service.CamToTransPaxalih = function() {
         var word1 = [];
         var word2 = [];
         for (var i = 0; i < count; i++) {
-            if (base.Check_AkharMatai(word[i]) && i != word.length - 1 && i != 0) {
+            if (base.CheckEndCharacter(word[i]) && i != word.length - 1 && i != 0) {
                 word1 = word.slice(0, i + 1);
                 word2 = word.slice(i + 1, word.length);
                 break;
