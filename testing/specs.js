@@ -28,16 +28,23 @@ var assert = function(source, expected) {
     expect(elm.getText()).toEqual(expected);
 };
 
-var select = function(soureType, clickSourceMore,  destinationType, clickDestinationMore) {
+var select = function(soureType, clickSourceMore, destinationType, clickDestinationMore) {
 
     // Select Source font
-    if(clickSourceMore){
+    if (clickSourceMore) {
         element(by.id('source-more')).click();
     }
-    element(by.id('source-' + soureType)).click();
+
+    // Waiting for source control visible
+    var sourceCtrl = element(by.id('source-' + soureType));
+    browser.wait(function() {
+        return sourceCtrl && sourceCtrl.isDisplayed();
+    }, 30000);
+
+    sourceCtrl.click();
 
     // Select Yapata font
-    if(clickDestinationMore){
+    if (clickDestinationMore) {
         element(by.id('destination-more')).click();
     }
     element(by.id('destination-' + destinationType)).click();
