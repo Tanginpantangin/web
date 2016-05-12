@@ -329,7 +329,7 @@ window.cam.service.TransToCamPaxalih = function() {
                 //Convert akhar diip to sap paoh
                 if ((base._diipToMaTai[nextAkhar] && !base.HuLanglikuk(retForCode) && ret.length != 0) ||
                     (base.IsConsonant(nextAkhar) && !base._diipToMaTai[nextAkhar])) {
-                    if (akhar == Model.AKhar.Ik) {
+                    if (akhar == Model.AKhar.Ik && ret.length != 0) {
                         akhar = Model.AKhar.TakaiKik;
                     } else if (akhar == Model.AKhar.É) {
                         akhar = Model.AKhar.DarSa;
@@ -475,7 +475,7 @@ window.cam.service.TransToCamPaxalih = function() {
                 //Convert akhar diip to sap paoh
                 if ((base._diipToMaTai[nextAkhar] && !base.HuLanglikuk(retForCode) && ret.length != 0) ||
                     (base.IsConsonant(nextAkhar) && !base._diipToMaTai[nextAkhar])) {
-                    if (akhar == Model.AKhar.Ik) {
+                    if (akhar == Model.AKhar.Ik && ret.length != 0) {
                         akhar = Model.AKhar.TakaiKik;
                     } else if (akhar == Model.AKhar.É) {
                         akhar = Model.AKhar.DarSa;
@@ -633,7 +633,7 @@ window.cam.service.TransToCamPaxalih = function() {
                 //Convert akhar diip to sap paoh
                 if ((base._diipToMaTai[nextAkhar] && !base.HuLanglikuk(retForCode) && ret.length != 0) ||
                     (base.IsConsonant(nextAkhar) && !base._diipToMaTai[nextAkhar])) {
-                    if (akhar == Model.AKhar.Ik) {
+                    if (akhar == Model.AKhar.Ik && ret.length != 0) {
                         akhar = Model.AKhar.TakaiKik;
                     } else if (akhar == Model.AKhar.É) {
                         akhar = Model.AKhar.DarSa;

@@ -30,20 +30,19 @@ var assert = function(source, expected) {
 
 var select = function(soureType, clickSourceMore, destinationType, clickDestinationMore) {
 
-    // Select Source font
+    // Waiting for source-more control visible
+    browser.wait(function() {
+        var control = by.id('source-more');
+        return control && element(control).isPresent();
+    });
     if (clickSourceMore) {
         element(by.id('source-more')).click();
     }
 
-    // Waiting for source control visible
-    var sourceCtrl = element(by.id('source-' + soureType));
-    browser.wait(function() {
-        return sourceCtrl && sourceCtrl.isDisplayed();
-    }, 30000);
+    // Select source type
+    element(by.id('source-' + soureType)).click();
 
-    sourceCtrl.click();
-
-    // Select Yapata font
+    // Select destination type
     if (clickDestinationMore) {
         element(by.id('destination-more')).click();
     }
@@ -165,24 +164,38 @@ describe('Convert from transliteration to Akhar Thrah', function() {
         assert(source, expected);
     });
 
-  it('should convert from transliteration Inrasara to FontYapata', function() {
+    it('should convert from transliteration EFEO to FontYapata 2', function() {
+        select(convertType.TransCamEFEO, true, convertType.FontYapata, false);
+        var source = 'idung';
+        var expected = 'id~/';
+        assert(source, expected);
+    });
+
+    it('should convert from transliteration Inrasara to FontYapata', function() {
         select(convertType.TransInrasara, true, convertType.FontYapata, false);
         var source = 'Tamưkai yamưn, yamưn bblwak xaradang pieh cang xa-ai.';
         var expected = 'tm=k ymN, ymN O)K xrd/ -p`@H c/ x=I.';
         assert(source, expected);
     });
 
+    it('should convert from transliteration Inrasara to FontYapata 2', function() {
+        select(convertType.TransInrasara, true, convertType.FontYapata, false);
+        var source = 'idung';
+        var expected = 'id~/';
+        assert(source, expected);
+    });
+
     it('should convert from transliteration KTT to FontYapata', function() {
         select(convertType.TransKawomTT, true, convertType.FontYapata, false);
         var source = 'Tamưkai yamưưn, yamưưn bblwak xaradang piêh cang xa-ai.';
-        var expected = 'tm=k ymN, ymN O)K xrd/ -p`@H c/ x=I.';
+        var expected = 'tm=k ym%N, ym%N O)K xrd/ -p`@H c/ x=I.';
         assert(source, expected);
     });
 
     it('should convert from transliteration KTT to FontYapata 2', function() {
         select(convertType.TransKawomTT, true, convertType.FontYapata, false);
-        var source = 'ciim';
-        var expected = 'c`[';
+        var source = 'ciim idung';
+        var expected = 'c`[ id~/';
         assert(source, expected);
     });
 });
