@@ -1,37 +1,45 @@
 <div ng-controller="ConverterController as ctrl" ng-cloak layout="column" id="converter">
     <div flex class="title-converter">
         <div class="row-content">
-            <h3>Xalih akhar Champa</h3>
+            <h1>XALIH AKHAR CHAM</h1>
         </div>
     </div>
     <div layout="row" layout-align="start start" layout-sm="column" layout-xs="column" class="row-content">
         <div layout="column" flex>
             <div flex="100" class="bt-converter">
-                <md-button id="source-{{akhar.id}}" ng-class="{btactive:$index==ctrl.indexSource}" ng-click="ctrl.setIndexSource($index, akhar.font)" ng-repeat="akhar in ctrl.sourceList | limitTo:3" class="md-raised md-button-convert">{{akhar.name}}</md-button>
+                <md-button id="source-{{akhar.id}}" ng-class="{btactive:$index==ctrl.indexSource}" ng-click="ctrl.setIndexSource($index, akhar.font)" ng-repeat="akhar in ctrl.sourceList | limitTo:3" class="md-button-convert">{{akhar.name}}</md-button>
                 <md-menu>
-                    <md-button id="source-more" ng-click="$mdOpenMenu($event)" class="md-raised md-button-convert bt-viewmore">
+                    <md-button id="source-more" ng-click="$mdOpenMenu($event)" class="md-button-convert bt-viewmore">
                         <md-icon md-svg-icon="clients/assets/img/arrows.svg"></md-icon>
                     </md-button>
                     <md-menu-content>
                         <md-menu-item ng-repeat="akhar in ctrl.sourceList  | limitTo:9:3">
-                            <md-button id="source-{{akhar.id}}"  ng-click="ctrl.selectItemSource($index, akhar.font)" ng-disabled="ctrl.isDisabled1">{{akhar.name}}</md-button>
+                            <md-button id="source-{{akhar.id}}" ng-click="ctrl.selectItemSource($index, akhar.font)" ng-disabled="ctrl.isDisabled1">{{akhar.name}}</md-button>
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>
-                <md-button class="md-raised bt-exchange" ng-click="ctrl.changeConvert()">
+                <md-button class="bt-exchange" ng-click="ctrl.changeConvert()">
                     <md-icon md-svg-icon="clients/assets/img/exchange2.svg"></md-icon>
                 </md-button>
             </div>
             <div flex="100" class="box-convert">
-                <textarea ng-class="ctrl.fontSource" ng-model="ctrl.sourceText" ng-change="ctrl.change()" autoheight rows="8" class="text-convert" spellcheck="false" placeholder="Taong akhar pak ni" value="">
+              <div class="box-source">
+                <div class="bt-clear" ng-click="ctrl.clearSource()">
+                    <md-icon ng-show="ctrl.sourceText" md-svg-icon="clients/assets/img/delete-button.svg"></md-icon>
+                </div>
+                <textarea ng-class="ctrl.fontSource" ng-model="ctrl.sourceText" rows="4" ng-change="ctrl.change()" ng-keyup="ctrl.autoExpand($event)" class="text-convert" spellcheck="false" value="adsfsda" layout-padding class="content-convert">
                 </textarea>
+                <div class="bt-coppy" ng-click="ctrl.toClipboard(ctrl.sourceText)">
+                    <md-icon md-svg-icon="clients/assets/img/copy.svg"></md-icon>
+                </div>
+              </div>
             </div>
         </div>
         <div layout="column" flex>
             <div flex="100" class="bt-converter">
-                <md-button id="destination-{{akhar.id}}" ng-class="{btactive:$index==ctrl.indexDestination}" ng-click="ctrl.setIndexDestination($index, akhar.font)" ng-repeat="akhar in ctrl.destinationList | limitTo:3" class="md-raised md-button-convert">{{akhar.name}}</md-button>
+                <md-button id="destination-{{akhar.id}}" ng-class="{btactive:$index==ctrl.indexDestination}" ng-click="ctrl.setIndexDestination($index, akhar.font)" ng-repeat="akhar in ctrl.destinationList | limitTo:3" class="md-button-convert">{{akhar.name}}</md-button>
                 <md-menu>
-                    <md-button id="destination-more" ng-click="$mdOpenMenu($event)" class="md-raised md-button-convert bt-viewmore">
+                    <md-button id="destination-more" ng-click="$mdOpenMenu($event)" class="md-button-convert bt-viewmore">
                         <md-icon md-svg-icon="clients/assets/img/arrows.svg"></md-icon>
                     </md-button>
                     <md-menu-content>
@@ -41,34 +49,37 @@
                     </md-menu-content>
                 </md-menu>
             </div>
-            <div flex>
-                <md-content id="page_content" ng-class="ctrl.fontDestination"  layout-padding class="content-convert">
+            <div flex class="box-source">
+                <md-content id="page_content" ng-class="ctrl.fontDestination" class="content-convert">
                     <p ng-repeat="text in ctrl.destinations track by $index">{{text}}</p>
                 </md-content>
+                <div class="bt-coppy">
+                    <md-icon md-svg-icon="clients/assets/img/copy.svg"></md-icon>
+                </div>
             </div>
         </div>
     </div>
-    <div>
-    </div>
-
-    <div class="row-content margintop20px">
-        <h3>Download to use offline</h3>
+    <div class="row-content container" style="text-align:center">
+        <hr class="hr-style">
+        <h1>Available to Offline</h1>
         <div>
             <md-button class="md-icon-button md-primary bt-download" aria-label="Settings">
                 <md-icon md-svg-icon="clients/assets/img/arrow.svg"></md-icon>
             </md-button>
         </div>
+        <h3>Download to use offline</h3>
+      </br>
+        <hr class="hr-style">
+          <h1>OVER VIEW</h1>
+          </br>
     </div>
-    <style>
-        button.btactive {
-            background-color: #F1BD00!important;
-            color: black!important;
-        }
-    </style>
-    <div ng-if="ctrl.lang == 'rm'" ng-include="'clients/rm_converter.html'">
+    <div class="container">
+      <div ng-if="lang == 'rm'" ng-include="'clients/rm_converter.html'">
+      </div>
+      <div ng-if="lang == 'vi'" ng-include="'clients/vi_converter.html'">
+      </div>
+      <div ng-if="lang == 'akt'" ng-include="'clients/akt_converter.html'">
+      </div>
     </div>
-    <div ng-if="ctrl.lang == 'vi'" ng-include="'clients/vi_converter.html'">
-    </div>
-    <div ng-if="ctrl.lang == 'akt'" ng-include="'clients/akt_converter.html'">
-    </div>
+
 </div>

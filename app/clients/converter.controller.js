@@ -2,28 +2,8 @@
 'use strict';
 
 angular.module('app')
-    .directive('autoheight', function() {
-        return function(scope, element) {
-            document.getElementById(element[0].id).addEventListener('keyup', function() {
-                this.style.overflow = 'hidden';
-                if (this.scrollHeight > 154) {
-                    this.style.height = this.scrollHeight + 'px';
-                }
-                if (this.scrollHeight > 600) {
-                    this.style.overflow = 'auto';
-                    this.style.height = '600px';
-                }
-                if (this.scrollHeight < 154) {
-                    this.style.overflow = 'hidden';
-                    this.style.height = '154px';
-                }
-            }, false);
-
-        };
-    })
     .controller('ConverterController', ['$timeout', '$rootScope', function($timeout, $rootScope) {
         var self = this;
-        self.lang = $rootScope.lang;
         // Data source of combobox
         self.sourceList = [{
             id: Model.Enum.FontYapata,
@@ -173,7 +153,10 @@ angular.module('app')
         self.change = function() {
             self.convertData();
         };
-
+        self.clearSource = function(){
+            self.sourceText="";
+            self.destinations=[];
+        };
         // Convert data
         self.convertData = function() {
             $timeout(function() {
@@ -218,4 +201,25 @@ angular.module('app')
         self.isFont = function(dataType) {
             return Number(dataType) <= Model.Enum.FontUniCamVN;
         };
+        self.autoExpand = function(e) {
+         var element = typeof e === 'object' ? e.target : document.getElementById(e);
+         if (element.scrollHeight < 154) {
+             element.style.overflow = 'hidden';
+             element.style.height = '154px';
+         };
+         if(element.scrollHeight>154)
+         {
+           var scrollHeight = element.scrollHeight; // replace 60 by the sum of padding-top and padding-bottom
+           element.style.height =  scrollHeight + "px";
+              element.style.overflow = 'hidden';
+         };
+         if (element.scrollHeight > 600) {
+             element.style.overflow = 'auto';
+             element.style.height = '600px';
+         };
+     };
+
+     function expand() {
+       self.autoExpand('TextArea');
+     };
     }]);
