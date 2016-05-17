@@ -27,7 +27,7 @@
                 <div class="bt-clear" ng-click="ctrl.clearSource()">
                     <md-icon ng-show="ctrl.sourceText" md-svg-icon="clients/assets/img/delete-button.svg"></md-icon>
                 </div>
-                <textarea ng-class="ctrl.fontSource" ng-model="ctrl.sourceText" rows="4" ng-change="ctrl.change()" ng-keyup="ctrl.autoExpand($event)" class="text-convert" spellcheck="false" value="adsfsda" layout-padding class="content-convert">
+                <textarea ng-class="ctrl.fontSource" ng-model="ctrl.sourceText" rows="4" ng-change="ctrl.change()" ng-keyup="ctrl.autoExpand($event)" class="text-convert" autofocus spellcheck="false" value="adsfsda" layout-padding class="content-convert">
                 </textarea>
                 <div class="bt-coppy" ng-click="ctrl.toClipboard(ctrl.sourceText)">
                     <md-icon md-svg-icon="clients/assets/img/copy.svg"></md-icon>
@@ -53,7 +53,7 @@
                 <md-content id="page_content" ng-class="ctrl.fontDestination" class="content-convert">
                     <p ng-repeat="text in ctrl.destinations track by $index">{{text}}</p>
                 </md-content>
-                <div class="bt-coppy">
+                <div class="bt-coppy" ng-click="ctrl.toClipboard(ctrl.destinations)">
                     <md-icon md-svg-icon="clients/assets/img/copy.svg"></md-icon>
                 </div>
             </div>

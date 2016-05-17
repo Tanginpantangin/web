@@ -1,9 +1,10 @@
 /* global angular, Model */
 'use strict';
 
-angular.module('app')
-    .controller('ConverterController', ['$timeout', '$rootScope', function($timeout, $rootScope) {
+angular.module('app', ['ngClipboard'])
+    .controller('ConverterController', ['$timeout', '$rootScope','ngClipboard', function($timeout, $rootScope, ngClipboard) {
         var self = this;
+        self.toClipboard = ngClipboard.toClipboard;
         // Data source of combobox
         self.sourceList = [{
             id: Model.Enum.FontYapata,
