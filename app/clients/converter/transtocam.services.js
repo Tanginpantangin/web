@@ -416,7 +416,9 @@ window.cam.service.TransToCamPaxalih = function() {
                 }
 
                 //"e"
-                if (akhar == Model.AKhar.TakaiThek && !(akharList.length > 1 && akharList[akharList.length - 2] == Model.AKhar.TakaiKuk)) {
+                if (akhar == Model.AKhar.TakaiThek &&
+                    !(akharList.length > 1 && akharList[akharList.length - 2] == Model.AKhar.TakaiKuk) &&
+                    i == akharList.length - 1) {
                     akharList.push(Model.AKhar.BalauTapong);
                     continue;
                 }
@@ -560,7 +562,9 @@ window.cam.service.TransToCamPaxalih = function() {
                 }
 
                 //"e"
-                if (akhar == Model.AKhar.TakaiThek && !(akharList.length > 1 && akharList[akharList.length - 2] == Model.AKhar.TakaiKuk)) {
+                if (akhar == Model.AKhar.TakaiThek &&
+                    !(akharList.length > 1 && akharList[akharList.length - 2] == Model.AKhar.TakaiKuk) &&
+                    i == akharList.length - 1) {
                     akharList.push(Model.AKhar.BalauTapong);
                     continue;
                 }
@@ -721,7 +725,9 @@ window.cam.service.TransToCamPaxalih = function() {
                 }
 
                 //"e"
-                if (akhar == Model.AKhar.TakaiThek && !(akharList.length > 1 && akharList[akharList.length - 2] == Model.AKhar.TakaiKuk)) {
+                if (akhar == Model.AKhar.TakaiThek &&
+                    !(akharList.length > 1 && akharList[akharList.length - 2] == Model.AKhar.TakaiKuk) &&
+                    i == akharList.length - 1) {
                     akharList.push(Model.AKhar.BalauTapong);
                     continue;
                 }
