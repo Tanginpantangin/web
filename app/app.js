@@ -10,7 +10,8 @@ angular
         'ngSanitize',
         'firebase',
         'pascalprecht.translate',
-        'ngCookies'
+        'ngCookies',
+        'ngClipboard'
     ])
     .config(['$mdThemingProvider', '$translateProvider', function($mdThemingProvider, $translateProvider) {
 

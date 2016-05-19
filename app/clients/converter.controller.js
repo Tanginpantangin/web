@@ -1,7 +1,7 @@
 /* global angular, Model */
 'use strict';
 
-angular.module('app', ['ngClipboard'])
+angular.module('app')
     .controller('ConverterController', ['$timeout', '$rootScope','ngClipboard', function($timeout, $rootScope, ngClipboard) {
         var self = this;
         self.toClipboard = ngClipboard.toClipboard;
