@@ -28,8 +28,8 @@
 }
 @font-face {
   font-family: 'champa_2_gp';
-  src: url('champa_2/champa_2-webfont.eot');
-  src: url('champa_2/champa_2-webfont.eot?#iefix') format('embedded-opentype'), url('champa_2/champa_2-webfont.woff2') format('woff2'), url('champa_2/champa_2-webfont.woff') format('woff'), url('champa_2/champa_2-webfont.ttf') format('truetype'), url('champa_2/champa_2-webfont.svg#champa_2_gpregular') format('svg');
+  src: url('champa_2/Champa2GP.eot');
+  src: url('champa_2/Champa2GP.eot?#iefix') format('embedded-opentype'), url('champa_2/Champa2GP.woff') format('woff'), url('champa_2/Champa2GP.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -247,25 +247,34 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   padding-left: 24px;
 }
 #converter .md-button-convert {
-  color: #ffffff;
-  background-color: #F98D43;
+  color: #F98D43;
+  border: solid 1px;
+  box-shadow: none;
 }
 #converter .title-converter {
   padding: 20px 0;
   margin-bottom: 10px;
-  background-color: #e8e8e8;
+  text-align: center;
+}
+#converter .title-converter h1 {
+  color: #FF5722;
+  font-weight: 400;
 }
 #converter .bt-converter button {
   margin: 10px 0;
   margin-right: 5px;
   text-transform: initial;
 }
-#converter .content-converter {
-  height: 146px;
-  background-color: #EAEAEA;
-}
 #converter .margintop20px {
   margin-top: 20px;
+}
+#converter hr.hr-style {
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
+  width: 80%;
+  margin: 30px;
+  display: inline-block;
 }
 #converter h3 {
   color: #0B86DE;
@@ -276,8 +285,12 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   margin: 10px 40px;
 }
 #converter .bt-download md-icon {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
+}
+#converter button.btactive {
+  background-color: #F98D43!important;
+  color: white!important;
 }
 #converter .over-view md-content {
   margin-top: 10px;
@@ -288,23 +301,69 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 #converter .box-convert textarea {
   width: 95%;
   padding: 8px;
+  padding-bottom: 35px;
+}
+#converter .box-source {
+  position: relative;
+}
+#converter .box-source .bt-coppy {
+  position: absolute;
+  bottom: 8px;
+  z-index: 10px;
+  padding: 2px;
+  left: 10px;
+}
+#converter .box-source .bt-coppy md-icon {
+  width: 20px;
+  height: 17px;
+  min-height: 15px;
+  min-width: 15px;
+}
+#converter .box-source .bt-coppy:hover {
+  border: solid 1px #c6c6c6;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+#converter .box-source .bt-clear {
+  position: absolute;
+  top: 5px;
+  padding: 2px;
+  right: 6%;
+}
+#converter .box-source .bt-clear md-icon {
+  width: 6px;
+  height: 5px;
+  min-height: 10px;
+  min-width: 18px;
+}
+#converter .box-source .bt-clear:hover {
+  border: solid 1px #c6c6c6;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
 }
 #converter .content-convert {
-  height: 154px;
+  min-height: 164px;
   background-color: #F1F1F1;
+  max-height: 600px;
+  padding: 8px;
+  padding-bottom: 35px;
 }
 #converter .bt-viewmore {
   min-width: 25px;
 }
 #converter .bt-viewmore md-icon {
   width: 15px;
+  height: 15px;
+  min-width: 15px;
+  min-height: 15px;
 }
 #converter .bt-exchange {
   min-width: 60px;
   float: right;
   margin-right: 5% !important;
   color: #ffffff;
-  background-color: #53B8E0;
+  border: solid 1px #F98D43;
+  background-color: #FFF;
 }
 #converter table,
 #converter th,
@@ -352,6 +411,18 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 }
 #converter .font-yuen {
   font-size: 15px;
+}
+#converter .container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1170px;
+}
+#converter .col-6 {
+  float: left;
+  width: 50%;
+}
+#converter .padding-20 {
+  padding: 0 40px;
 }
 #document md-card md-card-actions {
   padding-right: 12px;
