@@ -198,6 +198,10 @@ window.cam.service.TransToCamPaxalih = function() {
                     }
                 }
 
+                if (wordArr.length > 1) {
+                    base.ConvertEndChar(wordAkhar);
+                }
+
                 // console.log('wordAkhar', wordAkhar);
                 wordAkhar.forEach(function(item) {
                     ret.push(item);
@@ -285,7 +289,19 @@ window.cam.service.TransToCamPaxalih = function() {
 
     self.ToKeycodeFromCamEFEO = function(word, ret, retForCode) {
         var akharList = self.ToKeyCodeByChar(word, retForCode);
-        // console.log('akharList', akharList);
+
+        // Insert akhar Ak in case not contain akhar diip
+        if (!word[0]) {
+            var finalWord = window.cam.service.Utility.CopyListAkhar(ret);
+            akharList.forEach(function(item) {
+                finalWord.push(item);
+            });
+
+            if (base.GetIndexAkharDiip(finalWord) === finalWord.length) {
+                ret.splice(0, 0, Model.AKhar.Ak);
+            }
+        }
+
         for (var i = 0; i < akharList.length; i++) {
             var akhar = akharList[i];
             if (akhar == Model.AKhar.Ak && !base.HuLanglikuk(retForCode) && ret.length != 0) {
@@ -301,9 +317,11 @@ window.cam.service.TransToCamPaxalih = function() {
 
             //curent char is "i" or "é" and the next char is akhar matai
             if (word[0]) {
+
                 //Convert akhar diip to takai akhar
                 if (base._diipToTaKai[akhar] && !base._diipToMaTai[nextAkhar] &&
-                    !base.HuLanglikuk(retForCode) && ret.length != 0 &&
+                    ret.length != 0 &&
+                    (!base.HuLanglikuk(retForCode) || ret[0] == Model.AKhar.Ak) &&
                     !base.Check_AkharMatai(ret[ret.length - 1])) {
 
                     if (!((akhar == Model.AKhar.Rak && ret.length != 0 &&
@@ -436,6 +454,19 @@ window.cam.service.TransToCamPaxalih = function() {
     self.ToKeycodeFromInrasara = function(word, ret, retForCode) {
 
         var akharList = self.ToKeyCodeByChar(word, retForCode);
+
+        // Insert akhar Ak in case not contain akhar diip
+        if (!word[0]) {
+            var finalWord = window.cam.service.Utility.CopyListAkhar(ret);
+            akharList.forEach(function(item) {
+                finalWord.push(item);
+            });
+
+            if (base.GetIndexAkharDiip(finalWord) === finalWord.length) {
+                ret.splice(0, 0, Model.AKhar.Ak);
+            }
+        }
+
         for (var i = 0; i < akharList.length; i++) {
 
             var akhar = akharList[i];
@@ -454,7 +485,9 @@ window.cam.service.TransToCamPaxalih = function() {
             if (word[0]) {
                 //Convert akhar diip to takai akhar
                 if (base._diipToTaKai[akhar] && !base._diipToMaTai[nextAkhar] &&
-                    !base.HuLanglikuk(retForCode) && ret.length != 0 && !base.Check_AkharMatai(ret[ret.length - 1])) {
+                    ret.length != 0 &&
+                    (!base.HuLanglikuk(retForCode) || ret[0] == Model.AKhar.Ak) &&
+                    !base.Check_AkharMatai(ret[ret.length - 1])) {
 
                     if (!((akhar == Model.AKhar.Rak && ret.length != 0 && base.IsVowels(ret[ret.length - 1])) ||
                             ((akhar == Model.AKhar.Ik || akhar == Model.AKhar.Wak) && base.IsConsonant(nextAkhar) && !base._diipToMaTai[nextAkhar]))) {
@@ -579,6 +612,19 @@ window.cam.service.TransToCamPaxalih = function() {
 
     self.ToKeycodeFromKTT = function(word, ret, retForCode, preChar) {
         var akharList = self.ToKeyCodeByChar(word, retForCode);
+
+        // Insert akhar Ak in case not contain akhar diip
+        if (!word[0]) {
+            var finalWord = window.cam.service.Utility.CopyListAkhar(ret);
+            akharList.forEach(function(item) {
+                finalWord.push(item);
+            });
+
+            if (base.GetIndexAkharDiip(finalWord) === finalWord.length) {
+                ret.splice(0, 0, Model.AKhar.Ak);
+            }
+        }
+
         for (var i = 0; i < akharList.length; i++) {
             var akhar = akharList[i];
 
@@ -612,7 +658,9 @@ window.cam.service.TransToCamPaxalih = function() {
             if (word[0]) {
                 //Convert akhar diip to takai akhar
                 if (base._diipToTaKai[akhar] && !base._diipToMaTai[nextAkhar] &&
-                    !base.HuLanglikuk(retForCode) && ret.length != 0 && !base.Check_AkharMatai(ret[ret.length - 1])) {
+                    ret.length != 0 &&
+                    (!base.HuLanglikuk(retForCode) || ret[0] == Model.AKhar.Ak) &&
+                    !base.Check_AkharMatai(ret[ret.length - 1])) {
 
                     if (!((akhar == Model.AKhar.Rak && ret.length != 0 && base.IsVowels(ret[ret.length - 1])) ||
                             ((akhar == Model.AKhar.Ik || akhar == Model.AKhar.Uk) &&
