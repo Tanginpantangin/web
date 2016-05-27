@@ -5,6 +5,7 @@ angular.module('app')
     .controller('ConverterController', ['$timeout', '$rootScope', 'ngClipboard', function($timeout, $rootScope, ngClipboard) {
         var self = this;
         self.toClipboard = ngClipboard.toClipboard;
+
         // Data source of combobox
         self.sourceList = [{
             id: Model.Enum.FontYapata,
@@ -33,16 +34,16 @@ angular.module('app')
         }, {
             id: Model.Enum.TransCamEFEO,
             name: 'Latin tuei EFEO',
-            font: "font-yuen"
+            font: 'font-yuen'
         }, {
             id: Model.Enum.TransInrasara,
             name: 'Latin tuei Inrasara',
-            font: "font-yuen",
+            font: 'font-yuen',
             isDisabled: false
         }, {
             id: Model.Enum.TransKawomTT,
             name: 'Latin Kawom Tuek Tuah',
-            font: "font-yuen"
+            font: 'font-yuen'
         }];
         self.destinationList = angular.copy(self.sourceList);
         // Selected source index
@@ -153,7 +154,7 @@ angular.module('app')
             self.convertData();
         };
         self.clearSource = function() {
-            self.sourceText = "";
+            self.sourceText = '';
             self.destinations = [];
         };
         // Convert data
@@ -163,6 +164,14 @@ angular.module('app')
                 var sourceType = self.sourceList[self.indexSource].id;
                 var destinationType = self.destinationList[self.indexDestination].id;
                 var data = self.sourceText;
+
+                // Save for log
+                window.convertInfo = {
+                    sourceType: sourceType,
+                    sourceText: self.sourceText,
+                    destinationType: destinationType
+                };
+
                 switch (sourceType) {
                     case Model.Enum.FontGilaiPraong:
                     case Model.Enum.FontYapata:
@@ -204,7 +213,7 @@ angular.module('app')
             }, 0);
         };
 
-        self.CapitalizeFirstCharacter = function(paragrap){
+        self.CapitalizeFirstCharacter = function(paragrap) {
             var sentences = paragrap.split('.');
             sentences.forEach(function(sentence, index) {
                 if (sentence.length) {
@@ -228,7 +237,7 @@ angular.module('app')
             };
             if (element.scrollHeight > 154) {
                 var scrollHeight = element.scrollHeight; // replace 60 by the sum of padding-top and padding-bottom
-                element.style.height = scrollHeight + "px";
+                element.style.height = scrollHeight + 'px';
                 element.style.overflow = 'hidden';
             };
             if (element.scrollHeight > 600) {

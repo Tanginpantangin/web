@@ -230,7 +230,7 @@ window.cam.service.TransToCamPaxalih = function() {
 
             return ret;
         } catch (err) {
-            console.log('ToKeyCodeByWord', err);
+            window.logging.writeLogFromConverter(ex);
             return [];
         }
     };

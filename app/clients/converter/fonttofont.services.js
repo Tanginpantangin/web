@@ -257,7 +257,7 @@ window.cam.service.FontToFontPaxalih = function() {
 
             return ret;
         } catch (ex) {
-            console.log('ToKeyCodeByWord', ex);
+            window.logging.writeLogFromConverter(ex);
             return [];
         }
     }
