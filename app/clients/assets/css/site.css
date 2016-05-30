@@ -200,12 +200,17 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   color: #ffffff !important;
   background: #FF5722 !important;
 }
+#langOption {
+  padding: 0px 12px 0px;
+  height: 2vh;
+  font-size: 8px;
+}
 #wrapper {
   padding-bottom: 36px;
 }
 #footer {
-  background: #696c74;
-  color: #ffffff;
+  background: #ebebeb;
+  color: #000000;
   padding: 40px 0;
 }
 #footer md-icon {

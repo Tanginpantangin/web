@@ -1,4 +1,19 @@
 <md-toolbar id="header">
+    <div id="langOption" class="md-toolbar-tools">
+      <md-menu>
+          <md-button ng-click="$mdOpenMenu($event)">
+              <md-icon class="material-icons">language</md-icon>
+              {{currentLanguge.text}}
+          </md-button>
+          <md-menu-content width="2">
+              <md-menu-item ng-repeat="item in languages">
+                  <md-button ng-disabled="item.value == lang" ng-click="changeLanguage(item.value)">
+                      {{item.text}}
+                  </md-button>
+              </md-menu-item>
+          </md-menu-content>
+      </md-menu>
+    </div>
     <div class="md-toolbar-tools container">
         <div class="row" layout="row" layout-align="start center" flex="100">
             <a href="/" class="logo" layout="row" layout-align="start center">

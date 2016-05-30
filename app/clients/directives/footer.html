@@ -1,7 +1,7 @@
 <div id="footer">
     <div class="row-content" layout="row" layout-xs="column" layout-align="space-between center">
       <div>
-          <p>Coppyright  © 2016 Tangin pan tangin</p>
+          <p>Copyright © 2016 Tangin Pan Tangin</p>
       </div>
       <div>
         <md-button class="md-fab md-mini md-bt-blue" ng-href="https://www.facebook.com/groups/162505374129887/" target="_blank" aria-label="Facebook">
@@ -13,24 +13,6 @@
         <md-button class="md-fab md-mini md-primary" ng-href="https://www.youtube.com/" target="_blank" aria-label="Youtube">
            <md-icon md-svg-src="clients/assets/img/youtube-logo.svg"></md-icon>
         </md-button>
-
       </div>
-      <div>
-        <md-menu>
-            <md-button ng-click="$mdOpenMenu($event)">
-                <md-icon class="material-icons">language</md-icon>
-                {{currentLanguge.text}}
-            </md-button>
-            <md-menu-content width="2">
-                <md-menu-item ng-repeat="item in languages">
-                    <md-button ng-disabled="item.value == lang" ng-click="changeLanguage(item.value)">
-                        {{item.text}}
-                    </md-button>
-                </md-menu-item>
-            </md-menu-content>
-        </md-menu>
-      </div>
-
     </div>
-
 </div>
