@@ -99,7 +99,7 @@ window.cam.service.TransToTransPaxalih = function() {
 
             return result;
         } catch (ex) {
-            console.log('InrasaraToCamEFEOByWord', ex);
+            window.logging.writeLogFromConverter(ex);
             return '';
         }
     };
@@ -136,7 +136,7 @@ window.cam.service.TransToTransPaxalih = function() {
 
             return result;
         } catch (ex) {
-            console.log('CamEFEOToInrasaraByWord', ex);
+            window.logging.writeLogFromConverter(ex);
             return '';
         }
     };
@@ -189,7 +189,7 @@ window.cam.service.TransToTransPaxalih = function() {
             }
             return result;
         } catch (ex) {
-            console.log('KTTToCamEFEOByWord', ex);
+            window.logging.writeLogFromConverter(ex);
             return '';
         }
     };
@@ -229,7 +229,7 @@ window.cam.service.TransToTransPaxalih = function() {
 
             return result;
         } catch (ex) {
-            console.log('KTTToInrasaraByWord', ex);
+            window.logging.writeLogFromConverter(ex);
             return '';
         }
     };

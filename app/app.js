@@ -1,5 +1,41 @@
 /* global angular, google */
 'use strict';
+window.logging = {
+    send: function(message) {
+        try {
+            // construct an HTTP request
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/api/logging/log', true);
+            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+            // send the collected data as JSON
+            xhr.send(JSON.stringify({
+                message: message
+            }));
+        }catch (e) {
+            console.log('logging', e);
+        }
+    },
+    writeLog: function(exception){
+        try {
+            this.send(exception.message + '\n' + exception.stack);
+        }catch (e) {
+            console.log('logging', e);
+        }
+    },
+    writeLogFromConverter: function(exception){
+        try {
+            var adding = 'sourceType:' + window.convertInfo.sourceType + '\n';
+            adding += 'sourceText:' + window.convertInfo.sourceText + '\n';
+            adding += 'destinationType:' + window.convertInfo.destinationType + '\n';
+
+            exception.message = adding + exception.message ;
+            this.writeLog(exception);
+        }catch (e) {
+            console.log('logging', e);
+        }
+    }
+};
+
 angular
     .module('app', [
         'oc.lazyLoad',
@@ -13,6 +49,12 @@ angular
         'ngCookies',
         'ngClipboard'
     ])
+    .factory('$exceptionHandler', function() {
+        return function(exception, cause) {
+            exception.message += ' (caused by "' + cause + '")';
+            window.logging.writeLog(exception);
+        };
+    })
     .config(['$mdThemingProvider', '$translateProvider', function($mdThemingProvider, $translateProvider) {
 
         // Configure theme
