@@ -31,6 +31,35 @@ angular.module('app')
                     $scope.getActiveClass = function(page) {
                         return page.href == $location.path() ? 'active' : '';
                     };
+
+                    $scope.languages = [{
+                        /*value: 'en',
+                        text: 'English'
+                    }, {*/
+                        value: 'akt',
+                        text: 'Akhar Thrah'
+                    }, {
+                        value: 'rm',
+                        text: 'Rumi'
+                    }, {
+                        value: 'vi',
+                        text: 'Vietnamese'
+                    }];
+
+                    $scope.currentLanguge = $filter('filter')($scope.languages, {
+                        value: $rootScope.lang
+                    })[0];
+
+                    $scope.changeLanguage = function(langKey) {
+                        $translate.use(langKey);
+
+                        // Reset current language value
+                        $rootScope.lang = langKey;
+
+                        $scope.currentLanguge = $filter('filter')($scope.languages, {
+                            value: $rootScope.lang
+                        })[0];
+                    };
                 }
             };
         }
