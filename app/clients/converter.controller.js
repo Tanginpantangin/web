@@ -2,9 +2,10 @@
 'use strict';
 
 angular.module('app')
-    .controller('ConverterController', ['$timeout', '$rootScope','ngClipboard', function($timeout, $rootScope, ngClipboard) {
+    .controller('ConverterController', ['$timeout', '$rootScope', 'ngClipboard', function($timeout, $rootScope, ngClipboard) {
         var self = this;
         self.toClipboard = ngClipboard.toClipboard;
+
         // Data source of combobox
         self.sourceList = [{
             id: Model.Enum.FontYapata,
@@ -33,16 +34,16 @@ angular.module('app')
         }, {
             id: Model.Enum.TransCamEFEO,
             name: 'Latin tuei EFEO',
-            font: "font-yuen"
+            font: 'font-yuen'
         }, {
             id: Model.Enum.TransInrasara,
             name: 'Latin tuei Inrasara',
-            font: "font-yuen",
+            font: 'font-yuen',
             isDisabled: false
         }, {
             id: Model.Enum.TransKawomTT,
             name: 'Latin Kawom Tuek Tuah',
-            font: "font-yuen"
+            font: 'font-yuen'
         }];
         self.destinationList = angular.copy(self.sourceList);
         // Selected source index
@@ -65,7 +66,7 @@ angular.module('app')
         console.log(self.sourceList);
         // Source Dropdownlist selected item changedevent
         self.selectItemSource = function(index, font) {
-            self.SourceId = self.sourceList[index+3].id; //use for disable
+            self.SourceId = self.sourceList[index + 3].id; //use for disable
             self.indexDestination = selectItemConvert(index, self.sourceList, self.destinationList, self.indexDestination, true);
             self.indexSource = 2;
             self.fontSource = font;
@@ -79,7 +80,7 @@ angular.module('app')
         self.indexDestination = Model.Enum.FontGilaiPraong;
         self.fontDestination = self.destinationList[1].font;
         // Destination button clicked event
-        self.setIndexDestination = function(index,font) {
+        self.setIndexDestination = function(index, font) {
             self.indexDestination = index;
             if (self.indexDestination === self.indexSource) {
                 self.indexSource = moveActive(self.indexDestination, self.indexSource, false);
@@ -112,11 +113,9 @@ angular.module('app')
             var temp = self.indexSource;
             self.indexSource = self.indexDestination;
             self.indexDestination = temp;
-            if(self.indexSource == self.indexDestination)
-            {
-                if((self.sourceList[2].id==6 || self.sourceList[2].id==7)&&self.destinationList[2].id==8)
-                {
-                    self.indexDestination = self.indexDestination -1;
+            if (self.indexSource == self.indexDestination) {
+                if ((self.sourceList[2].id == 6 || self.sourceList[2].id == 7) && self.destinationList[2].id == 8) {
+                    self.indexDestination = self.indexDestination - 1;
                 }
             }
             // Convert data
@@ -130,8 +129,8 @@ angular.module('app')
             if ((index1 === 1) || (self.sourceList[2].id === self.destinationList[2].id)) {
                 return index2 - 1;
             }
-            if((self.sourceList[2].id==6 || self.sourceList[2].id ==7) && (self.destinationList[2].id==8)){
-              return index2 - 1;
+            if ((self.sourceList[2].id == 6 || self.sourceList[2].id == 7) && (self.destinationList[2].id == 8)) {
+                return index2 - 1;
             }
 
             return index2;
@@ -141,11 +140,11 @@ angular.module('app')
             // Fist position in list dropdownlist have position=3
             index = index + 3;
             listMain.swap(index, 2);
-            if (listMain[2].id === listCondition[2].id && indexCondition ==2) {
+            if (listMain[2].id === listCondition[2].id && indexCondition == 2) {
                 indexCondition = indexCondition - 1;
             }
-            if((listMain[2].id==6 || listMain[2].id==7) && listCondition[2].id==8 && isSource==true && indexCondition ==2){
-              indexCondition = indexCondition - 1;
+            if ((listMain[2].id == 6 || listMain[2].id == 7) && listCondition[2].id == 8 && isSource == true && indexCondition == 2) {
+                indexCondition = indexCondition - 1;
             }
             return indexCondition;
         };
@@ -154,9 +153,9 @@ angular.module('app')
         self.change = function() {
             self.convertData();
         };
-        self.clearSource = function(){
-            self.sourceText="";
-            self.destinations=[];
+        self.clearSource = function() {
+            self.sourceText = '';
+            self.destinations = [];
         };
         // Convert data
         self.convertData = function() {
@@ -165,6 +164,14 @@ angular.module('app')
                 var sourceType = self.sourceList[self.indexSource].id;
                 var destinationType = self.destinationList[self.indexDestination].id;
                 var data = self.sourceText;
+
+                // Save for log
+                window.convertInfo = {
+                    sourceType: sourceType,
+                    sourceText: self.sourceText,
+                    destinationType: destinationType
+                };
+
                 switch (sourceType) {
                     case Model.Enum.FontGilaiPraong:
                     case Model.Enum.FontYapata:
@@ -191,11 +198,31 @@ angular.module('app')
                         }
                         break;
                 }
+
+                // Capitalize the first character of sentence
+                if (!self.isFont(destinationType)) {
+                    result.forEach(function(paragrap, index) {
+                        result[index] = self.CapitalizeFirstCharacter(paragrap);
+                    });
+                }
+                // if (!self.isFont(sourceType)) {
+                //     self.sourceText = self.CapitalizeFirstCharacter(self.sourceText);
+                // }
+
                 self.destinations = result;
             }, 0);
         };
-        self.changeFont = function(){
 
+        self.CapitalizeFirstCharacter = function(paragrap) {
+            var sentences = paragrap.split('.');
+            sentences.forEach(function(sentence, index) {
+                if (sentence.length) {
+                    sentences[index] = sentence.replace(/\b[a-z]/, function(f) {
+                        return f.toUpperCase();
+                    });
+                }
+            });
+            return sentences.join('.');
         };
 
         // Check convert type is font
@@ -203,24 +230,23 @@ angular.module('app')
             return Number(dataType) <= Model.Enum.FontUniCamVN;
         };
         self.autoExpand = function(e) {
-         var element = typeof e === 'object' ? e.target : document.getElementById(e);
-         if (element.scrollHeight < 154) {
-             element.style.overflow = 'hidden';
-             element.style.height = '154px';
-         };
-         if(element.scrollHeight>154)
-         {
-           var scrollHeight = element.scrollHeight; // replace 60 by the sum of padding-top and padding-bottom
-           element.style.height =  scrollHeight + "px";
-              element.style.overflow = 'hidden';
-         };
-         if (element.scrollHeight > 600) {
-             element.style.overflow = 'auto';
-             element.style.height = '600px';
-         };
-     };
+            var element = typeof e === 'object' ? e.target : document.getElementById(e);
+            if (element.scrollHeight < 154) {
+                element.style.overflow = 'hidden';
+                element.style.height = '154px';
+            };
+            if (element.scrollHeight > 154) {
+                var scrollHeight = element.scrollHeight; // replace 60 by the sum of padding-top and padding-bottom
+                element.style.height = scrollHeight + 'px';
+                element.style.overflow = 'hidden';
+            };
+            if (element.scrollHeight > 600) {
+                element.style.overflow = 'auto';
+                element.style.height = '600px';
+            };
+        };
 
-     function expand() {
-       self.autoExpand('TextArea');
-     };
+        function expand() {
+            self.autoExpand('TextArea');
+        };
     }]);

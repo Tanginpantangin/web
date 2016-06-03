@@ -345,4 +345,15 @@ window.cam.service.Paxalih = function() {
 
         return ret;
     };
+
+    self.ConvertEndChar = function(list) {
+        var count = list.length;
+        if (count === 0) {
+            return;
+        }
+
+        if (list[count - 1] === Model.AKhar.TakaiKikTutTakaiMâkDalem) {
+            list[count - 1] = Model.AKhar.TakaiKik;
+        }
+    };
 };

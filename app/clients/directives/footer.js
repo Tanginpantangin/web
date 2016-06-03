@@ -10,6 +10,7 @@ angular.module('app')
                 replace: true,
                 link: function($scope) {
 
+                    /*
                     $scope.languages = [{
                         value: 'en',
                         text: 'English'
@@ -38,6 +39,7 @@ angular.module('app')
                             value: $rootScope.lang
                         })[0];
                     };
+                    */
                 }
             };
         }

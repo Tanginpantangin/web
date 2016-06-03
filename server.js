@@ -55,6 +55,10 @@ router.use(function(req, res, next) {
     next();
 });
 
+// Logging Routing
+var LoggingController = require('./api/logging.controller');
+router.post('/logging/log', LoggingController.log);
+
 server.use(express.static(__dirname + '/app'));
 server.use('/api', router);
 

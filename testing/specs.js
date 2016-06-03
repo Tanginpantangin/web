@@ -166,8 +166,8 @@ describe('Convert from transliteration to Akhar Thrah', function() {
 
     it('should convert from transliteration EFEO to FontYapata 2', function() {
         select(convertType.TransCamEFEO, true, convertType.FontYapata, false);
-        var source = 'idung';
-        var expected = 'id~/';
+        var source = 'idung auix auen li-aua ma-aom';
+        var expected = 'id~/ a&{X a&@N l{a&% M-a>';
         assert(source, expected);
     });
 
@@ -180,8 +180,8 @@ describe('Convert from transliteration to Akhar Thrah', function() {
 
     it('should convert from transliteration Inrasara to FontYapata 2', function() {
         select(convertType.TransInrasara, true, convertType.FontYapata, false);
-        var source = 'idung';
-        var expected = 'id~/';
+        var source = 'idung awix awơn li-awa ma-aum';
+        var expected = 'id~/ a&{X a&@N l{a&% M-a>';
         assert(source, expected);
     });
 
@@ -194,8 +194,8 @@ describe('Convert from transliteration to Akhar Thrah', function() {
 
     it('should convert from transliteration KTT to FontYapata 2', function() {
         select(convertType.TransKawomTT, true, convertType.FontYapata, false);
-        var source = 'ciim idung';
-        var expected = 'c`[ id~/';
+        var source = 'ciim idung awix awơn li-awa ma-aoom';
+        var expected = 'c`[ id~/ a&{X a&@N l{a&% M-a>';
         assert(source, expected);
     });
 });

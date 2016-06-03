@@ -36,7 +36,8 @@ window.cam.service.CamToTransPaxalih = function() {
         var dictionary = base.GetDictionaty(sourceType);
 
         words.forEach(function(word) {
-            try {
+            try {           
+
                 // is newline character
                 if (word == Model.Constant.NEW_LINE || !word) {
                     converted.push(word);
@@ -65,7 +66,7 @@ window.cam.service.CamToTransPaxalih = function() {
 
                 converted.push(ret[0]);
             } catch (ex) {
-                console.log('DoConvert', ex);
+                window.logging.writeLogFromConverter(ex);
             }
         });
 
