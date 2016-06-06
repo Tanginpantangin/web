@@ -191,3 +191,5 @@ ModelManifest.xml
 [Ll]ogs/
 .vscode
 dist/
+
+log/
