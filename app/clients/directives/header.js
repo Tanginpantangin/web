@@ -2,8 +2,8 @@
 'use strict';
 
 angular.module('app')
-    .directive('tHeader', ['$location',
-        function($location) {
+    .directive('tHeader', ['$location', '$rootScope', '$filter', '$translate',
+        function($location, $rootScope, $filter, $translate) {
             return {
                 templateUrl: 'clients/directives/header.html',
                 restrict: 'E',
