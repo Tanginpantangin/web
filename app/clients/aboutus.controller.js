@@ -2,21 +2,20 @@
 'use strict';
 
 angular.module('app')
-    .controller('AboutUsController', ['$filter', function($filter) {
+    .controller('AboutUsController', [function() {
         var ctrl = this;
         ctrl.init = function() {
             ctrl.members = [{
                 name: 'jayam_name',
+                position: 'developer',
                 introduction: 'jayam_intro',
                 avatar: 'clients/assets/img/jayam.jpg',
                 facebook: 'https://www.facebook.com/jayampadra',
-                linkedin: '#'
             }, {
                 name: 'jatri_name',
                 introduction: 'jatri_intro',
                 avatar: 'clients/assets/img/jatri.jpg',
                 facebook: 'https://www.facebook.com/hoangtri.dong',
-                linkedin: '#'
             }, {
                 name: 'jabraok_name',
                 introduction: 'jabraok_intro',
@@ -26,9 +25,8 @@ angular.module('app')
             }, {
                 name: 'jachang_name',
                 introduction: 'jachang_intro',
-                avatar: 'clients/assets/img/jabraok.jpg',
-                facebook: 'https://www.facebook.com/vinhlt3',
-                linkedin: 'https://www.linkedin.com/in/vinh-luu-truong-935143b0'
+                avatar: 'clients/assets/img/jachang.jpg',
+                facebook: 'https://www.facebook.com/trinh.hap',
             }];
             ctrl.projects = {
                 done: {

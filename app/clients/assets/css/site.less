@@ -184,6 +184,9 @@ md-toolbar {
         height: auto;
     }
 }
+.circle{
+    border-radius: 50%;
+}
 .md-raised.md-round {
     border-radius: 100px;
     border: 1px solid @color-primary;
@@ -530,10 +533,10 @@ table.google-visualization-orgchart-table {
     }
     .md-fab.md-button {
         &.social-button {
-            width: 24px;
-            height: 24px;
-            min-height: 24px;
-            line-height: 24px;
+            width: 40px;
+            height: 40px;
+            min-height: 40px;
+            line-height: 40px;
             box-shadow: none;
             padding-top: 3px;
             margin: 4px;
@@ -555,6 +558,18 @@ table.google-visualization-orgchart-table {
             .item {
                 padding: 12px;
             }
+        }
+    }
+    .my-team{
+        h4{
+            text-align: center;
+            color: @color-primary;
+        }
+        md-icon{
+            width: 40px;
+            height: 40px;
+            margin-top: 4px;
+            margin-left: 2px;
         }
     }
 }

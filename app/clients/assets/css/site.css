@@ -166,6 +166,9 @@ img.full-width {
   width: 100%;
   height: auto;
 }
+.circle {
+  border-radius: 50%;
+}
 .md-raised.md-round {
   border-radius: 100px;
   border: 1px solid #FF5722;
@@ -483,10 +486,10 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   text-transform: uppercase;
 }
 #about-us .md-fab.md-button.social-button {
-  width: 24px;
-  height: 24px;
-  min-height: 24px;
-  line-height: 24px;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  line-height: 40px;
   box-shadow: none;
   padding-top: 3px;
   margin: 4px;
@@ -506,6 +509,16 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 }
 #about-us .no-margin-block .row .item {
   padding: 12px;
+}
+#about-us .my-team h4 {
+  text-align: center;
+  color: #FF5722;
+}
+#about-us .my-team md-icon {
+  width: 40px;
+  height: 40px;
+  margin-top: 4px;
+  margin-left: 2px;
 }
 @media (max-width: 599px) {
   #home-page .xalih h2.product-name {
