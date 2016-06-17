@@ -45,7 +45,7 @@
   line-height: 30px;
 }
 [lang='akt'] h1[translate] {
-  font-size: 36px;
+  font-size: 42px;
 }
 [lang='akt'] .font-yuen {
   font-size: 15px;
@@ -53,6 +53,9 @@
 [lang='akt'] #about-us .panel h1 {
   font-size: 48px;
   font-weight: normal;
+}
+[lang='akt'] #about-us .md-header {
+  text-transform: none;
 }
 .akt1,
 .font-yapata {
@@ -457,8 +460,8 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 #about-us .panel h1 {
   font-size: 36px;
   line-height: 52px;
-  color: #FF5722;
   padding: 24px 36px;
+  font-weight: normal;
 }
 #about-us .panel p {
   font-size: 18px;
@@ -468,10 +471,16 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 #about-us .section-block {
   padding-top: 48px;
 }
-#about-us .md-header {
+#about-us .section-block .md-subheader h2 {
   color: #FF5722;
+  line-height: 24px;
+  font-weight: normal;
+}
+#about-us .md-header {
   margin-bottom: 24px;
   font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
 }
 #about-us .md-fab.md-button.social-button {
   width: 24px;
@@ -492,10 +501,10 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 #about-us .md-fab.md-button.social-button.linkedin {
   background-color: #1985bc;
 }
-#about-us .my-team .row {
+#about-us .no-margin-block .row {
   margin: 0 -16px;
 }
-#about-us .my-team .row .item {
+#about-us .no-margin-block .row .item {
   padding: 12px;
 }
 @media (max-width: 599px) {

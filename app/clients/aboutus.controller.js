@@ -4,59 +4,48 @@
 angular.module('app')
     .controller('AboutUsController', ['$filter', function($filter) {
         var ctrl = this;
-
-        ctrl.members = [{
-            name: 'jayam_name',
-            introduction: 'jayam_intro',
-            avatar: 'clients/assets/img/jayam.jpg',
-            facebook: 'https://www.facebook.com/jayampadra',
-            linkedin: '#'
-        }, {
-            name: 'jatri_name',
-            introduction: 'jatri_intro',
-            avatar: 'clients/assets/img/jatri.jpg',
-            facebook: 'https://www.facebook.com/hoangtri.dong',
-            linkedin: '#'
-        }, {
-            name: 'jabraok_name',
-            introduction: 'jabraok_intro',
-            avatar: 'clients/assets/img/jabraok.jpg',
-            facebook: 'https://www.facebook.com/vinhlt3',
-            linkedin: 'https://www.linkedin.com/in/vinh-luu-truong-935143b0'
-        }];
-
-        ctrl.projects = [{
-            name: 'xalih_name_aboutus',
-            status: 'done'
-        }, {
-            name: 'Kadha_adaoh_Cam_Name_aboutus',
-            status: 'inprogress'
-        }, {
-            name: 'video_bac_name',
-            status: 'inprogress'
-        }, {
-            name: 'inalang_name',
-            status: 'inprogress'
-        }, {
-            name: 'xakawi_name',
-            status: 'inprogress'
-        }, {
-            name: 'karaoke_name',
-            status: 'notstart'
-        }, {
-            name: 'film_name',
-            status: 'notstart'
-        }, {
-            name: 'essay_name',
-            status: 'notstart'
-        }, {
-            name: 'vocabulary_name',
-            status: 'notstart'
-        }];
-
         ctrl.init = function() {
-            ctrl.timeline = $filter('orderBy')(ctrl.timeline, '-date');
-            ctrl.projects = $filter('orderBy')(ctrl.projects, 'status');
+            ctrl.members = [{
+                name: 'jayam_name',
+                introduction: 'jayam_intro',
+                avatar: 'clients/assets/img/jayam.jpg',
+                facebook: 'https://www.facebook.com/jayampadra',
+                linkedin: '#'
+            }, {
+                name: 'jatri_name',
+                introduction: 'jatri_intro',
+                avatar: 'clients/assets/img/jatri.jpg',
+                facebook: 'https://www.facebook.com/hoangtri.dong',
+                linkedin: '#'
+            }, {
+                name: 'jabraok_name',
+                introduction: 'jabraok_intro',
+                avatar: 'clients/assets/img/jabraok.jpg',
+                facebook: 'https://www.facebook.com/vinhlt3',
+                linkedin: 'https://www.linkedin.com/in/vinh-luu-truong-935143b0'
+            }, {
+                name: 'jachang_name',
+                introduction: 'jachang_intro',
+                avatar: 'clients/assets/img/jabraok.jpg',
+                facebook: 'https://www.facebook.com/vinhlt3',
+                linkedin: 'https://www.linkedin.com/in/vinh-luu-truong-935143b0'
+            }];
+            ctrl.projects = {
+                done: {
+                    status: 'done',
+                    projects: ['xalih_name_aboutus']
+                },
+                inprogress: {
+                    status: 'inprogress',
+                    projects: ['Kadha_adaoh_Cam_Name_aboutus', 'video_bac_name', 'inalang_name',
+                        'xakawi_name',
+                    ]
+                },
+                notstart: {
+                    status: 'notstart',
+                    projects: ['karaoke_name', 'film_name', 'essay_name', 'vocabulary_name']
+                }
+            };
         };
         ctrl.init();
     }]);

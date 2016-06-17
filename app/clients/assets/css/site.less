@@ -60,7 +60,7 @@
 
     }
     h1[translate] {
-        font-size: 36px;
+        font-size: 42px;
     }
     .font-yuen {
         font-size: 15px;
@@ -71,6 +71,9 @@
                 font-size: 48px;
                 font-weight: normal;
             }
+        }
+        .md-header{
+            text-transform: none;
         }
     }
 }
@@ -500,8 +503,8 @@ table.google-visualization-orgchart-table {
         h1 {
             font-size: 36px;
             line-height: 52px;
-            color: @color-primary;
             padding: 24px 36px;
+            font-weight: normal;
         }
         p {
             font-size: 18px;
@@ -511,11 +514,19 @@ table.google-visualization-orgchart-table {
     }
     .section-block {
         padding-top: 48px;
+        .md-subheader {
+            h2 {
+                color: @color-primary;
+                line-height: 24px;
+                font-weight: normal;
+            }
+        }
     }
     .md-header {
-        color: @color-primary;
         margin-bottom: 24px;
         font-weight: normal;
+        text-align: center;
+        text-transform: uppercase;
     }
     .md-fab.md-button {
         &.social-button {
@@ -538,7 +549,7 @@ table.google-visualization-orgchart-table {
             }
         }
     }
-    .my-team {
+    .no-margin-block {
         .row {
             margin: 0 -16px;
             .item {
