@@ -1,4 +1,4 @@
-/* global angular, google */
+/* global angular */
 'use strict';
 window.logging = {
     send: function(message) {
@@ -78,9 +78,6 @@ angular
     }])
     .run(['$rootScope', function($rootScope) {
         $rootScope.lang = localStorage.getItem('NG_TRANSLATE_LANG_KEY');
-        google.charts.load('current', {
-            packages: ['orgchart']
-        });
     }])
     .config(['$stateProvider', '$ocLazyLoadProvider', '$urlRouterProvider', function($stateProvider, $ocLazyLoadProvider, $urlRouterProvider) {
 
