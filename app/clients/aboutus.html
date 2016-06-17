@@ -1,45 +1,51 @@
 <div id="about-us" ng-controller="AboutUsController as ctrl" ng-cloak layout="column">
     <div flex="100" class="panel" layout="column" layout-align="center center">
         <h1 translate>panel_title</h1>
-        <p translate>panel_description</p>
     </div>
     <div class="row-content">
-        <div layout="column" flex="100" layout-align="center center" class="section-block">
-             <div id="projects-chart"></div>
-        </div>
         <div layout="column" class="section-block">
             <h1 class="md-header" translate>tpt_name</h1>
             <p translate>tpt_des</p>
         </div>
-        <div layout="column" class="section-block">
+        <div layout="column" class="no-margin-block section-block">
             <h1 class="md-header" translate>projects_name</h1>
             <p translate>projects_des</p>
-        </div>
-        <div layout="column" class="my-team section-block">
-            <h1 class="md-header" translate>my_team</h1>
-            <div layout="row" layout-wrap class="row">
-                <div flex="100" flex-gt-xs="50" flex-gt-sm="33"  ng-repeat="member in ctrl.members" layout="row" class="item">
-                    <div flex="40">
-                        <img ng-src="{{member.avatar}}" class="full-width" />
+            <div class="row" layout="row" layout-wrap>
+                <md-list class="item" flex="100" flex-gt-sm="33" ng-repeat="status in ctrl.projects">
+                    <md-subheader>
+                        <h2 translate>{{status.status}}</h2>
+                    </md-subheader>
+                    <div ng-repeat="project in status.projects">
+                        <md-list-item translate>
+                            {{project}}
+                        </md-list-item>
+                        <md-divider ng-if="!$last"></md-divider>
                     </div>
-                    <div flex layout="column" class="padding-left-xs">
-                        <div class="timeline-heading">
-                            <h4 class="md-subhead text-bold" translate>{{member.name}}</h4>
+                </md-list>
+            </div>
+            <div layout="column" class="my-team no-margin-block section-block">
+                <h1 class="md-header" translate>my_team</h1>
+                <div layout="row" layout-wrap class="row">
+                    <div flex="100" flex-gt-md="25" flex-gt-xs="50" ng-repeat="member in ctrl.members" layout="row" class="item">
+                        <div layout="column" flex="40">
+                            <img ng-src="{{member.avatar}}" class="full-width circle" />
+                            <h4 class="margin-top-sm md-subhead" translate>{{member.name}}</h4>
                         </div>
-                        <div layout="row" layout-align="start center">
-                            <md-button class="md-fab md-mini md-bt-blue social-button" ng-href="{{member.facebook}}" target="_blank" aria-label="facebook">
-                                <md-icon md-svg-src="clients/assets/img/social.svg"></md-icon>
-                            </md-button>
-                            <md-button class="md-fab md-mini social-button linkedin" ng-href="{{member.linkedin}}" target="_blank" aria-label="linkedin">
-                                <md-icon md-svg-src="clients/assets/img/linkedin.svg"></md-icon>
-                            </md-button>
-                        </div>
-                        <div class="timeline-body margin-top-sm">
-                            <p translate>{{member.introduction}}</p>
+                        <div flex layout="column" class="padding-left-xs">
+                            <div class="timeline-body">
+                                <p translate>{{member.introduction}}</p>
+                            </div>
+                            <div class="margin-top-sm" layout="row" layout-align="start center">
+                                <md-button class="md-fab md-mini md-bt-blue social-button" ng-href="{{member.facebook}}" target="_blank" aria-label="facebook">
+                                    <md-icon md-svg-src="clients/assets/img/social.svg"></md-icon>
+                                </md-button>
+                                <md-button ng-if="member.linkedin" class="md-fab md-mini social-button linkedin" ng-href="{{member.linkedin}}" target="_blank" aria-label="linkedin">
+                                    <md-icon md-svg-src="clients/assets/img/linkedin.svg"></md-icon>
+                                </md-button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
