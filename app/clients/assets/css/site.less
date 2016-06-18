@@ -286,6 +286,124 @@ table.google-visualization-orgchart-table {
             padding-left: 24px;
         }
     }
+    .border-box() {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+        }
+        .box-shadow(@value) {
+            -moz-box-shadow: @value;
+            -webkit-box-shadow: @value;
+            box-shadow: @value;
+        }
+        .border-radius(@value) {
+            -webkit-border-radius: @value;
+            -moz-border-radius: @value;
+            border-radius: @value;
+        }
+
+        .clickable {
+            cursor: pointer;
+        }
+        .slider {
+            height: 450px;
+            overflow: hidden;
+            position: relative;
+            .slide {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .arrow {
+                position: absolute;
+                z-index: 1002;
+                display: block;
+                top: 50%;
+                margin-top: -40px;
+                width: 80px;
+                height: 80px;
+                outline: none;
+                cursor: pointer;
+                .material-icons {
+                    font-size: 58px;
+                    color: #fff;
+                    padding: 10px;
+                }
+                background-color: #000000;
+                opacity: 0.5;
+                transition: 0.2s linear all;
+                .border-radius(4px);
+                &:hover{
+                  opacity: 1;
+                }
+            }
+            .arrow.prev {
+                left: 20px;
+            }
+            .arrow.next {
+                right: 20px;
+            }
+            .nav {
+                text-align: center;
+                display: block;
+                position: absolute;
+                z-index: 1002;
+                left: 0;
+                bottom: -4px;
+                right: 0;
+            }
+            .nonDraggableImage {
+                -webkit-user-drag: none;
+            }
+            .nav .wrapper {
+                margin: 0 auto;
+                width: 100%;
+                padding: 60px 0;
+            }
+            .nav ul {
+                margin: 0;
+                width: 100%;
+            }
+            .nav .dot,
+            .nav .dot a {
+                display: inline-block;
+                zoom: 1;
+            }
+            .dots .dot {
+                position: relative;
+                margin: 0 8px;
+                width: 28px;
+                height: 28px;
+            }
+            .dots .dot a {
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: 25px;
+                height: 25px;
+                text-indent: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                background: #FFF;
+                border: 2px solid transparent;
+                outline: none;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+                -webkit-transition: background-color 0.25s, border-color 0.25s;
+                -moz-transition: background-color 0.25s, border-color 0.25s;
+                transition: background-color 0.25s, border-color 0.25s;
+                .border-box();
+            }
+            .dots .dot a.active {
+                border-color: #FFF;
+                background-color: transparent;
+            }
+        }
+
 }
 #converter {
     .md-button-convert{
