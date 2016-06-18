@@ -134,6 +134,8 @@ angular
                         name: 'app',
                         files: [
                             'clients/homepage.controller.js',
+                            'directives/slider/slider.js',
+                            'directives/slider/slider.css'
                         ]
                     });
                 }
