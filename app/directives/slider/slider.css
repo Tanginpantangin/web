@@ -1,0 +1,95 @@
+.clickable {
+  cursor: pointer;
+}
+.slider {
+  height: 450px;
+  overflow: hidden;
+  position: relative;
+}
+.slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.slider .arrow {
+  position: absolute;
+  z-index: 1002;
+  display: block;
+  top: 50%;
+  margin-top: -40px;
+  width: 80px;
+  height: 80px;
+  outline: none;
+  cursor: pointer;
+  background-color: #000000;
+  opacity: 0.5;
+  transition: 0.2s linear all;
+  border-radius: 4px;
+}
+.slider .arrow .material-icons {
+  font-size: 58px;
+  color: #fff;
+  padding: 10px;
+}
+.slider .arrow:hover {
+  opacity: 1;
+}
+.slider .arrow.prev {
+  left: 20px;
+}
+.slider .arrow.next {
+  right: 20px;
+}
+.slider .nav {
+  text-align: center;
+  display: block;
+  position: absolute;
+  z-index: 1002;
+  left: 0;
+  bottom: -4px;
+  right: 0;
+}
+.slider .nonDraggableImage {
+  -webkit-user-drag: none;
+}
+.slider .nav .wrapper {
+  margin: 0 auto;
+  width: 100%;
+  padding: 60px 0;
+}
+.slider .nav ul {
+  margin: 0;
+  width: 100%;
+}
+.slider .nav .dot,
+.slider .nav .dot a {
+  display: inline-block;
+  zoom: 1;
+}
+.slider .dots .dot {
+  position: relative;
+  margin: 0 8px;
+  width: 28px;
+  height: 28px;
+}
+.slider .dots .dot a {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 25px;
+  height: 25px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background: #FFF;
+  border: 2px solid transparent;
+  outline: none;
+  box-shadow: none;
+  border-radius: 50%;
+  transition: background-color 0.25s, border-color 0.25s;
+  box-sizing: border-box;
+}
+.slider .dots .dot a.active {
+  border-color: #FFF;
+  background-color: transparent;
+}

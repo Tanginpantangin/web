@@ -1,0 +1,17 @@
+<div class="slider" style="height:38vw">
+    <img height="100%" width="100%"ng-repeat="slide in slides" class="slide slide-animation nonDraggableImage" ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()" ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
+    <a hide-xs class="arrow prev" ng-click="nextSlide()">
+        <md-icon class="material-icons">navigate_before</md-icon>
+    </a>
+    <a hide-xs class="arrow next" ng-click="prevSlide()">
+        <md-icon class="material-icons">navigate_next</md-icon>
+    </a>
+    <nav hide-xs class="nav">
+        <div class="wrapper">
+            <ul class="dots">
+                <li class="dot" ng-repeat="slide in slides">
+                    <a class="clickable" ng-class="{'active':isCurrentSlideIndex($index)}" ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>

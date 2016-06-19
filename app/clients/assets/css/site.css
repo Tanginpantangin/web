@@ -7,8 +7,7 @@
 }
 @font-face {
   font-family: 'blue_1.1';
-  src: url('blue1.1/blue_1.1-webfont.eot');
-  src: url('blue1.1/blue_1.1-webfont.eot?#iefix') format('embedded-opentype'), url('blue1.1/blue_1.1-webfont.woff2') format('woff2'), url('blue1.1/blue_1.1-webfont.woff') format('woff'), url('blue1.1/blue_1.1-webfont.ttf') format('truetype'), url('blue1.1/blue_1.1-webfont.svg#blue_1.1regular') format('svg');
+  src: url('blue1.1/Blue11.eot?#iefix') format('embedded-opentype'), url('blue1.1/Blue11.woff') format('woff'), url('blue1.1/Blue11.ttf') format('truetype'), url('blue1.1/Blue11.svg#Blue11') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -42,6 +41,21 @@
 }
 [lang='akt'] [translate] {
   font-family: 'Akhar Thrah 1';
+  font-size: 28px;
+  line-height: 30px;
+}
+[lang='akt'] h1[translate] {
+  font-size: 42px;
+}
+[lang='akt'] .font-yuen {
+  font-size: 15px;
+}
+[lang='akt'] #about-us .panel h1 {
+  font-size: 48px;
+  font-weight: normal;
+}
+[lang='akt'] #about-us .md-header {
+  text-transform: none;
 }
 .akt1,
 .font-yapata {
@@ -152,6 +166,9 @@ img.full-width {
   width: 100%;
   height: auto;
 }
+.circle {
+  border-radius: 50%;
+}
 .md-raised.md-round {
   border-radius: 100px;
   border: 1px solid #FF5722;
@@ -201,7 +218,7 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   background: #FF5722 !important;
 }
 #langOption {
-  padding: 0px 12px 0px;
+  padding: 0 12px;
   height: 2vh;
   font-size: 8px;
 }
@@ -266,8 +283,7 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   font-weight: 400;
 }
 #converter .bt-converter button {
-  margin: 10px 0;
-  margin-right: 5px;
+  margin: 10px 5px 10px 0;
   text-transform: initial;
 }
 #converter .margintop20px {
@@ -305,8 +321,7 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 }
 #converter .box-convert textarea {
   width: 95%;
-  padding: 8px;
-  padding-bottom: 35px;
+  padding: 8px 8px 35px;
 }
 #converter .box-source {
   position: relative;
@@ -350,8 +365,7 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   min-height: 164px;
   background-color: #F1F1F1;
   max-height: 600px;
-  padding: 8px;
-  padding-bottom: 35px;
+  padding: 8px 8px 35px;
 }
 #converter .bt-viewmore {
   min-width: 25px;
@@ -448,9 +462,9 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 }
 #about-us .panel h1 {
   font-size: 36px;
-  line-height: 36px;
-  color: #FF5722;
+  line-height: 52px;
   padding: 24px 36px;
+  font-weight: normal;
 }
 #about-us .panel p {
   font-size: 18px;
@@ -460,16 +474,22 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 #about-us .section-block {
   padding-top: 48px;
 }
-#about-us .md-header {
+#about-us .section-block .md-subheader h2 {
   color: #FF5722;
-  margin-bottom: 24px;
+  line-height: 24px;
   font-weight: normal;
 }
+#about-us .md-header {
+  margin-bottom: 24px;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+}
 #about-us .md-fab.md-button.social-button {
-  width: 24px;
-  height: 24px;
-  min-height: 24px;
-  line-height: 24px;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  line-height: 40px;
   box-shadow: none;
   padding-top: 3px;
   margin: 4px;
@@ -484,11 +504,21 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 #about-us .md-fab.md-button.social-button.linkedin {
   background-color: #1985bc;
 }
-#about-us .my-team .row {
-  margin: 0 -16px 0;
+#about-us .no-margin-block .row {
+  margin: 0 -16px;
 }
-#about-us .my-team .row .item {
+#about-us .no-margin-block .row .item {
   padding: 12px;
+}
+#about-us .my-team h4 {
+  text-align: center;
+  color: #FF5722;
+}
+#about-us .my-team md-icon {
+  width: 40px;
+  height: 40px;
+  margin-top: 4px;
+  margin-left: 2px;
 }
 @media (max-width: 599px) {
   #home-page .xalih h2.product-name {
