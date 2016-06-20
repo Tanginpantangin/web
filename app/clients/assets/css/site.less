@@ -155,7 +155,7 @@ md-toolbar {
     padding: 0 24px;
 }
 .margin-top-xl {
-    margin-top: 48px;
+    margin-top: 30px;
 }
 .margin-top-lg {
     margin-top: 36px;
@@ -278,10 +278,11 @@ table.google-visualization-orgchart-table {
     }
     .about-us {
         h3 {
-            font-size: 36px;
-            color: @color-primary;
-            font-weight: normal;
-            line-height: 36px;
+          font-size: 36px;
+          color: rgba(0, 0, 0, 0.44);
+          font-weight: normal;
+          text-align: center;
+          line-height: 36px;
         }
         p {
             font-size: 16px;
@@ -296,6 +297,40 @@ table.google-visualization-orgchart-table {
             padding-left: 24px;
         }
     }
+    .our-products-block{
+      padding-top:50px;
+    }
+    .title-product{
+      text-align: center;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    font-size: 22px;
+    }
+    .md-header{
+      margin-bottom: 50px;
+      font-weight: normal;
+      font-size: 38px;
+      text-align: center;
+      opacity: 0.48;
+    }
+    .img-our-product{
+      position: relative;
+      display: block;
+      background: #fafbfc;
+      width: 100%;
+      padding-bottom: 50%;
+    }
+      .img-our-product img{
+        position: absolute;
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+      }
     .border-box() {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -415,6 +450,14 @@ table.google-visualization-orgchart-table {
         }
 
 }
+hr.hr-style {
+    height: 10px;
+    border: 0;
+    box-shadow: 0 10px 10px -10px #8c8b8b inset;
+    width: 80%;
+    margin: 30px;
+    display: inline-block;
+}
 #converter {
     .md-button-convert {
         color: #F98D43;
@@ -437,14 +480,7 @@ table.google-visualization-orgchart-table {
     .margintop20px {
         margin-top: 20px;
     }
-    hr.hr-style {
-        height: 10px;
-        border: 0;
-        box-shadow: 0 10px 10px -10px #8c8b8b inset;
-        width: 80%;
-        margin: 30px;
-        display: inline-block;
-    }
+
     h3 {
         color: #0B86DE;
     }

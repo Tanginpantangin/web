@@ -10,17 +10,37 @@
             </md-button>
         </div>
     </div> -->
-    <div layout="row" layout-align="start center" class="margin-top-xl about-us row-content">
-        <div flex>
+    <div layout="column" class="my-team our-products-block row-content">
+      <h1 class="md-header" translate>Our Products</h1>
+      <div layout="row" layout-wrap class="row">
+          <div flex="100" flex-gt-md="33" flex-gt-xs="50" ng-repeat="product in ctrl.ourProducs" layout="row" class="item">
+              <div layout="column" flex="50">
+                  <div class="title-product">{{product.Name}}</div>
+                  <div class="description-product">
+                      <p>{{product.Description}}</p>
+                  </div>
+              </div>
+              <div flex layout="column">
+                <div class="img-our-product">
+                    <img ng-src="{{product.Avatar}}"/>
+                </div>
+
+              </div>
+          </div>
+      </div>
+  </div> 
+</br>
+  <div div layout="row" layout-align="center center">
+  <hr class="hr-style">
+  </div>
+    <div layout="row" layout-align="center center" class="margin-top-xl about-us row-content">
+        <div flex="70">
             <h3 translate>about_us</h3>
             <p class="margin-top-md" translate>aboutus_descrip1</p>
             <p class="margin-top-sm" translate>aboutus_descrip2</p>
             <md-button class="md-raised md-primary margin-top-sm no-margin-left md-round" ng-click="ctrl.gotoPage('main.aboutus')">
                 Read more
             </md-button>
-        </div>
-        <div hide show-gt-sm flex="40">
-            <img ng-src="clients/assets/img/temple.jpg" />
         </div>
     </div>
 </div>
