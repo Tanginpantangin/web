@@ -43,6 +43,7 @@
   font-family: 'Akhar Thrah 1';
   font-size: 28px;
   line-height: 30px;
+  text-transform: none;
 }
 [lang='akt'] h1[translate] {
   font-size: 42px;
