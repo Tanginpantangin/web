@@ -1,4 +1,8 @@
 {
+    "menu_home": "Home",
+    "menu_converter": "Converter",
+    "menu_documents": "Documents",
+    "menu_aboutUs": "About us",
     "xalih_name": "Cham language converter",
     "xalih_des": "Bộ công cụ giúp chuyển đổi giữa Akhar Thrah sang các kiểu chuyển tự latin và ngược lại; giữa các loại font chữ Cham có cấu trúc khác nhau; giữa Akhar Thrah (không theo chuẩn Unicode) và các loại chuyển tự latin sang Akhar Thrah theo chuẩn Unicode và ngược lại.",
     "about_us": "About us",

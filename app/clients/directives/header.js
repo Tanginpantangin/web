@@ -12,16 +12,16 @@ angular.module('app')
                     $scope.showSmallMenu = false;
                     $scope.menus = [{
                         href: '/',
-                        name: 'Home'
+                        name: 'menu_home'
                     }, {
                         href: '/converter',
-                        name: 'Converter'
+                        name: 'menu_converter'
                     }, {
                         href: '/document',
-                        name: 'Documents'
+                        name: 'menu_documents'
                     }, {
                         href: '/aboutus',
-                        name: 'About Us'
+                        name: 'menu_aboutUs'
                     }];
 
                     $scope.redirectPage = function(url) {

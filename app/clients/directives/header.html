@@ -22,7 +22,7 @@
             </a>
             <span flex></span>
             <div hide show-gt-xs layout="row" layout-align="end center" ng-repeat="page in menus">
-                <md-button class="{{getActiveClass(page)}}" ng-click="redirectPage(page.href)"> {{page.name}} </md-button>
+                <md-button class="{{getActiveClass(page)}}" ng-click="redirectPage(page.href)"><span translate>{{page.name}}</span></md-button>
             </div>
             <md-menu hide-gt-xs class="mobile-menu">
                 <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
@@ -30,7 +30,7 @@
                 </md-button>
                 <md-menu-content width="4" class="header">
                     <md-menu-item ng-repeat="page in menus">
-                        <md-button class="{{page.class}}" ng-click="redirectPage(page.href)"> {{page.name}} </md-button>
+                        <md-button class="{{page.class}}" ng-click="redirectPage(page.href)"><span translate>{{page.name}}</span></md-button>
                     </md-menu-item>
                 </md-menu-content>
             </md-menu>
