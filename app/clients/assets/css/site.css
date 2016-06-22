@@ -139,7 +139,7 @@ md-toolbar md-icon {
   padding: 0 24px;
 }
 .margin-top-xl {
-  margin-top: 48px;
+  margin-top: 30px;
 }
 .margin-top-lg {
   margin-top: 36px;
@@ -252,8 +252,9 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 }
 #home-page .about-us h3 {
   font-size: 36px;
-  color: #FF5722;
+  color: rgba(0, 0, 0, 0.44);
   font-weight: normal;
+  text-align: center;
   line-height: 36px;
 }
 #home-page .about-us p {
@@ -267,6 +268,143 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   width: 100%;
   height: auto;
   padding-left: 24px;
+}
+#home-page .our-products-block {
+  padding-top: 50px;
+}
+#home-page .title-product {
+  text-align: center;
+  margin-bottom: 10px;
+  opacity: 0.8;
+  font-size: 22px;
+}
+#home-page .md-header {
+  margin-bottom: 50px;
+  font-weight: normal;
+  font-size: 38px;
+  text-align: center;
+  opacity: 0.48;
+}
+#home-page .img-our-product {
+  position: relative;
+  display: block;
+  background: #fafbfc;
+  width: 100%;
+  padding-bottom: 50%;
+}
+#home-page .img-our-product img {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+#home-page .clickable {
+  cursor: pointer;
+}
+#home-page .slider {
+  height: 450px;
+  overflow: hidden;
+  position: relative;
+}
+#home-page .slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#home-page .slider .arrow {
+  position: absolute;
+  z-index: 1002;
+  display: block;
+  top: 50%;
+  margin-top: -40px;
+  width: 80px;
+  height: 80px;
+  outline: none;
+  cursor: pointer;
+  background-color: #000000;
+  opacity: 0.5;
+  transition: 0.2s linear all;
+  border-radius: 4px;
+}
+#home-page .slider .arrow .material-icons {
+  font-size: 58px;
+  color: #fff;
+  padding: 10px;
+}
+#home-page .slider .arrow:hover {
+  opacity: 1;
+}
+#home-page .slider .arrow.prev {
+  left: 20px;
+}
+#home-page .slider .arrow.next {
+  right: 20px;
+}
+#home-page .slider .nav {
+  text-align: center;
+  display: block;
+  position: absolute;
+  z-index: 1002;
+  left: 0;
+  bottom: -4px;
+  right: 0;
+}
+#home-page .slider .nonDraggableImage {
+  -webkit-user-drag: none;
+}
+#home-page .slider .nav .wrapper {
+  margin: 0 auto;
+  width: 100%;
+  padding: 60px 0;
+}
+#home-page .slider .nav ul {
+  margin: 0;
+  width: 100%;
+}
+#home-page .slider .nav .dot,
+#home-page .slider .nav .dot a {
+  display: inline-block;
+  zoom: 1;
+}
+#home-page .slider .dots .dot {
+  position: relative;
+  margin: 0 8px;
+  width: 28px;
+  height: 28px;
+}
+#home-page .slider .dots .dot a {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 25px;
+  height: 25px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background: #FFF;
+  border: 2px solid transparent;
+  outline: none;
+  box-shadow: none;
+  border-radius: 50%;
+  transition: background-color 0.25s, border-color 0.25s;
+  box-sizing: border-box;
+}
+#home-page .slider .dots .dot a.active {
+  border-color: #FFF;
+  background-color: transparent;
+}
+hr.hr-style {
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
+  width: 80%;
+  margin: 30px;
+  display: inline-block;
 }
 #converter .md-button-convert {
   color: #F98D43;
@@ -288,14 +426,6 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 }
 #converter .margintop20px {
   margin-top: 20px;
-}
-#converter hr.hr-style {
-  height: 10px;
-  border: 0;
-  box-shadow: 0 10px 10px -10px #8c8b8b inset;
-  width: 80%;
-  margin: 30px;
-  display: inline-block;
 }
 #converter h3 {
   color: #0B86DE;
@@ -449,6 +579,9 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
 }
 #document md-card md-card-title-text {
   padding-right: 12px;
+}
+#document md-card md-card-avatar {
+  width: 70%;
 }
 #document md-card .md-subhead {
   text-align: justify;
