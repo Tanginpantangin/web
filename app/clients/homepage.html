@@ -11,13 +11,13 @@
         </div>
     </div> -->
     <div layout="column" class="my-team our-products-block row-content">
-      <h1 class="md-header" translate>Our Products</h1>
+      <h1 class="md-header" translate>our_products</h1>
       <div layout="row" layout-wrap class="row">
           <div flex="100" flex-gt-md="33" flex-gt-xs="50" ng-repeat="product in ctrl.ourProducs" layout="row" class="item">
               <div layout="column" flex="50">
-                  <div class="title-product">{{product.Name}}</div>
+                  <div class="title-product" translate>{{product.Name}}</div>
                   <div class="description-product">
-                      <p>{{product.Description}}</p>
+                      <p translate>{{product.Description}}</p>
                   </div>
               </div>
               <div flex layout="column">
@@ -28,7 +28,7 @@
               </div>
           </div>
       </div>
-  </div> 
+  </div>
 </br>
   <div div layout="row" layout-align="center center">
   <hr class="hr-style">

@@ -581,8 +581,8 @@ hr.hr-style {
 #document md-card md-card-title-text {
   padding-right: 12px;
 }
-#document md-card md-card-avatar {
-  width: 70%;
+#document md-card #icon-doc {
+  width: 15%;
 }
 #document md-card .md-subhead {
   text-align: justify;

@@ -64,16 +64,16 @@ angular.module('app')
                 description: 'Another 3'
             }];
             ctrl.ourProducs = [{
-                  Name: "Dictionary",
-                  Description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt..",
+                  Name: "product_dictionary_name",
+                  Description:"product_dictionary_description",
                    Avatar:"clients/assets/img/home_dictionary.png"
                  },{
-                   Name: "Translation", 
-                   Description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt..",
+                   Name: "product_converter_name",
+                   Description:"product_converter_description",
                    Avatar:"clients/assets/img/home_translate.png"
                  },{
-                   Name: "Celendar",
-                   Description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt..",
+                   Name: "product_calendar_name",
+                   Description:"product_calendar_description",
                    Avatar:"clients/assets/img/home_Celendar.png"
                  }];
 
