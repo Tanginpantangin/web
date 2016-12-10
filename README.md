@@ -30,3 +30,8 @@ gulp styles: build less css and minify
 webdriver-manager start
 protractor testing/config.js
 ```
+# Deploy server
+```
+forever start server.js
+forever stop server.js
+```
