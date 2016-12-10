@@ -7,7 +7,7 @@ gulp styles
 
 # Development
 ```
-port=8080 ENV=development node server.js
+PORT=8080 ENV=development node server.js
 ```
 
 # Release
