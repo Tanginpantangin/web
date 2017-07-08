@@ -36,8 +36,9 @@ server.use(function(req, res, next) {
     next();
 });
 
-// set our port
-var port = process.env.PORT || 80;
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8000;
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+
 // set our environment
 var environment = process.env.ENV || 'development';
 console.log('environment:', environment);
@@ -64,5 +65,8 @@ server.use('/api', router);
 
 // START THE SERVER
 // =============================================================================
-server.listen(port);
-console.log('Magic happens on port ' + port);
+server.listen( server_port, server_ip_address, function () {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log( 'Listening at http://%s:%s', host, port );
+} );

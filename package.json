@@ -23,9 +23,11 @@
   "scripts": {
     "postinstall": "bower --allow-root install",
     "init": "npm install",
-    "install": "bower install"
+    "install": "bower install",
+    "start": "node server.js"
   },
   "config": {
     "unsafe-perm": true
-  }
+  },
+  "main": "server.js"
 }
