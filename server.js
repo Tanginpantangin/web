@@ -65,8 +65,8 @@ server.use('/api', router);
 
 // START THE SERVER
 // =============================================================================
-server.listen( server_port, server_ip_address, function () {
-    var host = server.address().address;
-    var port = server.address().port;
+var app = server.listen( server_port, server_ip_address, function () {
+    var host = app.address().address;
+    var port = app.address().port;
     console.log( 'Listening at http://%s:%s', host, port );
 } );
