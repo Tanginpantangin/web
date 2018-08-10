@@ -528,6 +528,32 @@ window.cam.service.Utility.CopyListAkhar = function(listSource) {
     return listSource.slice();
 };
 
+function fixString(inp, char) {
+    var i, len, arr, outp, Rside, Lside, RsideIsNum, LsideIsNum;
+
+    arr = inp.split(char);
+    outp = "";
+
+    for (i = 1, len = arr.length; i < len; i++) {
+        Lside = arr[i - 1];
+        Rside = arr[i];
+
+        LsideIsNum = /\d/.test(Lside.charAt(Lside.length - 1));
+        RsideIsNum = /\d/.test(Rside.charAt(0));
+
+        outp += char + ((LsideIsNum && RsideIsNum) ? "" : " ") + Rside;
+    }
+
+    return (arr[0] + outp).replace(/\s\s+/g, " ");
+}
+
+window.cam.service.Utility.fixString = function (text) {
+    var result = fixString(text, ',');
+    result = fixString(result, '.');
+    result = fixString(result, ';');
+    return result;
+};
+
 window.cam.service.Utility.PopStackToList = function(list, stack, addFirst) {
     while (stack.length() != 0) {
         var index = addFirst ? 0 : list.length;
