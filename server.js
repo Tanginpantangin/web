@@ -37,7 +37,7 @@ server.use(function(req, res, next) {
 });
 
 // set our port
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 3009;
 // set our environment
 var environment = process.env.ENV || 'development';
 console.log('environment:', environment);

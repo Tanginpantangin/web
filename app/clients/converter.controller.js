@@ -63,7 +63,7 @@ angular.module('app')
             self.convertData();
         };
 
-        console.log(self.sourceList);
+        // console.log(self.sourceList);
         // Source Dropdownlist selected item changedevent
         self.selectItemSource = function(index, font) {
             self.SourceId = self.sourceList[index + 3].id; //use for disable
