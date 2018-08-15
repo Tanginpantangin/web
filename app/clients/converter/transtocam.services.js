@@ -262,7 +262,7 @@ window.cam.service.TransToCamPaxalih = function () {
       return akharList;
     }
 
-    // Typed ordering list:
+    // Typed ordering list (we will do in reverse):
     // Ina akhar
     // Takhai anak (takai krak)
     // Takhai likuk (takai kiak, takai kuak)
@@ -270,12 +270,25 @@ window.cam.service.TransToCamPaxalih = function () {
     // Top chars
     // Others
 
-    var result = self.correctSapPoahAnakForUnicode(akharList);
-    result = self.correctTakhaiLikukForUnicode(result);
+    var result = self.correctTopCharsForUnicode(akharList);
+    result = self.correctSapPoahAnakForUnicode(result);
+    result = self.correctTakaiLikukForUnicode(result);
     result = self.correctTakaiAnakForUnicode(result);
-    // result = self.correctTopCharsForUnicode(result);
+
     return result;
   };
+
+  self.correctTopCharsForUnicode = function (akharList) {
+    var result = window.cam.service.Utility.CopyListAkhar(akharList);
+    var arrayLength = akharList.length;
+    for (var i = 0; i < arrayLength; i++) {
+      var currentChar = akharList[i];
+      if (!base.isTopChars(currentChar)) continue;
+
+      result = self.insertAfterPreviousInaAkhar(i, result);
+    }
+    return result;
+  }
 
   self.correctSapPoahAnakForUnicode = function (akharList) {
     var result = window.cam.service.Utility.CopyListAkhar(akharList);
@@ -327,7 +340,7 @@ window.cam.service.TransToCamPaxalih = function () {
     return result;
   }
 
-  self.correctTakhaiLikukForUnicode = function (akharList) {
+  self.correctTakaiLikukForUnicode = function (akharList) {
     var result = window.cam.service.Utility.CopyListAkhar(akharList);
     var arrayLength = akharList.length;
     for (var i = 0; i < arrayLength; i++) {
@@ -381,17 +394,7 @@ window.cam.service.TransToCamPaxalih = function () {
 
 
 
-  // self.correctTopCharsForUnicode = function (akharList) {
-  //   var result = window.cam.service.Utility.CopyListAkhar(akharList);
-  //   var arrayLength = akharList.length;
-  //   for (var i = 1; i < arrayLength; i++) {
-  //     if (!base.isTopChars(akharList[i])) continue;
-  //     if (!base.isBottomChars(akharList[i - 1])) continue;
 
-  //     result.swap(i, i - 1);
-  //   }
-  //   return result;
-  // }
 
   self.CutKanaingAtFirst = function (value) {
 

@@ -209,7 +209,7 @@ window.cam.service.Paxalih = function () {
       Model.AKhar.TraohAw,
       Model.AKhar.TraohAwPaohNgâk,
       Model.AKhar.TraohAwTutTakaiMâk,
-      Model.AKhar.PaohNgâk,
+      // Model.AKhar.PaohNgâk,
       Model.AKhar.TutTakaiMâk
     ];
     return array.indexOf(Number(sabaoh)) != -1;
