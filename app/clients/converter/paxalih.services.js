@@ -210,7 +210,7 @@ window.cam.service.Paxalih = function () {
       Model.AKhar.TraohAwPaohNgâk,
       Model.AKhar.TraohAwTutTakaiMâk,
       // Model.AKhar.PaohNgâk,
-      Model.AKhar.TutTakaiMâk
+      // Model.AKhar.TutTakaiMâk
     ];
     return array.indexOf(Number(sabaoh)) != -1;
   };
