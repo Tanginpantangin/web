@@ -12,6 +12,14 @@
 @color-primary: @color-500;
 
 @font-face {
+    font-family: 'Noto Sans Cham';
+    src: url('NotoSansCham-Regular.woff2') format('woff2'),
+        url('NotoSansCham-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'Akhar Thrah 1';
     src: url('akhar_thrah_1-webfont.eot');
     src: url('akhar_thrah_1-webfont.eot?#iefix') format('embedded-opentype'), url('akhar_thrah_1-webfont.woff2') format('woff2'), url('akhar_thrah_1-webfont.woff') format('woff'), url('akhar_thrah_1-webfont.ttf') format('truetype'), url('akhar_thrah_1-webfont.svg#akhar_thrah_1regular') format('svg');
@@ -98,16 +106,12 @@
     font-family: 'camtanran';
     .font-size-akt;
 }
-.font-uni-camvn {
-    font-family: 'cham_roman';
-    .font-size-akt;
-}
 .font-gilaipraong {
     font-family: 'champa_2_gp';
     .font-size-akt;
 }
-.font-uni-camkur {
-    font-family: 'cjm_kh_001';
+.font-uni-camkur, .font-uni-camvn  {
+    font-family: 'Noto Sans Cham';
     font-size: 19px;
     line-height: 36px;
 }
