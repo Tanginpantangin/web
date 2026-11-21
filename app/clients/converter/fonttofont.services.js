@@ -11,10 +11,26 @@ window.cam.service.FontToFontPaxalih = function() {
     var self = this;
     var base = new window.cam.service.Paxalih();
 
-    self._srcHtb = {};
     self._desHtb = {};
 
+    function isUnicode(type) {
+        return type == Model.Enum.FontUniCamKur || type == Model.Enum.FontUniCamVN;
+    }
+
+    var unicodeComponents = {};
+    unicodeComponents[Model.AKhar.BalauTapong] = [Model.AKhar.Balau, Model.AKhar.TakaiThek];
+    unicodeComponents[Model.AKhar.TakaiThekTutTakaiMâk] = [Model.AKhar.TakaiThek, Model.AKhar.TutTakaiMâk];
+    unicodeComponents[Model.AKhar.TakaiKikTutTakaiMâkLingiw] = [Model.AKhar.TakaiKik, Model.AKhar.TutTakaiMâk];
+    unicodeComponents[Model.AKhar.TraohAwPaohNgâk] = [Model.AKhar.TraohAw, Model.AKhar.PaohNgâk];
+    unicodeComponents[Model.AKhar.TraohAwTutTakaiMâk] = [Model.AKhar.TraohAw, Model.AKhar.TutTakaiMâk];
+    unicodeComponents[Model.AKhar.TakaiKlakTakaiKuak] = [Model.AKhar.TakaiKlak, Model.AKhar.TakaiKuak];
+    unicodeComponents[Model.AKhar.TakaiKlakTakaiKuk] = [Model.AKhar.TakaiKlak, Model.AKhar.TakaiKuk];
+    unicodeComponents[Model.AKhar.TakaiThekPaohNgâk] = [Model.AKhar.TakaiThek, Model.AKhar.PaohNgâk];
+
     self.DoConvert = function(data, sourceType, destitionType) {
+        if (isUnicode(sourceType) && isUnicode(destitionType)) {
+            return data.split(/\r\n|\r|\n/);
+        }
 
         // Validate inputed string
         var validString = [data];
@@ -22,7 +38,8 @@ window.cam.service.FontToFontPaxalih = function() {
         data = validString[0];
 
         //Set hastable data
-        self.SetHastableData(sourceType, destitionType);
+        var sourceMap = base.GetDictionaty(sourceType);
+        self.SetHastableData(destitionType);
 
         //Contain converted
         var converted = [];
@@ -41,11 +58,16 @@ window.cam.service.FontToFontPaxalih = function() {
                 return;
             }
 
-            var lstAkhar = self.ToKeyCodeByWord(word, sourceType, destitionType);
+            var decoded = word.split('').map(function(character) {
+                return sourceMap[character];
+            });
+            var lstAkhar = isUnicode(destitionType)
+                ? expandUnicodeLigatures(decoded)
+                : composeLegacy(decoded, sourceType, destitionType);
             var convertedWord = '';
             lstAkhar.forEach(function(akhar) {
                 if (self._desHtb[akhar]) {
-                    convertedWord += self._desHtb[akhar].toString(); //to_unicode???
+                    convertedWord += self._desHtb[akhar].toString();
                 }
             });
 
@@ -55,35 +77,7 @@ window.cam.service.FontToFontPaxalih = function() {
         return converted.join(' ').split('\n');
     };
 
-    self.SetHastableData = function(sourceType, destitionType) {
-
-        //Set source data
-        switch (sourceType) {
-            case Model.Enum.FontYapata:
-                self._srcHtb = base._waYapataToKeyCode;
-                break;
-
-            case Model.Enum.FontGilaiPraong:
-                self._srcHtb = base._gilaiPraongToKeyCode;
-                break;
-
-            case Model.Enum.FontCamEFEO:
-                self._srcHtb = base._camEFEOToKeyCode;
-                break;
-
-            case Model.Enum.FontUniCamKur:
-                self._srcHtb = base._uniCamKurToKeyCode;
-                break;
-
-            case Model.Enum.FontUniCamVN:
-                self._srcHtb = base._uniCamVNToKeyCode;
-                break;
-
-            default:
-                self._srcHtb = base._KTTToKeyCode;
-                break;
-        }
-
+    self.SetHastableData = function(destitionType) {
         //Set destination data
         switch (destitionType) {
             case Model.Enum.FontYapata:
@@ -112,55 +106,26 @@ window.cam.service.FontToFontPaxalih = function() {
         }
     };
 
-    self.ToKeyCodeByWord = function(word, sourceType, destitionType) {
+    function expandUnicodeLigatures(decoded) {
+        var expanded = [];
+        decoded.forEach(function(akhar) {
+            if (unicodeComponents[akhar]) {
+                expanded.push.apply(expanded, unicodeComponents[akhar]);
+            } else {
+                expanded.push(akhar);
+            }
+        });
+        return expanded;
+    }
+
+    function composeLegacy(decoded, sourceType, destitionType) {
         try {
             var ret = [];
-            for (var i = 0; i < word.length; i++) {
-                var chr = word[i];
+            for (var i = 0; i < decoded.length; i++) {
+                var saboah = decoded[i];
 
-                //Get current akhar
-                var saboah = self._srcHtb[chr];
-
-                //Just correct for FontUniCamKur & FontUniCamVN
-                if (destitionType == Model.Enum.FontUniCamKur || destitionType == Model.Enum.FontUniCamVN) {
-                    //Baluw tapong
-                    if (saboah == Model.AKhar.BalauTapong) {
-                        ret.push(Model.AKhar.Balau);
-                        ret.push(Model.AKhar.TakaiThek);
-                        continue;
-                    }
-
-                    //Takai Thek Tut Takai Mâk
-                    if (saboah == Model.AKhar.TakaiThekTutTakaiMâk) {
-                        ret.push(Model.AKhar.TakaiThek);
-                        ret.push(Model.AKhar.TutTakaiMâk);
-                        continue;
-                    }
-
-                    //Takai Kik Tut Takai Mâk Lingiw
-                    if (saboah == Model.AKhar.TakaiKikTutTakaiMâkLingiw) {
-                        ret.push(Model.AKhar.TakaiKik);
-                        ret.push(Model.AKhar.TutTakaiMâk);
-                        continue;
-                    }
-
-                    //Traok Aw Paoh Ngâk
-                    if (saboah == Model.AKhar.TraohAwPaohNgâk) {
-                        ret.push(Model.AKhar.TraohAw);
-                        ret.push(Model.AKhar.PaohNgâk);
-                        continue;
-                    }
-
-                    //Traok Aw Tut Takai Mâk
-                    if (saboah == Model.AKhar.TraohAwTutTakaiMâk) {
-                        ret.push(Model.AKhar.TraohAw);
-                        ret.push(Model.AKhar.TutTakaiMâk);
-                        continue;
-                    }
-                }
-
-                //Correct with FontUniCamKur and FontCamEFEO
-                if ((destitionType == Model.Enum.FontCamEFEO && sourceType != Model.Enum.FontUniCamKur) || (destitionType == Model.Enum.FontUniCamKur && sourceType != Model.Enum.FontCamEFEO) || (destitionType == Model.Enum.FontCamEFEO && sourceType != Model.Enum.FontUniCamVN) || (destitionType == Model.Enum.FontUniCamVN && sourceType != Model.Enum.FontCamEFEO)) {
+                // Expand these legacy ligatures for Cam EFEO.
+                if (destitionType == Model.Enum.FontCamEFEO) {
 
                     //Takai Klak Takai Kuak
                     if (saboah == Model.AKhar.TakaiKlakTakaiKuak) {
@@ -190,7 +155,7 @@ window.cam.service.FontToFontPaxalih = function() {
                     continue;
                 }
 
-                if (sourceType == Model.Enum.FontUniCamKur || sourceType == Model.Enum.FontUniCamVN) {
+                if (isUnicode(sourceType)) {
                     //Baluw Tapong
                     if (saboah == Model.AKhar.TakaiThek && ret.length != 0 && ret[ret.length - 1] == Model.AKhar.Balau) {
                         ret.splice(ret.length - 1, 1);
@@ -227,8 +192,7 @@ window.cam.service.FontToFontPaxalih = function() {
                     }
                 }
 
-                //if (sourceType == Model.Enum.FontCamEFEO || sourceType == Model.Enum.FontUniCamKur)
-                if ((sourceType == Model.Enum.FontCamEFEO && destitionType != Model.Enum.FontUniCamKur) || (sourceType == Model.Enum.FontUniCamKur && destitionType != Model.Enum.FontCamEFEO) || (sourceType == Model.Enum.FontCamEFEO && destitionType != Model.Enum.FontUniCamVN) || (sourceType == Model.Enum.FontUniCamVN && destitionType != Model.Enum.FontCamEFEO)) {
+                if (sourceType == Model.Enum.FontCamEFEO || (isUnicode(sourceType) && destitionType != Model.Enum.FontCamEFEO)) {
 
                     //Takai Klak Takai Kuak
                     if (saboah == Model.AKhar.TakaiKuak && ret.length != 0 && ret[ret.length - 1] == Model.AKhar.TakaiKlak) {

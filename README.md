@@ -22,6 +22,14 @@ Check google chrome **http://localhost:8080**
 gulp styles: build less css and minify
 ```
 
+# Converter unit tests
+
+Run `npm test` with Node.js 22. The suite loads the browser converter services
+and reuses expectations from `testing/specs.js` without installing packages
+or starting a browser. It checks Unicode alias conversions and both separate
+and combined legacy marks. Keep EFEO-to-Unicode fixtures pinned when changing
+the font-to-font paths.
+
 # End to end testing
 1. How to setup Protractor  for end to end testing:
 **https://angular.github.io/protractor/#/tutorial**

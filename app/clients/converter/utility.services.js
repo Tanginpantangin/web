@@ -10,7 +10,7 @@ if (!window.cam) {
 window.cam.service.Utility = {};
 
 window.cam.service.Utility.SetKeyCodeData = function(waQuyetKeyCode, gilaiPraongKeyCode, camEFEOKeyCode,
-    kawomTTKeyCode, uniCamKurKeyCode, uniCamVNKeyCode, keyCodeWaQuyet,
+    kawomTTKeyCode, uniCamKurKeyCode, keyCodeWaQuyet,
     keyCodeGilaiPraong, keyCodeCamEFEO, keyCodeKawomTT, keyCodeUniCamKur,
     keyCodeUniCamVN) {
 
@@ -24,7 +24,6 @@ window.cam.service.Utility.SetKeyCodeData = function(waQuyetKeyCode, gilaiPraong
         var camEFEO = dtr[Model.XMLKeyCodeCol.CamEFEO];
         var kawomTuekTuah = dtr[Model.XMLKeyCodeCol.KawomTuekTuah];
         var uniCamKur = dtr[Model.XMLKeyCodeCol.UnicodeCamKur];
-        // var uniCamVN = dtr[Model.XMLKeyCodeCol.UnicodeCamVN].toString();
 
         //WaQuyet - Key code
         if (!waQuyetKeyCode[waQuyet]) {
