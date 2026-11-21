@@ -25,7 +25,8 @@ window.logging = {
     writeLogFromConverter: function(exception){
         try {
             var adding = 'sourceType:' + window.convertInfo.sourceType + '\n';
-            adding += 'sourceText:' + window.convertInfo.sourceText + '\n';
+            // Never log user input: only its length
+            adding += 'sourceLength:' + window.convertInfo.sourceLength + '\n';
             adding += 'destinationType:' + window.convertInfo.destinationType + '\n';
 
             exception.message = adding + exception.message ;

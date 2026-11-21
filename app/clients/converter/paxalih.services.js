@@ -16,7 +16,6 @@ window.cam.service.Paxalih = function () {
   self._camEFEOToKeyCode = {};
   self._KTTToKeyCode = {};
   self._uniCamKurToKeyCode = {};
-  self._uniCamVNToKeyCode = {};
 
   //Valid chars
   self._validRumiChar = {};
@@ -43,7 +42,7 @@ window.cam.service.Paxalih = function () {
   self._vowelLangLikuk = {};
   self._takaiDaokLikuk = {};
 
-  window.cam.service.Utility.SetKeyCodeData(self._waYapataToKeyCode, self._gilaiPraongToKeyCode, self._camEFEOToKeyCode, self._KTTToKeyCode, self._uniCamKurToKeyCode, self._uniCamVNToKeyCode,
+  window.cam.service.Utility.SetKeyCodeData(self._waYapataToKeyCode, self._gilaiPraongToKeyCode, self._camEFEOToKeyCode, self._KTTToKeyCode, self._uniCamKurToKeyCode,
     self._keyCodeToWaYapata, self._keyCodeToGilaiPraong, self._keyCodeToCamEFEO, self._keyCodeToKTT, self._keyCodeToUniCamKur, self._keyCodeToUniCamVN);
 
   window.cam.service.Utility.SetValidTransChar(self._validRumiChar, self._validInraChar, self._validKTTChar);
@@ -341,11 +340,8 @@ window.cam.service.Paxalih = function () {
         break;
 
       case Model.Enum.FontUniCamKur:
-        ret = self._uniCamKurToKeyCode;
-        break;
-
       case Model.Enum.FontUniCamVN:
-        ret = self._uniCamVNToKeyCode;
+        ret = self._uniCamKurToKeyCode;
         break;
 
       case Model.Enum.TransCamEFEO:
