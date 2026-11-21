@@ -285,6 +285,7 @@ table.google-visualization-orgchart-table .google-visualization-orgchart-linerig
   margin-bottom: 50px;
   font-weight: normal;
   font-size: 38px;
+  line-height: 1.2;
   text-align: center;
   opacity: 0.48;
 }
@@ -494,6 +495,9 @@ hr.hr-style {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }
+#converter .content-convert p {
+  min-height: 1.5em;
+}
 #converter .content-convert {
   min-height: 164px;
   background-color: #F1F1F1;
@@ -567,7 +571,15 @@ hr.hr-style {
 #converter .container {
   margin-left: auto;
   margin-right: auto;
-  width: 1170px;
+  width: 100%;
+  max-width: 1170px;
+  box-sizing: border-box;
+}
+@media (max-width: 1200px) {
+  #converter .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 #converter .col-6 {
   float: left;
@@ -672,5 +684,21 @@ hr.hr-style {
 @media (min-width: 600px) and (max-width: 959px) {
   #converter .table-convert1 table {
     width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  #converter .box-source .bt-coppy,
+  #converter .box-source .bt-clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+  #converter .box-source .bt-coppy {
+    left: 4px;
+    bottom: 2px;
   }
 }

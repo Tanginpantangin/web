@@ -165,39 +165,59 @@ angular.module('app')
                 var destinationType = self.destinationList[self.indexDestination].id;
                 var data = self.sourceText;
 
-                // Save for log
+                // Empty source: nothing to convert
+                if (typeof data !== 'string' || data === '') {
+                    self.destinations = [];
+                    return;
+                }
+
+                // Save for log (never store the user's text, only its length)
                 window.convertInfo = {
                     sourceType: sourceType,
-                    sourceText: self.sourceText,
+                    sourceLength: data.length,
                     destinationType: destinationType
                 };
 
-                switch (sourceType) {
-                    case Model.Enum.FontGilaiPraong:
-                    case Model.Enum.FontYapata:
-                    case Model.Enum.FontCamEFEO:
-                    case Model.Enum.FontUniCamKur:
-                    case Model.Enum.FontUniCamVN:
-                    case Model.Enum.FontKTT:
-                        if (self.isFont(destinationType)) {
-                            var fontPaxalih = new window.cam.service.FontToFontPaxalih();
-                            result = fontPaxalih.DoConvert(data, sourceType, destinationType);
-                        } else {
-                            var rumiPaxalih = new window.cam.service.CamToTransPaxalih();
-                            result = rumiPaxalih.DoConvert(data, sourceType, destinationType);
-                        }
-                        break;
+                // Convert line by line so line breaks (and blank lines) survive the converter
+                // pipeline, which collapses whitespace inside a single call.
+                var convertText = function(data) {
+                    var result = '';
+                    switch (sourceType) {
+                        case Model.Enum.FontGilaiPraong:
+                        case Model.Enum.FontYapata:
+                        case Model.Enum.FontCamEFEO:
+                        case Model.Enum.FontUniCamKur:
+                        case Model.Enum.FontUniCamVN:
+                        case Model.Enum.FontKTT:
+                            if (self.isFont(destinationType)) {
+                                var fontPaxalih = new window.cam.service.FontToFontPaxalih();
+                                result = fontPaxalih.DoConvert(data, sourceType, destinationType);
+                            } else {
+                                var rumiPaxalih = new window.cam.service.CamToTransPaxalih();
+                                result = rumiPaxalih.DoConvert(data, sourceType, destinationType);
+                            }
+                            break;
 
-                    default:
-                        if (self.isFont(destinationType)) {
-                            var camPaxalih = new window.cam.service.TransToCamPaxalih();
-                            result = camPaxalih.DoConvert(data, sourceType, destinationType);
-                        } else {
-                            var transPaxalih = new window.cam.service.TransToTransPaxalih();
-                            result = transPaxalih.DoConvert(data, sourceType, destinationType);
-                        }
-                        break;
-                }
+                        default:
+                            if (self.isFont(destinationType)) {
+                                var camPaxalih = new window.cam.service.TransToCamPaxalih();
+                                result = camPaxalih.DoConvert(data, sourceType, destinationType);
+                            } else {
+                                var transPaxalih = new window.cam.service.TransToTransPaxalih();
+                                result = transPaxalih.DoConvert(data, sourceType, destinationType);
+                            }
+                            break;
+                    }
+                    return Array.isArray(result) ? result : [result];
+                };
+                result = [];
+                data.split(/\r\n|\r|\n/).forEach(function(line) {
+                    if (line.trim() === '') {
+                        result.push('');
+                    } else {
+                        result = result.concat(convertText(line));
+                    }
+                });
 
                 // Capitalize the first character of sentence
                 if (!self.isFont(destinationType)) {

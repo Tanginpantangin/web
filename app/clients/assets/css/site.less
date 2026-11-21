@@ -315,6 +315,7 @@ table.google-visualization-orgchart-table {
       margin-bottom: 50px;
       font-weight: normal;
       font-size: 38px;
+      line-height: 1.2;
       text-align: center;
       opacity: 0.48;
     }
@@ -553,6 +554,9 @@ hr.hr-style {
             border-radius: 3px;
         }
     }
+    .content-convert p {
+        min-height: 1.5em;
+    }
     .content-convert {
         min-height: 164px;
         background-color: #F1F1F1;
@@ -629,7 +633,13 @@ hr.hr-style {
     .container {
         margin-left: auto;
         margin-right: auto;
-        width: 1170px;
+        width: 100%;
+        max-width: 1170px;
+        box-sizing: border-box;
+        @media (max-width: 1200px) {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     }
     .col-6 {
         float: left;
@@ -791,3 +801,19 @@ hr.hr-style {
 
 // BIGGER THAN LARGE SCREEN
 @media (min-width: @layout-breakpoint-lg) {}
+
+@media (max-width: 600px) {
+    #converter .box-source .bt-coppy,
+    #converter .box-source .bt-clear {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+        box-sizing: border-box;
+    }
+    #converter .box-source .bt-coppy {
+        left: 4px;
+        bottom: 2px;
+    }
+}

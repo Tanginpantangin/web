@@ -9,7 +9,7 @@
             <div flex="100" class="bt-converter">
                 <md-button id="source-{{akhar.id}}" ng-class="{btactive:$index==ctrl.indexSource}" ng-click="ctrl.setIndexSource($index, akhar.font)" ng-repeat="akhar in ctrl.sourceList | limitTo:3" class="md-button-convert">{{akhar.name}}</md-button>
                 <md-menu>
-                    <md-button id="source-more" ng-click="$mdOpenMenu($event)" class="md-button-convert bt-viewmore">
+                    <md-button id="source-more" aria-label="Chọn hệ chữ nguồn" ng-click="$mdOpenMenu($event)" class="md-button-convert bt-viewmore">
                         <md-icon md-svg-icon="clients/assets/img/arrows.svg"></md-icon>
                     </md-button>
                     <md-menu-content>
@@ -18,18 +18,18 @@
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>
-                <md-button class="bt-exchange" ng-click="ctrl.changeConvert()">
+                <md-button class="bt-exchange" aria-label="Đổi chiều chuyển đổi" ng-click="ctrl.changeConvert()">
                     <md-icon md-svg-icon="clients/assets/img/exchange2.svg"></md-icon>
                 </md-button>
             </div>
             <div flex="100" class="box-convert">
               <div class="box-source">
-                <div class="bt-clear" ng-click="ctrl.clearSource()">
+                <div class="bt-clear" role="button" tabindex="0" aria-label="Xoá văn bản nguồn" ng-click="ctrl.clearSource()">
                     <md-icon ng-show="ctrl.sourceText" md-svg-icon="clients/assets/img/delete-button.svg"></md-icon>
                 </div>
-                <textarea ng-class="ctrl.fontSource" ng-model="ctrl.sourceText" rows="4" ng-change="ctrl.change()" ng-keyup="ctrl.autoExpand($event)" class="text-convert" autofocus spellcheck="false" value="adsfsda" layout-padding class="content-convert">
+                <textarea aria-label="Văn bản nguồn" ng-class="ctrl.fontSource" ng-model="ctrl.sourceText" rows="4" ng-change="ctrl.change()" ng-keyup="ctrl.autoExpand($event)" class="text-convert" autofocus spellcheck="false" value="adsfsda" layout-padding class="content-convert">
                 </textarea>
-                <div class="bt-coppy" ng-click="ctrl.toClipboard(ctrl.sourceText)">
+                <div class="bt-coppy" role="button" tabindex="0" aria-label="Sao chép văn bản nguồn" ng-click="ctrl.toClipboard(ctrl.sourceText)">
                     <md-icon md-svg-icon="clients/assets/img/copy.svg"></md-icon>
                 </div>
               </div>
@@ -39,7 +39,7 @@
             <div flex="100" class="bt-converter">
                 <md-button id="destination-{{akhar.id}}" ng-class="{btactive:$index==ctrl.indexDestination}" ng-click="ctrl.setIndexDestination($index, akhar.font)" ng-repeat="akhar in ctrl.destinationList | limitTo:3" class="md-button-convert">{{akhar.name}}</md-button>
                 <md-menu>
-                    <md-button id="destination-more" ng-click="$mdOpenMenu($event)" class="md-button-convert bt-viewmore">
+                    <md-button id="destination-more" aria-label="Chọn hệ chữ đích" ng-click="$mdOpenMenu($event)" class="md-button-convert bt-viewmore">
                         <md-icon md-svg-icon="clients/assets/img/arrows.svg"></md-icon>
                     </md-button>
                     <md-menu-content>
@@ -53,7 +53,7 @@
                 <md-content id="page_content" ng-class="ctrl.fontDestination" class="content-convert">
                     <p ng-repeat="text in ctrl.destinations track by $index">{{text}}</p>
                 </md-content>
-                <div class="bt-coppy" ng-click="ctrl.toClipboard(ctrl.destinations)">
+                <div class="bt-coppy" role="button" tabindex="0" aria-label="Sao chép kết quả" ng-click="ctrl.toClipboard(ctrl.destinations)">
                     <md-icon md-svg-icon="clients/assets/img/copy.svg"></md-icon>
                 </div>
             </div>
@@ -63,7 +63,7 @@
         <hr class="hr-style">
         <h1>Available to Offline</h1>
         <div>
-            <md-button class="md-icon-button md-primary bt-download" aria-label="Settings">
+            <md-button class="md-icon-button md-primary bt-download" aria-label="Tải về dùng offline">
                 <md-icon md-svg-icon="clients/assets/img/arrow.svg"></md-icon>
             </md-button>
         </div>

@@ -21,7 +21,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "node --test testing/converter.test.cjs",
+    "test": "node --test testing/converter.test.cjs testing/clipboard.test.cjs",
     "postinstall": "bower --allow-root install",
     "init": "npm install",
     "install": "bower install"
